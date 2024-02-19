@@ -4,6 +4,8 @@ windowDef Desktop
 	menugui	1
 	rect	0,0,640,480
 	backcolor	0,0,0,1
+	::	mousey
+	-	186
 	definevec4	"corner"	0.564,0.603,0.286,0.4
 	definevec4	"corner_0"	0.564,0.603,0.286,0
 	definevec4	"white"	1,1,1,1
@@ -20,8 +22,8 @@ windowDef Desktop
 	definevec4	"orange"	0.890,0.537,0,1
 	definevec4	"yellow_8"	1,0.745,0.137,0.8
 	definevec4	"grey1_4"	0.435,0.435,0.435,0.4
-	definefloat	"tooltip_x_offset"	gui::mousex-255
-	definefloat	"tooltip_y_offset"	gui::mousey-186
+	definefloat	"tooltip_x_offset"	gui
+	definefloat	"tooltip_y_offset"	gui
 	defineicon	"fve"	"gfx/guis/mainmenu/icon_favorite.tga"
 	defineicon	"pse"	"gfx/guis/mainmenu/icon_locked.tga"
 	defineicon	"dse"	"gfx/guis/mainmenu/icon_dedserver.tga"
@@ -980,9 +982,9 @@ windowDef Desktop
 			{
 				rect	107,403,86,17
 				visible	1
-				forecolor	1,1,1,0.5
-				text	"#str_200011"
-				textscale	.22
+				forecolor	1,1,1,0.494
+				text	":("
+				textscale	0.22
 				font	"fonts/marine"
 			}
 			windowDef main_t_b7
