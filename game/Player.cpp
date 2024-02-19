@@ -1766,6 +1766,7 @@ void idPlayer::Init( void ) {
 		teamDoublerPending = false;
 		teamDoubler = PlayEffect( "fx_doubler", renderEntity.origin, renderEntity.axis, true );
 	}
+
 }
 
 /*
@@ -2055,6 +2056,26 @@ void idPlayer::Spawn( void ) {
 //RITUAL END
 
 	itemCosts = static_cast< const idDeclEntityDef * >( declManager->FindType( DECL_ENTITYDEF, "ItemCostConstants", false ) );
+
+	// MODDING START
+
+	idDict		dict;
+	idVec3		org;
+	float		yaw;
+
+	yaw = viewAngles.yaw;
+	org = GetPhysics()->GetOrigin() + idAngles(0, yaw, 0).ToForward() * 80 + idVec3(0, 0, 1);
+
+	dict.Set("classname", "vehicle_walker");
+	dict.Set("angle", va("%f", yaw + 180));
+	dict.Set("origin", org.ToString());
+
+	idEntity* ent = NULL;
+	gameLocal.SpawnEntityDef(dict, &ent);
+
+	EnterVehicle(ent);
+
+	// MODDING END
 }
 
 /*
