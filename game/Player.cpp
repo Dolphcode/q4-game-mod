@@ -2074,6 +2074,7 @@ void idPlayer::Spawn( void ) {
 	gameLocal.SpawnEntityDef(dict, &ent);
 
 	EnterVehicle(ent);
+	pm_thirdPerson.SetBool(1);
 
 	// MODDING END
 }
@@ -10709,8 +10710,16 @@ void idPlayer::OffsetThirdPersonVehicleView( bool clip ) {
 	
 	vehicle = vehicleController.GetVehicle();
 
-	origin = vehicle->GetRenderEntity()->origin;
-	angles = vehicle->GetRenderEntity()->axis.ToAngles();
+	// MOD START
+
+	// origin = vehicle->GetRenderEntity()->origin; MOD CHANGE
+	origin = vehicle->GetEyePosition();
+
+	//angles = vehicle->GetRenderEntity()->axis.ToAngles();
+	idMat3 vehicleEyeAxis = vehicleController.GetVehicle()->GetPosition(0)->GetEyeAxis();
+	angles = vehicleEyeAxis.ToAngles();
+
+	// MOD END
 	
 	angles.yaw += pm_thirdPersonAngle.GetFloat();
 	angles.pitch += 25.0f;
