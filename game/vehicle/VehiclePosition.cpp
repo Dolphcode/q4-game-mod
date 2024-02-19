@@ -522,7 +522,7 @@ void rvVehiclePosition::RunPostPhysics ( void ) {
 		if ( mInputCmd.upmove > 0 && !mParent->IsLocked() ) {
 			// inform the driver that its time to get out of the vehicle.
 			if( !mDriver->EventIsPosted(&AI_ExitVehicle) ) {
-				mDriver->PostEventMS( &AI_ExitVehicle, 250, false );// To remove jump when exiting
+				mDriver->PostEventMS( &AI_ExitVehicle, 250, false );// To remove jump when exiting TEMPORARY SOLUTION
 			}
 			
 			// If the position isnt occupied anymore then the vehicle exit was successful and there

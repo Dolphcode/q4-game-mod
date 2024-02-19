@@ -8090,6 +8090,7 @@ idPlayer::ExitVehicle
 ==============
 */
 bool idPlayer::ExitVehicle ( bool force ) {
+	return false;
 	if ( !idActor::ExitVehicle ( force ) ) {
 		return false;
 	}
