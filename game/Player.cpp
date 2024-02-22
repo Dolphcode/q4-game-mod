@@ -2073,7 +2073,8 @@ void idPlayer::Spawn( void ) {
 	idEntity* ent = NULL;
 	gameLocal.SpawnEntityDef(dict, &ent);
 
-	EnterVehicle(ent);
+	//EnterVehicle(ent);
+	ent->ProcessEvent(&EV_Activate, this);
 	pm_thirdPerson.SetBool(1);
 
 	// MODDING END
@@ -8137,6 +8138,8 @@ idPlayer::ExitVehicle
 ==============
 */
 bool idPlayer::ExitVehicle ( bool force ) {
+	return false;
+
 	if ( !idActor::ExitVehicle ( force ) ) {
 		return false;
 	}

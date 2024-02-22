@@ -71,7 +71,7 @@ bool rvVehicleController::Drive ( rvVehicle* vehicle, idActor* driver ) {
 
 		if ( player->GetHud() ) {
 			GetHud()->Activate( true, gameLocal.time );
-			GetHud()->HandleNamedEvent( "showExitmessage" );
+			// GetHud()->HandleNamedEvent( "showExitmessage" ); MODIFICATION: DON'T SHOW THIS MESSAGE
 		}
 	}
 
