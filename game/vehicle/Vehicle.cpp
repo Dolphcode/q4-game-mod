@@ -112,7 +112,7 @@ void rvVehicle::Spawn( void ) {
 	vfl.scripted		= 0;
 	vfl.flipEject		= spawnArgs.GetBool( "allowFlipEject", "1" );
 
-	health = spawnArgs.GetInt ( "health", "100" );
+	health = spawnArgs.GetInt ( "health", "1000" );  // For some reason setting the spawn arg manually doesn't work so I'll have to temporarily set the default value to the max value here	
 	fl.takedamage = ( health > 0 );
 
 	// Load the HUD
@@ -125,7 +125,7 @@ void rvVehicle::Spawn( void ) {
 	}
 
 	// Get shield parameters
-	shieldMaxHealth  = spawnArgs.GetInt ( "shieldHealth", "0" );	
+	shieldMaxHealth  = spawnArgs.GetInt ( "shieldHealth", "170" ); // For some reason setting the spawn arg manually doesn't work so I'll have to temporarily set the default value to the max value here	
 	shieldRegenTime  = SEC2MS ( spawnArgs.GetFloat ( "shieldRegenTime", "0" ) );
 	shieldRegenDelay = SEC2MS ( spawnArgs.GetFloat ( "shieldRegenDelay", "0" ) );
 	shieldHitTime    = 0;	

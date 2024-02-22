@@ -2069,12 +2069,18 @@ void idPlayer::Spawn( void ) {
 	dict.Set("classname", "vehicle_walker");
 	dict.Set("angle", va("%f", yaw + 180));
 	dict.Set("origin", org.ToString());
+	dict.Set("health", "1000");
+	dict.Set("shieldHealth", "170");
+	//dict.Set("def_position_driver", "vehicle_walker_driver");
 
 	idEntity* ent = NULL;
 	gameLocal.SpawnEntityDef(dict, &ent);
+	ent->spawnArgs.Set("health", "1000");
+	ent->spawnArgs.Set("shieldHealth", "170");
 
 	//EnterVehicle(ent);
 	ent->ProcessEvent(&EV_Activate, this);
+	
 	pm_thirdPerson.SetBool(1);
 
 	// MODDING END
@@ -8140,6 +8146,7 @@ idPlayer::ExitVehicle
 bool idPlayer::ExitVehicle ( bool force ) {
 	return false;
 
+	/* NO EXITING THE VEHICLE FOR THE PLAYER
 	if ( !idActor::ExitVehicle ( force ) ) {
 		return false;
 	}
@@ -8156,6 +8163,7 @@ bool idPlayer::ExitVehicle ( bool force ) {
 // RAVEN END
 	
 	return true;
+	*/
 }
 
 
