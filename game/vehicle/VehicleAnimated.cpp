@@ -103,9 +103,24 @@ void rvVehicleAnimated::Think ( void ) {
 		viewAxis = viewAngles.ToMat3() * physicsObj.GetGravityAxis();
 		delta *= viewAxis;
 	}
+
+	// MODDER BEGIN
+	idVec3 addVelocity;
+	idVec3 velocity = physicsObj.GetLinearVelocity();
+
+	if (cmd.upmove >= 10) {
+		addVelocity = 50.0f * -GetPhysics()->GetGravity(); // For the time being
+		addVelocity *= idMath::Sqrt(addVelocity.Normalize());
+	}
+
+	velocity += addVelocity;
+	// MODDER END
 			
 	physicsObj.SetDelta( delta );
+	physicsObj.SetLinearVelocity(velocity); // For now we just add a jump velocity to the current velocity
 	additionalDelta.Zero();
+
+	
 }
 
 /*

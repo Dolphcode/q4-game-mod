@@ -2069,14 +2069,12 @@ void idPlayer::Spawn( void ) {
 	dict.Set("classname", "vehicle_walker");
 	dict.Set("angle", va("%f", yaw + 180));
 	dict.Set("origin", org.ToString());
-	dict.Set("health", "1000");
-	dict.Set("shieldHealth", "170");
+	//dict.Set("health", "1000");
+	//dict.Set("shieldHealth", "170");
 	//dict.Set("def_position_driver", "vehicle_walker_driver");
 
 	idEntity* ent = NULL;
 	gameLocal.SpawnEntityDef(dict, &ent);
-	ent->spawnArgs.Set("health", "1000");
-	ent->spawnArgs.Set("shieldHealth", "170");
 
 	//EnterVehicle(ent);
 	ent->ProcessEvent(&EV_Activate, this);
