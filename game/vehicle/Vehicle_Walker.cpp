@@ -82,6 +82,8 @@ void rvVehicleWalker::Think ( void ) {
 
 	rvVehicle::Think();
 
+	physicsObj.UseVelocityMove(true);
+
 	float rate = 0.0f;
 	usercmd_t& cmd = positions[0].mInputCmd;
 	idVec3 delta;
@@ -114,13 +116,38 @@ void rvVehicleWalker::Think ( void ) {
 	}
 
 	// MODDER BEGIN
-	idVec3 addVelocity;
+	idVec3 addVelocity = idVec3(0.0, 0.0, 0.0);
 	idVec3 velocity = physicsObj.GetLinearVelocity();
+	gameLocal.Printf("Current Velocity: %f %f %f\n", velocity.x, velocity.y, velocity.z);
+	gameLocal.Printf("Change Velocity: %f %f %f\n", delta.x, delta.y, delta.z);
+	gameLocal.Printf("Current Speed: %f\n", velocity.Length());
 
+	idVec3 planarVelocity = idVec3(velocity.x, velocity.y, 0.0);
+
+	// Compute x-y axis motion type
+	planarVelocity += delta;
+	float newSpeed = planarVelocity.Length();
+	if (idMath::Abs(newSpeed) > 30.0) {
+		planarVelocity -= planarVelocity.ToNormal() * 2.0;
+	}
+
+	gameLocal.Printf("New Velocity: %f %f %f\n", planarVelocity.x, planarVelocity.y, planarVelocity.z);
+	planarVelocity.z = velocity.z;
+
+	velocity = planarVelocity;
+
+	// Jumping
 	if (cmd.upmove >= 10 && GetPhysics()->HasGroundContacts()) {
-		addVelocity = 2.0f * -GetPhysics()->GetGravity(); // For the time being
+		addVelocity = 0.5f * -GetPhysics()->GetGravity(); // For the time being
 		//addVelocity *= idMath::Sqrt(addVelocity.Normalize());
 	}
+
+	if (cmd.impulse == IMPULSE_50) {
+		
+	}
+
+	velocity += addVelocity;
+	
 
 	/**
 	if (cmd.impulse == IMPULSE_50) {
@@ -140,12 +167,11 @@ void rvVehicleWalker::Think ( void ) {
 
 	}
 	*/
-
-	velocity += addVelocity;
 	// MODDER END
 
-	physicsObj.SetDelta(delta);
+	//physicsObj.SetDelta(delta);
 	physicsObj.SetLinearVelocity(velocity); // For now we just add a jump velocity to the current velocity
+	//physicsObj.ApplyImpulse(0, physicsObj.GetOrigin(), velocity);
 	additionalDelta.Zero();
 
 	if ( !HasDrivers() || IsStalled() ) {
