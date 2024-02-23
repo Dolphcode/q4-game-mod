@@ -120,15 +120,17 @@ void rvVehicleWalker::Think ( void ) {
 	idVec3 velocity = physicsObj.GetLinearVelocity();
 	gameLocal.Printf("Current Velocity: %f %f %f\n", velocity.x, velocity.y, velocity.z);
 	gameLocal.Printf("Change Velocity: %f %f %f\n", delta.x, delta.y, delta.z);
-	gameLocal.Printf("Current Speed: %f\n", velocity.Length());
+	
 
 	idVec3 planarVelocity = idVec3(velocity.x, velocity.y, 0.0);
 
 	// Compute x-y axis motion type
-	planarVelocity += delta;
+	planarVelocity += delta * 5.0;
 	float newSpeed = planarVelocity.Length();
-	if (idMath::Abs(newSpeed) > 30.0) {
-		planarVelocity -= planarVelocity.ToNormal() * 2.0;
+
+	gameLocal.Printf("Current Speed: %f\n", newSpeed);
+	if (idMath::Fabs(newSpeed) > 300.0 || (delta.Length() == 0.0 && planarVelocity.Length() >= 5)) {
+		planarVelocity -= planarVelocity / planarVelocity.Length() * 20.0;
 	}
 
 	gameLocal.Printf("New Velocity: %f %f %f\n", planarVelocity.x, planarVelocity.y, planarVelocity.z);
@@ -142,9 +144,11 @@ void rvVehicleWalker::Think ( void ) {
 		//addVelocity *= idMath::Sqrt(addVelocity.Normalize());
 	}
 
+	/*
 	if (cmd.impulse == IMPULSE_50) {
-		
+		velocity += delta * 10.0;
 	}
+	*/
 
 	velocity += addVelocity;
 	
