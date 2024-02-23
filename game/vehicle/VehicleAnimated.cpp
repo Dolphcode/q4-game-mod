@@ -108,10 +108,29 @@ void rvVehicleAnimated::Think ( void ) {
 	idVec3 addVelocity;
 	idVec3 velocity = physicsObj.GetLinearVelocity();
 
-	if (cmd.upmove >= 10) {
-		addVelocity = 50.0f * -GetPhysics()->GetGravity(); // For the time being
-		addVelocity *= idMath::Sqrt(addVelocity.Normalize());
+	if (cmd.upmove >= 10 && GetPhysics()->HasGroundContacts()) {
+		addVelocity = 2.0f * -GetPhysics()->GetGravity(); // For the time being
+		//addVelocity *= idMath::Sqrt(addVelocity.Normalize());
 	}
+
+	/**
+	if (cmd.impulse == IMPULSE_50) {
+		idVec3 dashVelocity = idVec3(	(cmd.forwardmove != 0) ? cmd.forwardmove / idMath::Abs(cmd.forwardmove) : 0, 
+										(cmd.rightmove != 0) ? -idMath::Abs(cmd.rightmove) / cmd.rightmove : 0, 
+										0);
+		gameLocal.Printf("%d", cmd.buttons & IMPULSE_50);
+		dashVelocity *= 200;
+		addVelocity += dashVelocity;
+	}
+	*/
+
+	/*
+	if (idMath::Abs(velocity.x) > 0.1f || idMath::Abs(velocity.y) > 0.1f) { // Restorative Force
+		idVec3 restoreVelocity = idVec3((idMath::Abs(velocity.x) > 0.1f) ? -velocity.x / velocity.x * 2 : -velocity.x, (idMath::Abs(velocity.y) > 0.1f) ? -velocity.y / velocity.y * 2 : -velocity.y, 0);
+		addVelocity += restoreVelocity;
+
+	}
+	*/
 
 	velocity += addVelocity;
 	// MODDER END
@@ -119,8 +138,6 @@ void rvVehicleAnimated::Think ( void ) {
 	physicsObj.SetDelta( delta );
 	physicsObj.SetLinearVelocity(velocity); // For now we just add a jump velocity to the current velocity
 	additionalDelta.Zero();
-
-	
 }
 
 /*
