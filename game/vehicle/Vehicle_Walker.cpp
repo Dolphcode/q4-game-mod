@@ -118,59 +118,35 @@ void rvVehicleWalker::Think ( void ) {
 	// MODDER BEGIN
 	idVec3 addVelocity = idVec3(0.0, 0.0, 0.0);
 	idVec3 velocity = physicsObj.GetLinearVelocity();
-	gameLocal.Printf("Current Velocity: %f %f %f\n", velocity.x, velocity.y, velocity.z);
-	gameLocal.Printf("Change Velocity: %f %f %f\n", delta.x, delta.y, delta.z);
 	
 
 	idVec3 planarVelocity = idVec3(velocity.x, velocity.y, 0.0);
 
 	// Compute x-y axis motion type
-	planarVelocity += delta * 5.0;
+	planarVelocity += delta * spawnArgs.GetFloat("base_acceleration");
 	float newSpeed = planarVelocity.Length();
 
-	gameLocal.Printf("Current Speed: %f\n", newSpeed);
-	if (idMath::Fabs(newSpeed) > 300.0 || (delta.Length() == 0.0 && planarVelocity.Length() >= 5)) {
-		planarVelocity -= planarVelocity / planarVelocity.Length() * 20.0;
+	if (idMath::Fabs(newSpeed) > spawnArgs.GetFloat("base_max_speed") || (delta.Length() == 0.0 && planarVelocity.Length() >= 5)) {
+		planarVelocity -= planarVelocity / planarVelocity.Length() * spawnArgs.GetFloat("base_deceleration");
 	}
 
-	gameLocal.Printf("New Velocity: %f %f %f\n", planarVelocity.x, planarVelocity.y, planarVelocity.z);
 	planarVelocity.z = velocity.z;
 
 	velocity = planarVelocity;
 
 	// Jumping
 	if (cmd.upmove >= 10 && GetPhysics()->HasGroundContacts()) {
-		addVelocity = 0.5f * -GetPhysics()->GetGravity(); // For the time being
-		//addVelocity *= idMath::Sqrt(addVelocity.Normalize());
+		addVelocity = spawnArgs.GetFloat("base_jump_factor") * -GetPhysics()->GetGravity(); // For the time being
 	}
 
 	/*
 	if (cmd.impulse == IMPULSE_50) {
-		velocity += delta * 10.0;
+		velocity += delta * spawnArgs.GetFloat("base_dash_speed");
 	}
 	*/
 
 	velocity += addVelocity;
 	
-
-	/**
-	if (cmd.impulse == IMPULSE_50) {
-		idVec3 dashVelocity = idVec3(	(cmd.forwardmove != 0) ? cmd.forwardmove / idMath::Abs(cmd.forwardmove) : 0,
-										(cmd.rightmove != 0) ? -idMath::Abs(cmd.rightmove) / cmd.rightmove : 0,
-										0);
-		gameLocal.Printf("%d", cmd.buttons & IMPULSE_50);
-		dashVelocity *= 200;
-		addVelocity += dashVelocity;
-	}
-	*/
-
-	/*
-	if (idMath::Abs(velocity.x) > 0.1f || idMath::Abs(velocity.y) > 0.1f) { // Restorative Force
-		idVec3 restoreVelocity = idVec3((idMath::Abs(velocity.x) > 0.1f) ? -velocity.x / velocity.x * 2 : -velocity.x, (idMath::Abs(velocity.y) > 0.1f) ? -velocity.y / velocity.y * 2 : -velocity.y, 0);
-		addVelocity += restoreVelocity;
-
-	}
-	*/
 	// MODDER END
 
 	//physicsObj.SetDelta(delta);
