@@ -136,11 +136,12 @@ entityDef vehicle_walker
 	"exit_vehicle_delay"			"500"
 
 	// Base Stats for the walker to be fine tuned
-	"base_acceleration"			"5.0"
+	"base_acceleration"			"10.0"
 	"base_deceleration"			"50.0"
-	"base_dash_speed"			"100.0"
+	"base_dash_speed"			"400.0"
 	"base_max_speed"			"300.0"
-	"base_jump_factor"			"0.5"
+	"base_jump_factor"			"0.7"
+	"base_assault_boost"		"500.0"
 }
 
 entityDef vehicle_walker_convoy

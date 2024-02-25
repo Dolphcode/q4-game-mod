@@ -25,6 +25,8 @@ public:
 
 	float				dashCooldown;
 	int					lastPressed;
+	int					assaultBoost;
+	idVec3				baseGravity;
 
 private:
 	void				HandleStrafing			( void );
@@ -74,6 +76,8 @@ rvVehicleWalker::rvVehicleWalker ( void ) {
 	stopAnimName = "";
 	dashCooldown = 0.0;
 	lastPressed = 0;
+	assaultBoost = 0;
+	baseGravity = physicsObj.GetGravity();
 }
 
 /*
@@ -121,41 +125,52 @@ void rvVehicleWalker::Think ( void ) {
 	}
 
 	// MODDER BEGIN
-	idVec3 addVelocity = idVec3(0.0, 0.0, 0.0);
-	idVec3 velocity = physicsObj.GetLinearVelocity();
-	
+	if (!(cmd.buttons & BUTTON_RUN) && (lastPressed & BUTTON_RUN)) {
+		assaultBoost = !assaultBoost;
+	}
 
+	idVec3 velocity = physicsObj.GetLinearVelocity();
+
+	idVec3 addVelocity = idVec3(0.0, 0.0, 0.0);
 	idVec3 planarVelocity = idVec3(velocity.x, velocity.y, 0.0);
 
-	// Compute x-y axis motion type
-	planarVelocity += delta * spawnArgs.GetFloat("base_acceleration");
-	float newSpeed = planarVelocity.Length();
-
-	if (idMath::Fabs(newSpeed) > spawnArgs.GetFloat("base_max_speed") || (delta.Length() == 0.0 && planarVelocity.Length() >= 5)) {
-		planarVelocity -= planarVelocity / planarVelocity.Length() * spawnArgs.GetFloat("base_deceleration");
+	if (assaultBoost) {
+		idVec3 dir = idVec3(1, 0, 0) * GetPosition(0)->GetEyeAxis();
+		velocity = dir * spawnArgs.GetFloat("base_assault_boost");
+		physicsObj.SetGravity(idVec3(0, 0, 0));
 	}
+	else {
+		physicsObj.SetGravity(baseGravity);
 
-	planarVelocity.z = velocity.z;
+		// Compute x-y axis motion type
+		planarVelocity += delta * spawnArgs.GetFloat("base_acceleration");
+		float newSpeed = planarVelocity.Length();
 
-	velocity = planarVelocity;
+		if (idMath::Fabs(newSpeed) > spawnArgs.GetFloat("base_max_speed") || (delta.Length() == 0.0 && planarVelocity.Length() >= 5)) {
+			planarVelocity -= planarVelocity / planarVelocity.Length() * spawnArgs.GetFloat("base_deceleration");
+		}
 
-	// Jumping
-	if (cmd.upmove >= 10 && GetPhysics()->HasGroundContacts()) {
-		addVelocity = spawnArgs.GetFloat("base_jump_factor") * -GetPhysics()->GetGravity(); // For the time being
+		planarVelocity.z = velocity.z;
+
+		velocity = planarVelocity;
+
+		// Jumping
+		if (cmd.upmove >= 10 && GetPhysics()->HasGroundContacts()) {
+			addVelocity = spawnArgs.GetFloat("base_jump_factor") * -GetPhysics()->GetGravity(); // For the time being
+		}
+
+		if (cmd.buttons & BUTTON_STRAFE && !dashCooldown && !(lastPressed & BUTTON_STRAFE)) {
+			velocity += delta * spawnArgs.GetFloat("base_dash_speed");
+			dashCooldown = 1.0;
+		}
+
+		velocity += addVelocity;
 	}
-
-	if (cmd.buttons & BUTTON_STRAFE && !dashCooldown && !(lastPressed & BUTTON_STRAFE)) {
-		velocity += delta * spawnArgs.GetFloat("base_dash_speed");
-		dashCooldown = 1.0;
-	}
-
-	velocity += addVelocity;
 	
+	physicsObj.SetLinearVelocity(velocity); // For now we just add a jump velocity to the current velocity
+
 	// MODDER END
 
-	//physicsObj.SetDelta(delta);
-	physicsObj.SetLinearVelocity(velocity); // For now we just add a jump velocity to the current velocity
-	//physicsObj.ApplyImpulse(0, physicsObj.GetOrigin(), velocity);
 	additionalDelta.Zero();
 
 	if ( !HasDrivers() || IsStalled() ) {
