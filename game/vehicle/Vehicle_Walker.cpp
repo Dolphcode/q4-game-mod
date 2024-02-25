@@ -23,6 +23,9 @@ public:
 
 	virtual bool		FindClearExitPoint		( int pos, idVec3& origin, idMat3& axis ) const;
 
+	float				dashCooldown;
+	int					lastPressed;
+
 private:
 	void				HandleStrafing			( void );
 
@@ -69,6 +72,8 @@ rvVehicleWalker::rvVehicleWalker
 */
 rvVehicleWalker::rvVehicleWalker ( void ) {
 	stopAnimName = "";
+	dashCooldown = 0.0;
+	lastPressed = 0;
 }
 
 /*
@@ -139,11 +144,10 @@ void rvVehicleWalker::Think ( void ) {
 		addVelocity = spawnArgs.GetFloat("base_jump_factor") * -GetPhysics()->GetGravity(); // For the time being
 	}
 
-	/*
-	if (cmd.impulse == IMPULSE_50) {
+	if (cmd.buttons & BUTTON_STRAFE && !dashCooldown && !(lastPressed & BUTTON_STRAFE)) {
 		velocity += delta * spawnArgs.GetFloat("base_dash_speed");
+		dashCooldown = 1.0;
 	}
-	*/
 
 	velocity += addVelocity;
 	
@@ -164,6 +168,16 @@ void rvVehicleWalker::Think ( void ) {
 	if ( delta.LengthSqr() > 0.1f ) {
 		gameLocal.RadiusDamage( GetOrigin(), this, this, this, this, spawnArgs.GetString( "def_stompDamage", "damage_Smallexplosion" ) );
 	}
+
+
+	if (dashCooldown > 0) {
+		dashCooldown -= MS2SEC(gameLocal.msec);
+	}
+	else {
+		dashCooldown = 0.0;
+	}
+
+	lastPressed = cmd.buttons;
 }
 
 /*
