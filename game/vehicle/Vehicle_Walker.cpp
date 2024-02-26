@@ -119,12 +119,20 @@ rvVehicleWalker::Think
 void rvVehicleWalker::Think ( void ) {
 	// START by moving Vehicle Animated movement code from here and rebuild the movement system from there
 	// I figure it'll be significantly easier to just rebuild mech movement from the ground up
-
+	// We will still be calling rvVehicle::Think(); however to do everything the base Vehicle needs to do initially
 	rvVehicle::Think();
 
+	// MODDER BEGIN
+	// 
 	// Setup for movement
-	physicsObj.UseVelocityMove(true);
-	float deltaTime = MS2SEC(gameLocal.msec);
+	physicsObj.UseVelocityMove(true); // Specify that we are using Velocity as opposed to delta
+	float deltaTime = MS2SEC(gameLocal.msec); // Get the time between frames to make changes in values due to things like acceleration framerate independent, also used for timers
+
+	// MODDER END
+
+	/*	RAVEN CODE BELOW THIS POINT
+		My assumption was that this does all the computation to translate user input and
+		the mech's facing direction into movement.*/
 
 	float rate = 0.0f;
 	usercmd_t& cmd = positions[0].mInputCmd;
@@ -157,56 +165,73 @@ void rvVehicleWalker::Think ( void ) {
 		delta *= viewAxis;
 	}
 
+	// RAVEN END
+
 	// MODDER BEGIN
-	if (!(cmd.buttons & BUTTON_RUN) && (lastPressed & BUTTON_RUN) && energyAmount > 0.0) { // Only activate assault boost if we have energy available
+	
+	if (!(cmd.buttons & BUTTON_RUN) && (lastPressed & BUTTON_RUN) && energyAmount > 0.0) { // Toggle assault boost on release of the assault boost toggle button and if we have energy to work with
 		assaultBoost = !assaultBoost;
 	}
 
-	idVec3 velocity = physicsObj.GetLinearVelocity();
+	idVec3 velocity = physicsObj.GetLinearVelocity(); // Get the current velocity of the AC
+	idVec3 addVelocity = idVec3(0.0, 0.0, 0.0); // Velocity due to jumping
+	idVec3 planarVelocity = idVec3(velocity.x, velocity.y, 0.0); // Lateral X-Y plane velocity to be calculated and modified
 
-	idVec3 addVelocity = idVec3(0.0, 0.0, 0.0);
-	idVec3 planarVelocity = idVec3(velocity.x, velocity.y, 0.0);
+	if (assaultBoost) { // If we are in assault boost mode use the assault boost style of movement which constantly moves the AC in the direction that the mouse is facing
 
-	if (assaultBoost) {
-		idVec3 dir = idVec3(1, 0, 0) * GetPosition(0)->GetEyeAxis();
-		velocity = dir * spawnArgs.GetFloat("base_assault_boost");
-		physicsObj.SetGravity(idVec3(0, 0, 0));
+		physicsObj.SetGravity(idVec3(0, 0, 0)); // Disable gravity in Assault Boost Mode
+
+		idVec3 dir = idVec3(1, 0, 0) * GetPosition(0)->GetEyeAxis(); // Use the eye axis as the direction of the assault boost
+		velocity = dir * spawnArgs.GetFloat("base_assault_boost"); // Scale by the assault boost speed  (TODO: implement modifiers due to AC parts)
 
 		// Check Energy Amount
 		if (!UseEnergy(deltaTime * spawnArgs.GetFloat("base_assault_boost_enrate"))) {
 			assaultBoost = FALSE;
 		}
+
+		/*TODO: Implement side to side dodging
+				I was just playing Armored Core VI and forgot to implement the fact that you could dodge from side to side 
+				Movement is in a good spot for now so if we have time later we can implement this */
+
 	}
 	else {
-		physicsObj.SetGravity(baseGravity);
 
-		// Compute x-y axis motion type
+		physicsObj.SetGravity(baseGravity); // Use the standard gravity used by the vehicle's physics in regular movement mode
+
+		// Compute x-y axis motion
 		planarVelocity += delta * spawnArgs.GetFloat("base_acceleration");
 		float newSpeed = planarVelocity.Length();
 
-		if (idMath::Fabs(newSpeed) > spawnArgs.GetFloat("base_max_speed") || (delta.Length() == 0.0 && planarVelocity.Length() >= 5)) {
-			planarVelocity -= planarVelocity / planarVelocity.Length() * spawnArgs.GetFloat("base_deceleration");
+		/*TODO: In AC 6 the AC switches between booster and non booster mode by doing something to increase speed substantially like dashing
+				or stopping all movement respectively. On dash or assault boost we have to change the max speed of the AC and on stop we have to revert it
+				to walking speed */
+
+		if (idMath::Fabs(newSpeed) > spawnArgs.GetFloat("base_max_speed") || (delta.Length() == 0.0 && planarVelocity.Length() >= 5)) { // If we are above our maximum speed or there is no user input
+			planarVelocity -= planarVelocity / planarVelocity.Length() * spawnArgs.GetFloat("base_deceleration"); // Begin decelerating the AC
 		}
 
-		planarVelocity.z = velocity.z;
+		planarVelocity.z = velocity.z; // Maintain the z-axis velocity of the AC
 
-		velocity = planarVelocity;
+		velocity = planarVelocity; // Set the velocity to the newly calculated velocity
 
-		// Jumping
+		// Jump if the player presses the jump button, which causes upmove to increase, but only do this if the AC is on the ground
 		if (cmd.upmove >= 10 && GetPhysics()->HasGroundContacts()) {
-			addVelocity = spawnArgs.GetFloat("base_jump_factor") * -GetPhysics()->GetGravity(); // For the time being
+			addVelocity = spawnArgs.GetFloat("base_jump_factor") * -GetPhysics()->GetGravity(); // Pretty much treat this as a vertical dash
 		}
 
+		/*TODO: Implement the ability to fly upwards by holding the jump button while in the air*/
+
+		// Dash when the player presses the strafe button, but only do so during the first time the button is pressed (we can't hold to keep dashing
 		if (cmd.buttons & BUTTON_STRAFE && !dashCooldown && !(lastPressed & BUTTON_STRAFE) && energyAmount > 0.0) {
 			velocity += delta * spawnArgs.GetFloat("base_dash_speed");
-			dashCooldown = 1.0;
-			UseEnergy(spawnArgs.GetFloat("base_dash_energy_use"));
+			dashCooldown = 1.0;	// Set the dash cooldown TODO: Make this a variable in the def file
+			UseEnergy(spawnArgs.GetFloat("base_dash_energy_use")); // Consume a set amount of energy
 		}
 
-		velocity += addVelocity;
+		velocity += addVelocity; // Add the jump velocity, note that I can probably move this to the if statement for jumping
 	}
 	
-	physicsObj.SetLinearVelocity(velocity); // For now we just add a jump velocity to the current velocity
+	physicsObj.SetLinearVelocity(velocity); // Set the velocity of the AC to our newly calculated velocity
 
 	// MODDER END
 
@@ -216,35 +241,36 @@ void rvVehicleWalker::Think ( void ) {
 		return;
 	}
 
-	//idVec3 delta;
 	animator.GetDelta( gameLocal.time - gameLocal.GetMSec(), gameLocal.time, delta );
 
 	if ( delta.LengthSqr() > 0.1f ) {
 		gameLocal.RadiusDamage( GetOrigin(), this, this, this, this, spawnArgs.GetString( "def_stompDamage", "damage_Smallexplosion" ) );
 	}
 
+	// MODDER BEGIN - Cooldown timers and key press tracking
 
 	if (dashCooldown > 0) {
 		dashCooldown -= deltaTime;
 	}
 	else {
-		dashCooldown = 0.0;
+		dashCooldown = 0.0; // Do not let the dash cooldown go below 0
 	}
 
 	if (energyCooldown > 0.0) {
-		energyCooldown -= deltaTime;
+		energyCooldown -= deltaTime; // Decrease the energy cooldown timer to 0
 	}
 	else {
 		if (energyAmount < spawnArgs.GetFloat("base_max_en")) {
-			energyAmount += deltaTime * spawnArgs.GetFloat("base_refresh_enrate");
+			energyAmount += deltaTime * spawnArgs.GetFloat("base_refresh_enrate"); // If the recharge cooldown is complete we can begin regenerating EN
 		}
 		else {
-			energyAmount = spawnArgs.GetFloat("base_max_en");
+			energyAmount = spawnArgs.GetFloat("base_max_en"); // Do not allow energy to go over maximum
 		}
 	}
-	gameLocal.Printf("%f", energyAmount);
 
-	lastPressed = cmd.buttons;
+	lastPressed = cmd.buttons; // Used to keep track of whether a button was just pressed or just released
+
+	// MODDER END
 }
 
 /*
