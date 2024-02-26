@@ -608,6 +608,16 @@ idCVar si_serverURL(				"si_serverURL",				"",				CVAR_GAME | CVAR_SERVERINFO | 
 
 idCVar net_warnStale( "net_warnStale", "1", CVAR_INTEGER | CVAR_GAME | CVAR_NOCHEAT, "Warn stale entity occurences on network client - == 1: only on ClientStale call, > 1 all times" );
 
+// MODDER BEGIN
+
+idCVar ac_torso_part(				"ac_torso_part",			"1",				CVAR_GAME | CVAR_INTEGER, "the torso part of the ac");
+idCVar ac_arm_part(					"ac_arm_part",				"1",				CVAR_GAME | CVAR_INTEGER, "the arm part of the ac");
+idCVar ac_leg_part(					"ac_leg_part",				"1",				CVAR_GAME | CVAR_INTEGER, "the leg part of the ac");
+idCVar ac_engine_part(				"ac_engine_part",			"1",				CVAR_GAME | CVAR_INTEGER, "the engine part of the ac");
+
+// MODDER END
+
+
 // RAVEN BEGIN
 // bdube: cvar helps
 static	idCVarHelp	help_g_showHud ( "g_showHud", "Show Player HUD", "Off;On", "0;1", CVARHELP_GAME );
