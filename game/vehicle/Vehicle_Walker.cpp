@@ -24,6 +24,8 @@ public:
 	virtual bool		FindClearExitPoint		( int pos, idVec3& origin, idMat3& axis ) const;
 
 	// MODDER BEGIN
+
+	// AC State
 	float				dashCooldown;
 	int					lastPressed;
 	int					assaultBoost;
@@ -31,8 +33,15 @@ public:
 	float				energyAmount;
 	float				energyCooldown;
 
+	// AC Part Stats
+	float				weight; // Multiplied by the max speed
+	float				handling; // Multiplied by the acceleration and deceleration
+	float				enEfficiency; // Multiplied by the cooldown rate, 
+	float				enOutput; // Multiplied by the boost length
+
 	int					UseEnergy				( float );
 	void				UpdateHUD				(int position, idUserInterface* gui);
+	void				LoadPartConfig			( void );
 	// MODDER END
 
 private:
@@ -86,6 +95,8 @@ rvVehicleWalker::rvVehicleWalker ( void ) {
 	assaultBoost = 0;
 	baseGravity = physicsObj.GetGravity();
 	energyAmount = spawnArgs.GetFloat("base_max_en");
+
+	LoadPartConfig();
 }
 
 /*
@@ -96,7 +107,7 @@ rvVehicleWalker::UseEnergy -> MOD ADDITION
 int rvVehicleWalker::UseEnergy(float amount) {
 	if (energyAmount <= 0.0) return 0;
 
-	energyAmount -= amount;
+	energyAmount -= amount * (1.0 / enEfficiency); // Higher efficiency, lower amount consumed
 
 	float cooldown = spawnArgs.GetFloat("base_en_cooldown");
 
@@ -109,6 +120,52 @@ int rvVehicleWalker::UseEnergy(float amount) {
 	}
 
 	return 1;
+}
+
+/*
+================
+rvVehicleWalker::LoadPartConfig -> MOD ADDITION
+================
+*/
+void rvVehicleWalker::LoadPartConfig( void ) {
+	weight = 1.0f;
+	handling = 1.0f;
+	enEfficiency = 1.0f;
+	enOutput = 1.0f;
+
+	switch (cvarSystem->GetCVarInteger("ac_torso_part")) {
+	case 1:
+		weight -= 0.2f;
+		enEfficiency += 0.1f;
+		enOutput += 1.2f;
+		break;
+	case 2:
+		weight -= 0.8f;
+		enEfficiency -= 0.2f;
+		enOutput += 0.5f;
+		break;
+	}
+
+	switch (cvarSystem->GetCVarInteger("ac_leg_part")) {
+	case 1:
+		break;
+	case 2:
+		break;
+	}
+
+	switch (cvarSystem->GetCVarInteger("ac_arm_part")) {
+	case 1:
+		break;
+	case 2:
+		break;
+	}
+
+	switch (cvarSystem->GetCVarInteger("ac_engine_part")) {
+	case 1:
+		break;
+	case 2:
+		break;
+	}
 }
 
 /*
@@ -127,6 +184,7 @@ void rvVehicleWalker::Think ( void ) {
 	// Setup for movement
 	physicsObj.UseVelocityMove(true); // Specify that we are using Velocity as opposed to delta
 	float deltaTime = MS2SEC(gameLocal.msec); // Get the time between frames to make changes in values due to things like acceleration framerate independent, also used for timers
+	LoadPartConfig(); // Adjust part configuration in case changes are made in game
 
 	// MODDER END
 
@@ -182,7 +240,7 @@ void rvVehicleWalker::Think ( void ) {
 		physicsObj.SetGravity(idVec3(0, 0, 0)); // Disable gravity in Assault Boost Mode
 
 		idVec3 dir = idVec3(1, 0, 0) * GetPosition(0)->GetEyeAxis(); // Use the eye axis as the direction of the assault boost
-		velocity = dir * spawnArgs.GetFloat("base_assault_boost"); // Scale by the assault boost speed  (TODO: implement modifiers due to AC parts)
+		velocity = dir * spawnArgs.GetFloat("base_assault_boost") * enOutput; // Scale by the assault boost speed
 
 		// Check Energy Amount
 		if (!UseEnergy(deltaTime * spawnArgs.GetFloat("base_assault_boost_enrate"))) {
@@ -199,15 +257,18 @@ void rvVehicleWalker::Think ( void ) {
 		physicsObj.SetGravity(baseGravity); // Use the standard gravity used by the vehicle's physics in regular movement mode
 
 		// Compute x-y axis motion
-		planarVelocity += delta * spawnArgs.GetFloat("base_acceleration");
+		planarVelocity += delta * spawnArgs.GetFloat("base_acceleration") * handling;
 		float newSpeed = planarVelocity.Length();
 
 		/*TODO: In AC 6 the AC switches between booster and non booster mode by doing something to increase speed substantially like dashing
 				or stopping all movement respectively. On dash or assault boost we have to change the max speed of the AC and on stop we have to revert it
 				to walking speed */
 
-		if (idMath::Fabs(newSpeed) > spawnArgs.GetFloat("base_max_speed") || (delta.Length() == 0.0 && planarVelocity.Length() >= 5)) { // If we are above our maximum speed or there is no user input
-			planarVelocity -= planarVelocity / planarVelocity.Length() * spawnArgs.GetFloat("base_deceleration"); // Begin decelerating the AC
+		if (idMath::Fabs(newSpeed) > spawnArgs.GetFloat("base_max_speed") * weight) { // If we are above our maximum speed or there is no user input
+			planarVelocity -= planarVelocity / planarVelocity.Length() * spawnArgs.GetFloat("base_deceleration"); // Begin decelerating the AC, do not factor handling into normalizing speed
+		}
+		else if (delta.Length() == 0.0 && planarVelocity.Length() >= 5) {
+			planarVelocity -= planarVelocity / planarVelocity.Length() * spawnArgs.GetFloat("base_deceleration") * handling; // Do factor handling here
 		}
 
 		planarVelocity.z = velocity.z; // Maintain the z-axis velocity of the AC
@@ -216,14 +277,14 @@ void rvVehicleWalker::Think ( void ) {
 
 		// Jump if the player presses the jump button, which causes upmove to increase, but only do this if the AC is on the ground
 		if (cmd.upmove >= 10 && GetPhysics()->HasGroundContacts()) {
-			addVelocity = spawnArgs.GetFloat("base_jump_factor") * -GetPhysics()->GetGravity(); // Pretty much treat this as a vertical dash
+			addVelocity = spawnArgs.GetFloat("base_jump_factor") * -GetPhysics()->GetGravity() * enOutput; // Pretty much treat this as a vertical dash
 		}
 
 		/*TODO: Implement the ability to fly upwards by holding the jump button while in the air*/
 
 		// Dash when the player presses the strafe button, but only do so during the first time the button is pressed (we can't hold to keep dashing
 		if (cmd.buttons & BUTTON_STRAFE && !dashCooldown && !(lastPressed & BUTTON_STRAFE) && energyAmount > 0.0) {
-			velocity += delta * spawnArgs.GetFloat("base_dash_speed");
+			velocity += delta * spawnArgs.GetFloat("base_dash_speed") * enOutput;
 			dashCooldown = 1.0;	// Set the dash cooldown TODO: Make this a variable in the def file
 			UseEnergy(spawnArgs.GetFloat("base_dash_energy_use")); // Consume a set amount of energy
 		}
@@ -261,7 +322,7 @@ void rvVehicleWalker::Think ( void ) {
 	}
 	else {
 		if (energyAmount < spawnArgs.GetFloat("base_max_en")) {
-			energyAmount += deltaTime * spawnArgs.GetFloat("base_refresh_enrate"); // If the recharge cooldown is complete we can begin regenerating EN
+			energyAmount += deltaTime * spawnArgs.GetFloat("base_refresh_enrate") * enEfficiency * enOutput; // If the recharge cooldown is complete we can begin regenerating EN, depends directly on enEfficiency and enOutput multiplicatively
 		}
 		else {
 			energyAmount = spawnArgs.GetFloat("base_max_en"); // Do not allow energy to go over maximum
