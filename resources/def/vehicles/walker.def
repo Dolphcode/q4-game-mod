@@ -141,7 +141,14 @@ entityDef vehicle_walker
 	"base_dash_speed"			"400.0"
 	"base_max_speed"			"300.0"
 	"base_jump_factor"			"0.7"
-	"base_assault_boost"		"500.0"
+	"base_assault_boost"		"800.0"
+
+	"base_dash_energy_use"		"50.0"
+	"base_assault_boost_enrate"	"20.0"
+	"base_refresh_enrate"		"40.0"
+	"base_max_en"				"200.0"
+	"base_en_cooldown"			"1.0"
+	"base_en_empty_factor"		"3.0"
 }
 
 entityDef vehicle_walker_convoy

@@ -23,10 +23,17 @@ public:
 
 	virtual bool		FindClearExitPoint		( int pos, idVec3& origin, idMat3& axis ) const;
 
+	// MODDER BEGIN
 	float				dashCooldown;
 	int					lastPressed;
 	int					assaultBoost;
 	idVec3				baseGravity;
+	float				energyAmount;
+	float				energyCooldown;
+
+	int					UseEnergy				( float );
+	void				UpdateHUD				(int position, idUserInterface* gui);
+	// MODDER END
 
 private:
 	void				HandleStrafing			( void );
@@ -78,6 +85,30 @@ rvVehicleWalker::rvVehicleWalker ( void ) {
 	lastPressed = 0;
 	assaultBoost = 0;
 	baseGravity = physicsObj.GetGravity();
+	energyAmount = spawnArgs.GetFloat("base_max_en");
+}
+
+/*
+================
+rvVehicleWalker::UseEnergy -> MOD ADDITION
+================
+*/
+int rvVehicleWalker::UseEnergy(float amount) {
+	if (energyAmount <= 0.0) return 0;
+
+	energyAmount -= amount;
+
+	float cooldown = spawnArgs.GetFloat("base_en_cooldown");
+
+	if (energyAmount <= 0.0) {
+		energyAmount = 0.0;
+		energyCooldown = cooldown * spawnArgs.GetFloat("base_en_empty_factor");
+	}
+	else {
+		energyCooldown = cooldown;
+	}
+
+	return 1;
 }
 
 /*
@@ -91,7 +122,9 @@ void rvVehicleWalker::Think ( void ) {
 
 	rvVehicle::Think();
 
+	// Setup for movement
 	physicsObj.UseVelocityMove(true);
+	float deltaTime = MS2SEC(gameLocal.msec);
 
 	float rate = 0.0f;
 	usercmd_t& cmd = positions[0].mInputCmd;
@@ -125,7 +158,7 @@ void rvVehicleWalker::Think ( void ) {
 	}
 
 	// MODDER BEGIN
-	if (!(cmd.buttons & BUTTON_RUN) && (lastPressed & BUTTON_RUN)) {
+	if (!(cmd.buttons & BUTTON_RUN) && (lastPressed & BUTTON_RUN) && energyAmount > 0.0) { // Only activate assault boost if we have energy available
 		assaultBoost = !assaultBoost;
 	}
 
@@ -138,6 +171,11 @@ void rvVehicleWalker::Think ( void ) {
 		idVec3 dir = idVec3(1, 0, 0) * GetPosition(0)->GetEyeAxis();
 		velocity = dir * spawnArgs.GetFloat("base_assault_boost");
 		physicsObj.SetGravity(idVec3(0, 0, 0));
+
+		// Check Energy Amount
+		if (!UseEnergy(deltaTime * spawnArgs.GetFloat("base_assault_boost_enrate"))) {
+			assaultBoost = FALSE;
+		}
 	}
 	else {
 		physicsObj.SetGravity(baseGravity);
@@ -159,9 +197,10 @@ void rvVehicleWalker::Think ( void ) {
 			addVelocity = spawnArgs.GetFloat("base_jump_factor") * -GetPhysics()->GetGravity(); // For the time being
 		}
 
-		if (cmd.buttons & BUTTON_STRAFE && !dashCooldown && !(lastPressed & BUTTON_STRAFE)) {
+		if (cmd.buttons & BUTTON_STRAFE && !dashCooldown && !(lastPressed & BUTTON_STRAFE) && energyAmount > 0.0) {
 			velocity += delta * spawnArgs.GetFloat("base_dash_speed");
 			dashCooldown = 1.0;
+			UseEnergy(spawnArgs.GetFloat("base_dash_energy_use"));
 		}
 
 		velocity += addVelocity;
@@ -186,13 +225,37 @@ void rvVehicleWalker::Think ( void ) {
 
 
 	if (dashCooldown > 0) {
-		dashCooldown -= MS2SEC(gameLocal.msec);
+		dashCooldown -= deltaTime;
 	}
 	else {
 		dashCooldown = 0.0;
 	}
 
+	if (energyCooldown > 0.0) {
+		energyCooldown -= deltaTime;
+	}
+	else {
+		if (energyAmount < spawnArgs.GetFloat("base_max_en")) {
+			energyAmount += deltaTime * spawnArgs.GetFloat("base_refresh_enrate");
+		}
+		else {
+			energyAmount = spawnArgs.GetFloat("base_max_en");
+		}
+	}
+	gameLocal.Printf("%f", energyAmount);
+
 	lastPressed = cmd.buttons;
+}
+
+/*
+================
+rvVehicle::UpdateHUD
+================
+*/
+void rvVehicleWalker::UpdateHUD(int position, idUserInterface* gui) {
+	
+	rvVehicle::UpdateHUD(position, gui);
+	gui->SetStateFloat("vehicle_energy", (float)energyAmount / (float)200.0);
 }
 
 /*
