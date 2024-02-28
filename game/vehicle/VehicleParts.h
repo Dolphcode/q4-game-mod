@@ -266,7 +266,8 @@ public:
 	rvVehicleWeapon ( void );
 	~rvVehicleWeapon ( void );
 
-	char *					GetPartValue		( char* );
+	char *					GetPartValue		( char* ) const;
+	void					UpdateWeapon		( void );
 	
 	void					Spawn				( void );
 	void					Save				( idSaveGame* saveFile ) const;

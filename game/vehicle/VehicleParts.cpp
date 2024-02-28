@@ -613,10 +613,10 @@ rvVehicleWeapon::~rvVehicleWeapon ( void ) {
 
 /*
 =====================
-rvVehicleWeapon::GetPartValue
+rvVehicleWeapon::GetPartValue - MOD ADDITIOn
 =====================
 */
-char * rvVehicleWeapon::GetPartValue(char* stat) {
+char * rvVehicleWeapon::GetPartValue(char* stat) const {
 	char* formatted = "";
 	int armType;
 	int weaponValue;
@@ -640,6 +640,64 @@ char * rvVehicleWeapon::GetPartValue(char* stat) {
 
 /*
 =====================
+rvVehicleWeapon::Spawn - MOD ADDITION
+=====================
+*/
+void rvVehicleWeapon::UpdateWeapon(void) {
+	int		i;
+	idStr	temp;
+	idVec3	color;
+
+	launchFromJoint = spawnArgs.GetBool(GetPartValue("launchFromJoint"), "0");
+	lockScanning = spawnArgs.GetBool(GetPartValue("lockScanning"), "0");
+	lastLockTime = 0;
+
+	if (spawnArgs.GetString(GetPartValue("def_hitscan"), "", temp)) {
+		hitScanDef = gameLocal.FindEntityDefDict(spawnArgs.GetString(GetPartValue("def_hitscan")));
+	}
+	else {
+		projectileDef = gameLocal.FindEntityDefDict(spawnArgs.GetString(GetPartValue("def_projectile")));
+	}
+
+	fireDelay = SEC2MS(spawnArgs.GetFloat(GetPartValue("firedelay"))); // Time between shots
+	spread = spawnArgs.GetFloat(GetPartValue("spread")); // Spread of the weapon being fired
+	jointIndex = 0;
+	count = spawnArgs.GetInt(GetPartValue("count"), "1");
+	lockRange = spawnArgs.GetFloat(GetPartValue("lockrange"), "0");
+	ammoPerCharge = spawnArgs.GetInt(GetPartValue("ammopercharge"), "-1");
+	chargeTime = SEC2MS(spawnArgs.GetFloat(GetPartValue("chargetime")));
+	currentAmmo = ammoPerCharge;
+	muzzleFlashHandle = -1;
+
+	spawnArgs.GetVector(GetPartValue("flashOffset"), "0 0 0", muzzleFlashOffset);
+	muzzleFlash.shader = declManager->FindMaterial(spawnArgs.GetString(GetPartValue("mtr_flashShader"), "lights/muzzleflash"), false);
+	muzzleFlash.pointLight = spawnArgs.GetBool(GetPartValue("flashPointLight"), "1");
+	// RAVEN BEGIN
+	// dluetscher: added detail levels to render lights
+	muzzleFlash.detailLevel = DEFAULT_LIGHT_DETAIL_LEVEL;
+	// RAVEN END
+
+	spawnArgs.GetVector(GetPartValue("flashColor"), "0 0 0", color);
+	muzzleFlash.shaderParms[SHADERPARM_RED] = color[0];
+	muzzleFlash.shaderParms[SHADERPARM_GREEN] = color[1];
+	muzzleFlash.shaderParms[SHADERPARM_BLUE] = color[2];
+	muzzleFlash.shaderParms[SHADERPARM_TIMESCALE] = 1.0f;
+
+	muzzleFlash.lightRadius[0] = muzzleFlash.lightRadius[1] = muzzleFlash.lightRadius[2] = (float)spawnArgs.GetInt(GetPartValue("flashRadius"));
+
+	if (!muzzleFlash.pointLight) {
+		muzzleFlash.target = spawnArgs.GetVector("flashTarget");
+		muzzleFlash.up = spawnArgs.GetVector("flashUp");
+		muzzleFlash.right = spawnArgs.GetVector("flashRight");
+		muzzleFlash.end = spawnArgs.GetVector("flashTarget");
+	}
+
+	shaderFire = declManager->FindSound(spawnArgs.GetString(GetPartValue("snd_fire")), false);
+	shaderReload = declManager->FindSound(spawnArgs.GetString(GetPartValue("snd_reload")), false);
+}
+
+/*
+=====================
 rvVehicleWeapon::Spawn
 =====================
 */
@@ -652,25 +710,27 @@ void rvVehicleWeapon::Spawn ( void ) {
 	bestEnemy = 0;
 #endif
 
-	launchFromJoint = spawnArgs.GetBool ( "launchFromJoint", "0" );
-	lockScanning = spawnArgs.GetBool ( "lockScanning", "0" );
+	/* COMMENT TO MOVE TO UpdateWeapon()
+	launchFromJoint = spawnArgs.GetBool ( GetPartValue("launchFromJoint"), "0" );
+	lockScanning = spawnArgs.GetBool ( GetPartValue("lockScanning"), "0" );
 	lastLockTime = 0;
 	
 	if ( spawnArgs.GetString ( GetPartValue("def_hitscan"), "", temp ) ) {
-		hitScanDef = gameLocal.FindEntityDefDict ( spawnArgs.GetString (GetPartValue("def_hitscan")) );
+		hitScanDef = gameLocal.FindEntityDefDict ( spawnArgs.GetString ( GetPartValue("def_hitscan") ) );
 	} else {
-		projectileDef = gameLocal.FindEntityDefDict ( spawnArgs.GetString (GetPartValue("def_projectile")) );
+		projectileDef = gameLocal.FindEntityDefDict ( spawnArgs.GetString ( GetPartValue("def_projectile") ) );
 	}
 	
-	fireDelay		 	= SEC2MS ( spawnArgs.GetFloat ( "firedelay" ) ); // Time between shots
-	spread			 	= spawnArgs.GetFloat ( "spread" ); // Spread of the weapon being fired
+	fireDelay		 	= SEC2MS ( spawnArgs.GetFloat ( GetPartValue("firedelay") ) ); // Time between shots
+	spread			 	= spawnArgs.GetFloat ( GetPartValue("spread") ); // Spread of the weapon being fired
 	jointIndex		 	= 0;
-	count			 	= spawnArgs.GetInt ( "count", "1" );
-	lockRange		 	= spawnArgs.GetFloat ( "lockrange", "0" );
-	ammoPerCharge	 	= spawnArgs.GetInt ( "ammopercharge", "-1" );
-	chargeTime		 	= SEC2MS ( spawnArgs.GetFloat ( "chargetime" ) );
+	count			 	= spawnArgs.GetInt ( GetPartValue("count"), "1" );
+	lockRange		 	= spawnArgs.GetFloat ( GetPartValue("lockrange"), "0" );
+	ammoPerCharge	 	= spawnArgs.GetInt ( GetPartValue("ammopercharge"), "-1" );
+	chargeTime		 	= SEC2MS ( spawnArgs.GetFloat ( GetPartValue("chargetime") ) );
 	currentAmmo	 		= ammoPerCharge;
 	muzzleFlashHandle	= -1;
+	*/
 	
 	if( spawnArgs.GetString("anim", "", temp) && *temp ) {
 		animNum = parent->GetAnimator()->GetAnim( temp );
@@ -695,21 +755,22 @@ void rvVehicleWeapon::Spawn ( void ) {
 	// Muzzle Flash
 	memset ( &muzzleFlash, 0, sizeof(muzzleFlash) );
 
-	spawnArgs.GetVector ( "flashOffset", "0 0 0", muzzleFlashOffset );
-	muzzleFlash.shader	  = declManager->FindMaterial( spawnArgs.GetString ( "mtr_flashShader", "lights/muzzleflash" ), false );
-	muzzleFlash.pointLight = spawnArgs.GetBool( "flashPointLight", "1" );
+	/*
+	spawnArgs.GetVector ( GetPartValue("flashOffset"), "0 0 0", muzzleFlashOffset );
+	muzzleFlash.shader	  = declManager->FindMaterial( spawnArgs.GetString ( GetPartValue("mtr_flashShader"), "lights/muzzleflash" ), false );
+	muzzleFlash.pointLight = spawnArgs.GetBool( GetPartValue("flashPointLight"), "1" );
 // RAVEN BEGIN
 // dluetscher: added detail levels to render lights
 	muzzleFlash.detailLevel = DEFAULT_LIGHT_DETAIL_LEVEL;
 // RAVEN END
 
-	spawnArgs.GetVector( "flashColor", "0 0 0", color );
+	spawnArgs.GetVector( GetPartValue("flashColor"), "0 0 0", color );
 	muzzleFlash.shaderParms[ SHADERPARM_RED ]		 = color[0];
 	muzzleFlash.shaderParms[ SHADERPARM_GREEN ]	 = color[1];
 	muzzleFlash.shaderParms[ SHADERPARM_BLUE ]		 = color[2];
 	muzzleFlash.shaderParms[ SHADERPARM_TIMESCALE ] = 1.0f;
 
-	muzzleFlash.lightRadius[0] = muzzleFlash.lightRadius[1] = muzzleFlash.lightRadius[2] =	(float)spawnArgs.GetInt( "flashRadius" );
+	muzzleFlash.lightRadius[0] = muzzleFlash.lightRadius[1] = muzzleFlash.lightRadius[2] =	(float)spawnArgs.GetInt( GetPartValue("flashRadius") );
 
 	if ( !muzzleFlash.pointLight ) {
 		muzzleFlash.target	= spawnArgs.GetVector( "flashTarget" );
@@ -718,8 +779,9 @@ void rvVehicleWeapon::Spawn ( void ) {
 		muzzleFlash.end		= spawnArgs.GetVector( "flashTarget" );
 	}
 	
-	shaderFire = declManager->FindSound ( spawnArgs.GetString ( "snd_fire" ), false );
-	shaderReload = declManager->FindSound ( spawnArgs.GetString ( "snd_reload" ), false );
+	shaderFire = declManager->FindSound ( spawnArgs.GetString ( GetPartValue("snd_fire") ), false );
+	shaderReload = declManager->FindSound ( spawnArgs.GetString ( GetPartValue("snd_reload") ), false );
+	*/
 
 	// get the brass def
 	idStr name;
@@ -748,6 +810,8 @@ void rvVehicleWeapon::Spawn ( void ) {
 	zoomGui  = uiManager->FindGui ( spawnArgs.GetString ( "gui_zoom", "" ), true );
 	zoomTime = spawnArgs.GetFloat ( "zoomTime", ".15" );
 //	wfl.zoomHideCrosshair = spawnArgs.GetBool ( "zoomHideCrosshair", "1" );
+
+	UpdateWeapon();
 }
 
 /*
@@ -884,7 +948,7 @@ void rvVehicleWeapon::UpdateLock ( void ) {
 					targetEffect->SetOrigin ( eyePos );
 					targetEffect->SetAxis ( player->firstPersonViewAxis.Transpose() );
 				} else {
-					targetEffect = gameLocal.PlayEffect( gameLocal.GetEffect( spawnArgs, "fx_guide" ), eyePos, player->firstPersonViewAxis.Transpose(), true, vec3_origin, false );
+					targetEffect = gameLocal.PlayEffect( gameLocal.GetEffect( spawnArgs, GetPartValue("fx_guide") ), eyePos, player->firstPersonViewAxis.Transpose(), true, vec3_origin, false ); // Note modification made here
 					if ( targetEffect ) {
 						targetEffect->GetRenderEffect()->weaponDepthHackInViewID = position->GetDriver()->entityNumber + 1;
 						targetEffect->GetRenderEffect()->allowSurfaceInViewID = position->GetDriver()->entityNumber + 1;
@@ -953,11 +1017,11 @@ void rvVehicleWeapon::WeaponFeedback( const idDict* dict ) {
 
 	//abahr: This feels like a hack.  I hate using def files for logic but it just seems the easiest way to do it 
 	idPlayer* player = static_cast<idPlayer*>( actor );
-	if( dict->GetInt("recoilTime") ) {
+	if( dict->GetInt( GetPartValue("recoilTime") ) ) {
 		player->playerView.WeaponFireFeedback( dict );
 	}
-	if( dict->GetInt("shakeTime") ) {
-		player->playerView.SetShakeParms( MS2SEC(gameLocal.GetTime() + dict->GetInt("shakeTime")), dict->GetFloat("shakeMagnitude") );
+	if( dict->GetInt( GetPartValue("shakeTime") ) ) {
+		player->playerView.SetShakeParms( MS2SEC(gameLocal.GetTime() + dict->GetInt( GetPartValue("shakeTime") ) ), dict->GetFloat( GetPartValue("shakeMagnitude") ) );
 	}
 	EjectBrass();
 }
@@ -999,8 +1063,9 @@ void rvVehicleWeapon::UpdateCursorGUI ( idUserInterface* gui ) const {
 	// thus if the player was in a vehicle, the crosshair was always the player's last held weapon, not the crosshair defined in the vehicle .def.
 	// So I commented the if part out. 
 	//if ( spawnArgs.GetBool( "hide_crosshair", "0" ) ) {
-		gui->SetStateString ( "crossImage", spawnArgs.GetString ( "mtr_crosshair" ) );
-		const idMaterial *material = declManager->FindMaterial( spawnArgs.GetString ( "mtr_crosshair" ) );
+	char* matcross = GetPartValue("mtr_crosshair");
+		gui->SetStateString ( "crossImage", spawnArgs.GetString ( matcross ) );
+		const idMaterial *material = declManager->FindMaterial( spawnArgs.GetString ( matcross ) );
 		if ( material ) {
 			material->SetSort( SS_GUI );
 		}			
@@ -1294,7 +1359,7 @@ void rvVehicleWeapon::LaunchProjectile( const idVec3& origin, const idVec3& _dir
 	projectile->Launch( origin, dir, pushVelocity, 0.0f, 1.0f );
 	
 	if ( projectile->IsType ( idGuidedProjectile::GetClassType() ) ) {
-		if ( spawnArgs.GetBool("guideTowardsDir") && (!targetEnt || targetJoint == INVALID_JOINT) ) {
+		if ( spawnArgs.GetBool( GetPartValue("guideTowardsDir") ) && (!targetEnt || targetJoint == INVALID_JOINT) ) {
 #ifndef _XENON			
 			static_cast<idGuidedProjectile*>(projectile)->GuideTo ( position->GetEyeOrigin(), position->GetEyeAxis()[0] );
 #else
@@ -1440,13 +1505,13 @@ void rvVehicleWeapon::GetLockInfo( const idVec3& eyeOrigin, const idMat3& eyeAxi
 					}
 				}
 			}
-			if ( spawnArgs.GetBool("guideTowardsDir") ) {
+			if ( spawnArgs.GetBool( GetPartValue("guideTowardsDir") ) ) {
 				if ( newTargetJoint == INVALID_JOINT ) {
 					newTargetEnt = NULL;
 					lockFound = false;
 				}
 			}
-		} else if ( spawnArgs.GetBool( "guideTowardsDir" ) && !targetEnt ) {
+		} else if ( spawnArgs.GetBool( GetPartValue("guideTowardsDir") ) && !targetEnt ) {
 			targetPos = tr.endpos;
 		}
 		if ( lockFound ) {

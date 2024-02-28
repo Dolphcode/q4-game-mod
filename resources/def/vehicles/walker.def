@@ -424,10 +424,45 @@ entityDef vehicle_walker_weapon_mgun
 	"joint"						"Cannon1"
 	"joint2"					"Cannon2"
 	
-	"firedelay"					".1"
+	// ---------------- ROCKETS ------------------
+
+	"ac0_firedelay"					".3"
 	"ac0_def_projectile"		"projectile_walker_rocket"
+	"ac0_spread"					"2"
+	"ac0_convergeRate"				".5"
+		
+	"ac0_launchFromJoint"			"1"
+		
+	"ac0_ammopercharge"				"6"
+	"ac0_chargetime"				"3"
+	
+	"ac0_lockrange"					"4095"
+
+	"ac0_mtr_flashShader"			"lights/muzzleflash"
+	"ac0_flashColor"				"1 0.8 0.4"
+	"ac0_flashRadius"				"350"
+	"ac0_flashPointLight"			"1"
+	"ac0_flashTime"					".1"
+	"ac0_flashOffset"				"30 0 0"
+	
+	"ac0_shakeTime"					"400"
+	"ac0_shakeMagnitude"			"2"
+
+	"ac0_fx_muzzleflash"			"effects/vehicles/walker/rocket/muzzleflash.fx"
+	"ac0_snd_fire"					"vehicle_walker_rockets"	
+	"ac0_snd_reload"				"vehicle_walker_rocket_reload"
+	"ac0_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_nailgun"
+	
+	"ac0_guideTowardsDir"			"1"
+	
+	"ac0_lockScanning"				"1"
+	"ac0_fx_guide"					"effects/vehicles/walker/rocket/guide.fx"
+
+	// ---------------- MINIGUN ------------------
+
+	"ac1_firedelay"					".1"
 	"ac1_def_hitscan"			"hitscan_walker_bullet"
-	"spread"					"2"
+	"ac1_spread"					"2"
 
 //	"mtr_flashShader"			"lights/muzzleflash"
 //	"flashColor"				"1 0.8 0.4"
@@ -436,12 +471,13 @@ entityDef vehicle_walker_weapon_mgun
 //	"flashTime"					".1"
 //	"flashOffset"				"0 0 0"
 	
-	"recoilTime"				"100"
-	"recoilAngles"				"-.25 .25 0"
+	"ac1_recoilTime"				"100"
+	"ac1_recoilAngles"				"-.25 .25 0"
 	
-	"fx_muzzleflash"			"effects/vehicles/walker/machinegun/muzzleflash.fx"
-	"snd_fire"					"vehicle_walker_machinegun"
-	"mtr_crosshair"				"gfx/guis/crosshairs/crosshair_machinegun"
+	"ac1_fx_muzzleflash"			"effects/vehicles/walker/machinegun/muzzleflash.fx"
+	"ac1_snd_fire"					"vehicle_walker_machinegun"
+	"ac1_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_machinegun"
+
 }
 
 entityDef vehicle_walker_weapon_mgun_convoy
@@ -463,38 +499,59 @@ entityDef vehicle_walker_weapon_rocket
 	"joint5"					"Rocket5"
 	"joint6"					"Rocket6"
 	
-	"firedelay"					".3"
+	// ---------------- ROCKETS ------------------
+
+	"ac0_firedelay"					".3"
 	"ac0_def_projectile"		"projectile_walker_rocket"
+	"ac0_spread"					"2"
+	"ac0_convergeRate"				".5"
+		
+	"ac0_launchFromJoint"			"1"
+		
+	"ac0_ammopercharge"				"6"
+	"ac0_chargetime"				"3"
+	
+	"ac0_lockrange"					"4095"
+
+	"ac0_mtr_flashShader"			"lights/muzzleflash"
+	"ac0_flashColor"				"1 0.8 0.4"
+	"ac0_flashRadius"				"350"
+	"ac0_flashPointLight"			"1"
+	"ac0_flashTime"					".1"
+	"ac0_flashOffset"				"30 0 0"
+	
+	"ac0_shakeTime"					"400"
+	"ac0_shakeMagnitude"			"2"
+
+	"ac0_fx_muzzleflash"			"effects/vehicles/walker/rocket/muzzleflash.fx"
+	"ac0_snd_fire"					"vehicle_walker_rockets"	
+	"ac0_snd_reload"				"vehicle_walker_rocket_reload"
+	"ac0_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_nailgun"
+	
+	"ac0_guideTowardsDir"			"1"
+	
+	"ac0_lockScanning"				"1"
+	"ac0_fx_guide"					"effects/vehicles/walker/rocket/guide.fx"
+
+	// ---------------- MINIGUN ------------------
+
+	"ac1_firedelay"					".1"
 	"ac1_def_hitscan"			"hitscan_walker_bullet"
-	"spread"					"2"
-	"convergeRate"				".5"
-		
-	"launchFromJoint"			"1"
-		
-	"ammopercharge"				"6"
-	"chargetime"				"3"
-	
-	"lockrange"					"4095"
+	"ac1_spread"					"2"
 
-	"mtr_flashShader"			"lights/muzzleflash"
-	"flashColor"				"1 0.8 0.4"
-	"flashRadius"				"350"
-	"flashPointLight"			"1"
-	"flashTime"					".1"
-	"flashOffset"				"30 0 0"
+//	"mtr_flashShader"			"lights/muzzleflash"
+//	"flashColor"				"1 0.8 0.4"
+//	"flashRadius"				"400"
+//	"flashPointLight"			"1"
+//	"flashTime"					".1"
+//	"flashOffset"				"0 0 0"
 	
-	"shakeTime"					"400"
-	"shakeMagnitude"			"2"
-
-	"fx_muzzleflash"			"effects/vehicles/walker/rocket/muzzleflash.fx"
-	"snd_fire"					"vehicle_walker_rockets"	
-	"snd_reload"				"vehicle_walker_rocket_reload"
-	"mtr_crosshair"				"gfx/guis/crosshairs/crosshair_nailgun"
+	"ac1_recoilTime"				"100"
+	"ac1_recoilAngles"				"-.25 .25 0"
 	
-	"guideTowardsDir"			"1"
-	
-	"lockScanning"				"1"
-	"fx_guide"					"effects/vehicles/walker/rocket/guide.fx"
+	"ac1_fx_muzzleflash"			"effects/vehicles/walker/machinegun/muzzleflash.fx"
+	"ac1_snd_fire"					"vehicle_walker_machinegun"
+	"ac1_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_machinegun"
 }
 
 entityDef vehicle_walker_weapon_main
