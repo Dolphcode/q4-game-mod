@@ -633,8 +633,7 @@ char * rvVehicleWeapon::GetPartValue(char* stat) {
 		weaponValue = cvarSystem->GetCVarInteger("ac_right_weapon");
 	}
 
-	//sprintf(formatted, "ac%d_%s", weaponValue, stat);
-	formatted = "ac0_def_hitscan";
+	formatted = va("ac%d_%s", weaponValue, stat);
 
 	return formatted;
 }
