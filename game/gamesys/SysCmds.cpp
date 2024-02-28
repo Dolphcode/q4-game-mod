@@ -31,54 +31,6 @@
 #include "NoGameTypeInfo.h"
 #endif
 
-// TEST MODDING BEGIN
-void Cmd_MechList_f(const idCmdArgs& args) {
-	int			e;
-	idEntity* check;
-	int			count;
-	size_t		size;
-	idStr		match;
-
-	if (args.Argc() > 1) {
-		match = args.Args();
-		match.Replace(" ", "");
-	}
-	else {
-		match = "";
-	}
-
-	count = 0;
-	size = 0;
-
-	gameLocal.Printf("Very cool list of mechs I hope\n");
-	gameLocal.Printf("--------------------------------------------------------------------\n");
-	for (e = 0; e < MAX_GENTITIES; e++) {
-		check = gameLocal.entities[e];
-
-		if (!check) {
-			continue;
-		}
-
-		if (!check->name.Filter(match)) {
-			continue;
-		}
-
-		if (strcmp(check->GetClassname(), "rvVehicleWalker") != 0) {
-			continue;
-		}
-
-		idVec3 pos = check->GetEyePosition();
-
-		gameLocal.Printf("%4i: %-20s %-20s %s %f %f %f\n", e,
-			check->GetEntityDefName(), check->GetClassname(), check->name.c_str(), pos.x, pos.y, pos.z);
-
-		count++;
-		size += check->spawnArgs.Allocated();
-	}
-}
-
-// TEST MODDING END
-
 /*
 ==================
 Cmd_GetFloatArg
@@ -3086,6 +3038,103 @@ void Cmd_ClientOverflowReliable_f( const idCmdArgs& args ) {
 }
 #endif
 
+// TEST MODDING BEGIN
+void Cmd_MechList_f(const idCmdArgs& args) {
+	int			e;
+	idEntity* check;
+	int			count;
+	size_t		size;
+	idStr		match;
+
+	if (args.Argc() > 1) {
+		match = args.Args();
+		match.Replace(" ", "");
+	}
+	else {
+		match = "";
+	}
+
+	count = 0;
+	size = 0;
+
+	gameLocal.Printf("Very cool list of mechs I hope\n");
+	gameLocal.Printf("--------------------------------------------------------------------\n");
+	for (e = 0; e < MAX_GENTITIES; e++) {
+		check = gameLocal.entities[e];
+
+		if (!check) {
+			continue;
+		}
+
+		if (!check->name.Filter(match)) {
+			continue;
+		}
+
+		if (strcmp(check->GetClassname(), "rvVehicleWalker") != 0) {
+			continue;
+		}
+
+		idVec3 pos = check->GetEyePosition();
+
+		gameLocal.Printf("%4i: %-20s %-20s %s %f %f %f\n", e,
+			check->GetEntityDefName(), check->GetClassname(), check->name.c_str(), pos.x, pos.y, pos.z);
+
+		count++;
+		size += check->spawnArgs.Allocated();
+	}
+}
+
+void Cmd_ReloadWeapons_f(const idCmdArgs& args) {
+	int			e;
+	idEntity* check;
+	int			count;
+	size_t		size;
+	idStr		match;
+
+	if (args.Argc() > 1) {
+		match = args.Args();
+		match.Replace(" ", "");
+	}
+	else {
+		match = "";
+	}
+
+	count = 0;
+	size = 0;
+
+	gameLocal.Printf("Very cool list of mechs that will be updated I hope\n");
+	gameLocal.Printf("--------------------------------------------------------------------\n");
+	for (e = 0; e < MAX_GENTITIES; e++) {
+		check = gameLocal.entities[e];
+
+		if (!check) {
+			continue;
+		}
+
+		if (!check->name.Filter(match)) {
+			continue;
+		}
+
+		if (strcmp(check->GetClassname(), "rvVehicleWalker") != 0) {
+			continue;
+		}
+
+		idVec3 pos = check->GetEyePosition();
+
+		rvVehicle* vehicle = (rvVehicle*)check;
+		vehicle->GetPosition(0)->GetWeapon(0)->UpdateWeapon();
+		vehicle->GetPosition(0)->GetWeapon(1)->UpdateWeapon();
+
+		gameLocal.Printf("%4i: %-20s %-20s %s %f %f %f\n", e,
+			check->GetEntityDefName(), check->GetClassname(), check->name.c_str(), pos.x, pos.y, pos.z);
+
+		count++;
+		size += check->spawnArgs.Allocated();
+	}
+}
+
+// TEST MODDING END
+
 /*
 =================
 idGameLocal::InitConsoleCommands
@@ -3101,7 +3150,8 @@ void idGameLocal::InitConsoleCommands( void ) {
 //	cmdSystem->AddCommand( "writeGameState",		WriteGameState_f,			CMD_FL_GAME,				"write game state" );
 //	cmdSystem->AddCommand( "testSaveGame",			TestSaveGame_f,				CMD_FL_GAME|CMD_FL_CHEAT,	"test a save game for a level" );
 // RAVEN END
-	cmdSystem->AddCommand("listMechs", Cmd_MechList_f, CMD_FL_GAME | CMD_FL_CHEAT, "lists mechs");
+	cmdSystem->AddCommand("listMechs",				Cmd_MechList_f,				CMD_FL_GAME | CMD_FL_CHEAT, "lists mechs");
+	cmdSystem->AddCommand("reloadWeapons",			Cmd_ReloadWeapons_f,		CMD_FL_GAME | CMD_FL_CHEAT, "displays all mech weapon entities and reloads them");
 
 	cmdSystem->AddCommand( "game_memory",			idClass::DisplayInfo_f,		CMD_FL_GAME,				"displays game class info" );
 	cmdSystem->AddCommand( "listClasses",			idClass::ListClasses_f,		CMD_FL_GAME,				"lists game classes" );

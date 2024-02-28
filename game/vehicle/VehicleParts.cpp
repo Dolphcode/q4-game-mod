@@ -654,9 +654,11 @@ void rvVehicleWeapon::UpdateWeapon(void) {
 
 	if (spawnArgs.GetString(GetPartValue("def_hitscan"), "", temp)) {
 		hitScanDef = gameLocal.FindEntityDefDict(spawnArgs.GetString(GetPartValue("def_hitscan")));
+		projectileDef = NULL;
 	}
 	else {
 		projectileDef = gameLocal.FindEntityDefDict(spawnArgs.GetString(GetPartValue("def_projectile")));
+		hitScanDef = NULL;
 	}
 
 	fireDelay = SEC2MS(spawnArgs.GetFloat(GetPartValue("firedelay"))); // Time between shots
