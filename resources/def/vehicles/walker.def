@@ -494,10 +494,10 @@ entityDef vehicle_walker_weapon_rocket
 
 	"joint"						"Rocket1"
 	"joint2"					"Rocket2"
-	"joint3"					"Rocket3"
-	"joint4"					"Rocket4"
-	"joint5"					"Rocket5"
-	"joint6"					"Rocket6"
+	// "joint3"					"Rocket3"
+	// "joint4"					"Rocket4"
+	// "joint5"					"Rocket5"
+	// "joint6"					"Rocket6"
 	
 	// ---------------- ROCKETS ------------------
 
