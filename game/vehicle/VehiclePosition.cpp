@@ -384,7 +384,7 @@ void rvVehiclePosition::UpdateHUD ( idUserInterface* gui ) {
 		rvVehicleWeapon* weapon;
 		weapon = static_cast<rvVehicleWeapon*>(mWeapons[mCurrentWeapon]);
 		gui->SetStateFloat ( "vehicle_weaponcharge", weapon->GetCurrentCharge() );
-		gui->SetStateInt ( "vehicle_weaponammo", weapon->GetCurrentAmmo() );
+		gui->SetStateInt ( "vehicle_weaponammo", weapon->GetCurrentAmmo() ); // This is where we update the weapon GUI stuff
 	}	
 
 	// Calculate the rotation of the view in relation to the vehicle itself			

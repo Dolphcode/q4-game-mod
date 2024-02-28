@@ -613,6 +613,34 @@ rvVehicleWeapon::~rvVehicleWeapon ( void ) {
 
 /*
 =====================
+rvVehicleWeapon::GetPartValue
+=====================
+*/
+char * rvVehicleWeapon::GetPartValue(char* stat) {
+	char* formatted = "";
+	int armType;
+	int weaponValue;
+
+	armType = spawnArgs.GetInt("arm_type", "-1");
+
+	if (armType < 0) {
+		return stat;
+	}
+	else if (armType > 0) { // Left
+		weaponValue = cvarSystem->GetCVarInteger("ac_left_weapon");
+	} 
+	else { // Right
+		weaponValue = cvarSystem->GetCVarInteger("ac_right_weapon");
+	}
+
+	//sprintf(formatted, "ac%d_%s", weaponValue, stat);
+	formatted = "ac0_def_hitscan";
+
+	return formatted;
+}
+
+/*
+=====================
 rvVehicleWeapon::Spawn
 =====================
 */
@@ -629,14 +657,14 @@ void rvVehicleWeapon::Spawn ( void ) {
 	lockScanning = spawnArgs.GetBool ( "lockScanning", "0" );
 	lastLockTime = 0;
 	
-	if ( spawnArgs.GetString ( "def_hitscan", "", temp ) ) {
-		hitScanDef = gameLocal.FindEntityDefDict ( spawnArgs.GetString ( "def_hitscan" ) );
+	if ( spawnArgs.GetString ( GetPartValue("def_hitscan"), "", temp ) ) {
+		hitScanDef = gameLocal.FindEntityDefDict ( spawnArgs.GetString (GetPartValue("def_hitscan")) );
 	} else {
-		projectileDef = gameLocal.FindEntityDefDict ( spawnArgs.GetString ( "def_projectile" ) );
+		projectileDef = gameLocal.FindEntityDefDict ( spawnArgs.GetString (GetPartValue("def_projectile")) );
 	}
 	
-	fireDelay		 	= SEC2MS ( spawnArgs.GetFloat ( "firedelay" ) );
-	spread			 	= spawnArgs.GetFloat ( "spread" );
+	fireDelay		 	= SEC2MS ( spawnArgs.GetFloat ( "firedelay" ) ); // Time between shots
+	spread			 	= spawnArgs.GetFloat ( "spread" ); // Spread of the weapon being fired
 	jointIndex		 	= 0;
 	count			 	= spawnArgs.GetInt ( "count", "1" );
 	lockRange		 	= spawnArgs.GetFloat ( "lockrange", "0" );

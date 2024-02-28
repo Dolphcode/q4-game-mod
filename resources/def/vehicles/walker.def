@@ -419,11 +419,14 @@ entityDef vehicle_walker_weapon_mgun
 {
 	"spawnclass"				"rvVehicleWeapon"
 
+	"arm_type"					"1"
+
 	"joint"						"Cannon1"
 	"joint2"					"Cannon2"
 	
 	"firedelay"					".1"
-	"def_hitscan"				"hitscan_walker_bullet"
+	"ac0_def_projectile"		"projectile_walker_rocket"
+	"ac1_def_hitscan"			"hitscan_walker_bullet"
 	"spread"					"2"
 
 //	"mtr_flashShader"			"lights/muzzleflash"
@@ -451,6 +454,8 @@ entityDef vehicle_walker_weapon_rocket
 {
 	"spawnclass"				"rvVehicleWeapon"
 
+	"arm_type"					"0"
+
 	"joint"						"Rocket1"
 	"joint2"					"Rocket2"
 	"joint3"					"Rocket3"
@@ -459,7 +464,8 @@ entityDef vehicle_walker_weapon_rocket
 	"joint6"					"Rocket6"
 	
 	"firedelay"					".3"
-	"def_projectile"			"projectile_walker_rocket"
+	"ac0_def_projectile"		"projectile_walker_rocket"
+	"ac1_def_hitscan"			"hitscan_walker_bullet"
 	"spread"					"2"
 	"convergeRate"				".5"
 		
