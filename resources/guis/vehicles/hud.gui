@@ -367,9 +367,17 @@ windowDef Desktop
 	{
 		rect	0,0,640,480
 		visible	1
-		windowDef ammo_backbar
+		windowDef ammo_backbar_right
 		{
 			rect	9,403,152,74
+			visible	1
+			background	"gfx/guis/hud/veh_backbar2"
+			matcolor	0,0,0,0.5
+			shear	0,-.22
+		}
+		windowDef ammo_backbar_left
+		{
+			rect	9,322,152,74
 			visible	1
 			background	"gfx/guis/hud/veh_backbar2"
 			matcolor	0,0,0,0.5
@@ -379,56 +387,53 @@ windowDef Desktop
 	windowDef p_rockets
 	{
 		rect	0,0,640,480
-		visible	"gui::vehicle_weapon" == 3
-		windowDef rocket
+		visible	1
+		windowDef left_ammo_amount
 		{
-			rect	14,437,56,26
-			background	"gfx/guis/vehicles/veh_rocket"
-			visible	1
-			matcolor	0.658,0.639,0.376,0.8
-		}
-		windowDef rocket_mgun
-		{
-			rect	23,409,49,19
-			background	"gfx/guis/vehicles/veh_mgun"
-			visible	1
-			matcolor	0.658,0.639,0.376,0.4
-		}
-		windowDef ammo_amount
-		{
-			rect	70,429,27,41
+			rect	23,327,46,19
 			visible	1
 			forecolor	0.850,0.905,0.749,1
-			text	"gui::vehicle_weaponammo"
-			textscale	0.7
+			text	"gui::vehicle_left_weaponammo"
+			textscale	0.3
 			shear	0,-.22
 			font	"fonts/chain"
-			textalign	2
+			textalign	0
+		}
+		windowDef left_ammo_icon
+		{
+			rect	13,354,79,26
+			background	"gfx/guis/vehicles/veh_mgun"
+			visible	1
+			matcolor	0.658,0.639,0.376,0.8
 		}
 	}
 	windowDef p_mgun
 	{
 		rect	0,0,640,480
-		visible	"gui::vehicle_weapon" == 1
-		windowDef mgun_tank
+		visible	1
+		windowDef right_ammo_icon
 		{
-			rect	14,436,82,35
+			rect	13,436,80,26
 			background	"gfx/guis/vehicles/veh_mgun"
 			visible	1
 			matcolor	0.658,0.639,0.376,0.8
 		}
-		windowDef mgun_cannon
+		windowDef right_ammo_amount
 		{
-			rect	23,409,49,19
-			background	"gfx/guis/vehicles/veh_shell"
+			rect	23,408,46,19
 			visible	1
-			matcolor	0.658,0.639,0.376,0.4
+			forecolor	0.850,0.905,0.749,1
+			text	"gui::vehicle_right_weaponammo"
+			textscale	0.3
+			shear	0,-.22
+			font	"fonts/chain"
+			textalign	0
 		}
 	}
 	windowDef p_mgun_walker
 	{
 		rect	0,0,640,480
-		visible	"gui::vehicle_weapon" == 2
+		visible	0
 		windowDef mgun_walker
 		{
 			rect	14,436,82,35
@@ -447,7 +452,7 @@ windowDef Desktop
 	windowDef p_cannon
 	{
 		rect	0,0,640,480
-		visible	"gui::vehicle_weapon" == 0
+		visible	0
 		windowDef cannon
 		{
 			rect	16,432,78,30
@@ -463,23 +468,23 @@ windowDef Desktop
 			matcolor	0.658,0.639,0.376,0.4
 		}
 	}
-	windowDef p_weapcharge
+	windowDef p_left_weapcharge
 	{
 		rect	0,0,640,480
-		visible	("gui::vehicle_weapon" == 0 || "gui::vehicle_weapon" == 3)
-		windowDef weapon_charge_bg
+		visible	1
+		windowDef left_weapon_charge_bg
 		{
-			rect	9,465,85,8
+			rect	9,385,85,8
 			visible	1
 			background	"gfx/guis/vehicles/bar2"
 			matcolor	0.701,0.815,0.431,0.3
 			shear	0,-.22
 		}
-		windowDef p_weapon_charge
+		windowDef p_left_weapon_charge
 		{
-			rect	15,467,74 * "gui::vehicle_weaponcharge",4
+			rect	15,387,74 * "gui::vehicle_left_weaponcharge",4
 			visible	1
-			windowDef weapon_charge
+			windowDef left_weapon_charge
 			{
 				rect	0,0,74,4
 				visible	1
@@ -1003,6 +1008,32 @@ windowDef Desktop
 			text	ENERGY
 			textscale	0.14
 			font	"fonts/lowpixel"
+		}
+	}
+	windowDef p_right_weapcharge
+	{
+		rect	0,0,640,480
+		visible	1
+		windowDef p_right_weapon_charge
+		{
+			rect	15,467,74 * "gui::vehicle_left_weaponcharge",4
+			visible	1
+			windowDef right_weapon_charge
+			{
+				rect	0,0,74,4
+				visible	1
+				background	"gfx/guis/vehicles/bar2"
+				matcolor	1,0.621,.1,1
+				shear	0,-.22
+			}
+		}
+		windowDef right_weapon_charge_bg
+		{
+			rect	9,465,85,8
+			visible	1
+			background	"gfx/guis/vehicles/bar2"
+			matcolor	0.701,0.815,0.431,0.3
+			shear	0,-.22
 		}
 	}
 }

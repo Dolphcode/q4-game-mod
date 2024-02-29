@@ -380,12 +380,22 @@ void rvVehiclePosition::UpdateHUD ( idUserInterface* gui ) {
 	// HACK: twhitaker end
 
 	gui->SetStateInt ( "vehicle_weaponcount", mWeapons.Num() );
+
+	/* KEEP THIS FOR NOW IN CASE OTHER THINGS DECIDE TO BREAK
 	if ( mCurrentWeapon >= 0 && mCurrentWeapon < mWeapons.Num() ) {
 		rvVehicleWeapon* weapon;
 		weapon = static_cast<rvVehicleWeapon*>(mWeapons[mCurrentWeapon]);
 		gui->SetStateFloat ( "vehicle_weaponcharge", weapon->GetCurrentCharge() );
 		gui->SetStateInt ( "vehicle_weaponammo", weapon->GetCurrentAmmo() ); // This is where we update the weapon GUI stuff
 	}	
+	*/
+
+	rvVehicleWeapon* leftWeapon = static_cast<rvVehicleWeapon*>(mWeapons[1]);
+	rvVehicleWeapon* rightWeapon = static_cast<rvVehicleWeapon*>(mWeapons[0]);
+	gui->SetStateFloat("vehicle_left_weaponcharge", leftWeapon->GetCurrentCharge());
+	gui->SetStateInt("vehicle_left_weaponammo", leftWeapon->GetCurrentAmmo()); // This is where we update the weapon GUI stuff
+	gui->SetStateFloat("vehicle_right_weaponcharge", rightWeapon->GetCurrentCharge());
+	gui->SetStateInt("vehicle_right_weaponammo", rightWeapon->GetCurrentAmmo()); // This is where we update the weapon GUI stuff
 
 	// Calculate the rotation of the view in relation to the vehicle itself			
 	gui->SetStateFloat ( "vehicle_rotate", -idMath::AngleDelta ( mEyeAxis.ToAngles()[YAW], mParent->GetAxis ( ).ToAngles()[YAW] ) );
