@@ -613,7 +613,7 @@ rvVehicleWeapon::~rvVehicleWeapon ( void ) {
 
 /*
 =====================
-rvVehicleWeapon::GetPartValue - MOD ADDITIOn
+rvVehicleWeapon::GetPartValue - MOD ADDITION
 =====================
 */
 char * rvVehicleWeapon::GetPartValue(char* stat) const {
@@ -640,7 +640,7 @@ char * rvVehicleWeapon::GetPartValue(char* stat) const {
 
 /*
 =====================
-rvVehicleWeapon::Spawn - MOD ADDITION
+rvVehicleWeapon::UpdateWeapon - MOD ADDITION
 =====================
 */
 void rvVehicleWeapon::UpdateWeapon(void) {
@@ -969,18 +969,31 @@ rvVehicleWeapon::RunPostPhysics
 =====================
 */
 void rvVehicleWeapon::RunPostPhysics ( void ) {
-	if ( !IsActive() || !parent->IsShootingEnabled ( ) ) {
+	/*
+	if ( !IsActive() || !parent->IsShootingEnabled() ) {
 		return;
 	}
+	*/
 
 	if ( currentAmmo <= 0 && currentCharge.IsDone( gameLocal.GetTime() ) ) {
 		currentAmmo = ammoPerCharge;
 	}
 
+	IsActive();
+
 	UpdateLock();
 
-	if ( !(position->mInputCmd.buttons & BUTTON_ATTACK ) ) {
-		return;
+	
+
+	if (spawnArgs.GetInt("arm_type")) {
+		if (!(position->mInputCmd.buttons & BUTTON_ATTACK)) {
+			return;
+		}
+	}
+	else {
+		if (!(position->mInputCmd.buttons & BUTTON_ZOOM)) {
+			return;
+		}
 	}
 
 	if ( gameLocal.time <= nextFireTime || !currentCharge.IsDone(gameLocal.GetTime()) ) {

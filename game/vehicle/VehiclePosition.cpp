@@ -468,8 +468,14 @@ void rvVehiclePosition::RunPrePhysics ( void ) {
 		mParts[i]->RunPrePhysics ( );
 	}
 
+	/* RUN PREPHYSICS FOR BOTH WEAPONS ALWAYS - Modder Addition :D
 	if ( mCurrentWeapon >= 0 ) {
 		mWeapons[mCurrentWeapon]->RunPrePhysics ( );
+	}
+	*/
+
+	for (i = 0; i < mWeapons.Num(); i++) {
+		mWeapons[i]->RunPrePhysics();
 	}
 	
 	// Run physics for each part
@@ -493,8 +499,14 @@ void rvVehiclePosition::RunPrePhysics ( void ) {
 		static_cast<rvVehicleSound*>(mParts[mSoundPart])->Attenuate ( f, f );
 	}
 	
+	/* RUN PHYSICS FOR BOTH WEAPONS ALWAYS - Modder Addition :)
 	if ( mCurrentWeapon >= 0 ) {
 		mWeapons[mCurrentWeapon]->RunPhysics ( );
+	}
+	*/
+
+	for (i = 0; i < mWeapons.Num(); i++) {
+		mWeapons[i]->RunPhysics();
 	}
 }
 
@@ -509,9 +521,15 @@ void rvVehiclePosition::RunPostPhysics ( void ) {
 		assert ( mParts[i] );
 		mParts[i]->RunPostPhysics ( );
 	}
-	
-	if ( mCurrentWeapon >= 0 ) {
+
+	/* MAKE SURE TO RUN POSTPHYSICS FOR BOTH WEAPONS - MODDER ADDITION :|
+	if ( mCurrentWeapon >= 0 ) { 
 		mWeapons[mCurrentWeapon]->RunPostPhysics ( );
+	}
+	*/
+
+	for (i = 0; i < mWeapons.Num(); i++) {
+		mWeapons[i]->RunPostPhysics();
 	}
 
 	if ( !IsOccupied ( ) ) {

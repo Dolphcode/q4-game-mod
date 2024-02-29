@@ -423,7 +423,7 @@ entityDef vehicle_walker_weapon_mgun
 {
 	"spawnclass"				"rvVehicleWeapon"
 
-	"arm_type"					"1"
+	"arm_type"					"0"
 
 	"joint"						"Cannon1"
 	"joint2"					"Cannon2"
@@ -519,7 +519,7 @@ entityDef vehicle_walker_weapon_rocket
 {
 	"spawnclass"				"rvVehicleWeapon"
 
-	"arm_type"					"0"
+	"arm_type"					"1"
 
 	"joint"						"Rocket1"
 	"joint2"					"Rocket2"
