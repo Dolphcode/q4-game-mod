@@ -32,6 +32,7 @@ public:
 	idVec3				baseGravity;
 	float				energyAmount;
 	float				energyCooldown;
+	int					boostMode;
 
 	// AC Part Stats
 	float				weight; // Multiplied by the max speed
@@ -95,6 +96,7 @@ rvVehicleWalker::rvVehicleWalker ( void ) {
 	assaultBoost = 0;
 	baseGravity = physicsObj.GetGravity();
 	energyAmount = spawnArgs.GetFloat("base_max_en");
+	boostMode = FALSE;
 
 	LoadPartConfig();
 }
@@ -229,6 +231,7 @@ void rvVehicleWalker::Think ( void ) {
 	
 	if (!(cmd.buttons & BUTTON_RUN) && (lastPressed & BUTTON_RUN) && energyAmount > 0.0) { // Toggle assault boost on release of the assault boost toggle button and if we have energy to work with
 		assaultBoost = !assaultBoost;
+		boostMode = TRUE;
 	}
 
 	idVec3 velocity = physicsObj.GetLinearVelocity(); // Get the current velocity of the AC
@@ -260,15 +263,14 @@ void rvVehicleWalker::Think ( void ) {
 		planarVelocity += delta * spawnArgs.GetFloat("base_acceleration") * handling;
 		float newSpeed = planarVelocity.Length();
 
-		/*TODO: In AC 6 the AC switches between booster and non booster mode by doing something to increase speed substantially like dashing
-				or stopping all movement respectively. On dash or assault boost we have to change the max speed of the AC and on stop we have to revert it
-				to walking speed */
-
-		if (idMath::Fabs(newSpeed) > spawnArgs.GetFloat("base_max_speed") * weight) { // If we are above our maximum speed or there is no user input
-			planarVelocity -= planarVelocity / planarVelocity.Length() * spawnArgs.GetFloat("base_deceleration"); // Begin decelerating the AC, do not factor handling into normalizing speed
+		if (idMath::Fabs(newSpeed) > spawnArgs.GetFloat("base_max_speed") * weight * ((boostMode) ? spawnArgs.GetFloat("boost_mode_factor") : 1.0) ) { // If we are above our maximum speed or there is no user input (with maximum speed factoring in boost mode
+			planarVelocity -= planarVelocity / planarVelocity.Length() * spawnArgs.GetFloat("base_deceleration") * spawnArgs.GetFloat("dash_normalize_factor"); // Begin decelerating the AC, do not factor handling into normalizing speed
 		}
 		else if (delta.Length() == 0.0 && planarVelocity.Length() >= 5) {
 			planarVelocity -= planarVelocity / planarVelocity.Length() * spawnArgs.GetFloat("base_deceleration") * handling; // Do factor handling here
+			if (idMath::Fabs(planarVelocity.Length()) <= 10) {
+				boostMode = FALSE;
+			}
 		}
 
 		planarVelocity.z = velocity.z; // Maintain the z-axis velocity of the AC
@@ -285,8 +287,9 @@ void rvVehicleWalker::Think ( void ) {
 		// Dash when the player presses the strafe button, but only do so during the first time the button is pressed (we can't hold to keep dashing
 		if (cmd.buttons & BUTTON_STRAFE && !dashCooldown && !(lastPressed & BUTTON_STRAFE) && energyAmount > 0.0) {
 			velocity += delta * spawnArgs.GetFloat("base_dash_speed") * enOutput;
-			dashCooldown = 1.0;	// Set the dash cooldown TODO: Make this a variable in the def file
+			dashCooldown = spawnArgs.GetFloat("base_dash_cooldown");	// Set the dash cooldown TODO: Make this a variable in the def file
 			UseEnergy(spawnArgs.GetFloat("base_dash_energy_use")); // Consume a set amount of energy
+			boostMode = TRUE;
 		}
 
 		velocity += addVelocity; // Add the jump velocity, note that I can probably move this to the if statement for jumping

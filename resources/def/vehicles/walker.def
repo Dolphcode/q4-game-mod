@@ -139,9 +139,13 @@ entityDef vehicle_walker
 	"base_acceleration"			"10.0"
 	"base_deceleration"			"50.0"
 	"base_dash_speed"			"400.0"
+	"base_dash_cooldown"		"0.2"
 	"base_max_speed"			"300.0"
 	"base_jump_factor"			"0.7"
 	"base_assault_boost"		"800.0"
+
+	"dash_normalize_factor"		"4.0"
+	"boost_mode_factor"			"3.0"
 
 	"base_dash_energy_use"		"50.0"
 	"base_assault_boost_enrate"	"20.0"
@@ -478,6 +482,31 @@ entityDef vehicle_walker_weapon_mgun
 	"ac1_snd_fire"					"vehicle_walker_machinegun"
 	"ac1_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_machinegun"
 
+	// ---------------- SHOTGUN ------------------
+
+	"ac2_firedelay"					"1.0"
+	"ac2_def_hitscan"			"hitscan_walker_bullet"
+	"ac2_spread"					"5"
+	"ac2_count"						"10"
+
+	"ac2_ammopercharge"				"8"
+	"ac2_chargetime"				"3"
+
+//	"mtr_flashShader"			"lights/muzzleflash"
+//	"flashColor"				"1 0.8 0.4"
+//	"flashRadius"				"400"
+//	"flashPointLight"			"1"
+//	"flashTime"					".1"
+//	"flashOffset"				"0 0 0"
+	
+	"ac2_recoilTime"				"100"
+	"ac2_recoilAngles"				"-.25 .25 0"
+	
+	"ac2_fx_muzzleflash"			"effects/vehicles/walker/machinegun/muzzleflash.fx"
+	"ac2_snd_fire"					"weapon_shotgun_fire"
+	"ac2_snd_reload"				"weapon_shotgun_pump1"
+	"ac2_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_shotgun"
+
 }
 
 entityDef vehicle_walker_weapon_mgun_convoy
@@ -552,6 +581,31 @@ entityDef vehicle_walker_weapon_rocket
 	"ac1_fx_muzzleflash"			"effects/vehicles/walker/machinegun/muzzleflash.fx"
 	"ac1_snd_fire"					"vehicle_walker_machinegun"
 	"ac1_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_machinegun"
+
+	// ---------------- SHOTGUN ------------------
+
+	"ac2_firedelay"					"1.0"
+	"ac2_def_hitscan"			"hitscan_walker_bullet"
+	"ac2_spread"					"5"
+	"ac2_count"						"10"
+
+	"ac2_ammopercharge"				"8"
+	"ac2_chargetime"				"3"
+
+//	"mtr_flashShader"			"lights/muzzleflash"
+//	"flashColor"				"1 0.8 0.4"
+//	"flashRadius"				"400"
+//	"flashPointLight"			"1"
+//	"flashTime"					".1"
+//	"flashOffset"				"0 0 0"
+	
+	"ac2_recoilTime"				"100"
+	"ac2_recoilAngles"				"-.25 .25 0"
+	
+	"ac2_fx_muzzleflash"			"effects/vehicles/walker/machinegun/muzzleflash.fx"
+	"ac2_snd_fire"					"weapon_shotgun_fire"
+	"ac2_snd_reload"				"weapon_shotgun_pump1"
+	"ac2_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_shotgun"
 }
 
 entityDef vehicle_walker_weapon_main
