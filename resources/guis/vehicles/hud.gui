@@ -1016,7 +1016,7 @@ windowDef Desktop
 		visible	1
 		windowDef p_right_weapon_charge
 		{
-			rect	15,467,74 * "gui::vehicle_left_weaponcharge",4
+			rect	15,467,74 * "gui::vehicle_right_weaponcharge",4
 			visible	1
 			windowDef right_weapon_charge
 			{
