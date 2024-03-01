@@ -957,6 +957,29 @@ windowDef Desktop
 				textscale	.22
 				font	"fonts/marine"
 			}
+			windowDef main_bmech
+			{
+				rect	0,321,413,52
+				visible	1
+				background	"gfx/guis/mainmenu/b1_dark"
+				matcolor	0,0,0,0.4
+			}
+			windowDef main_bmech_corner
+			{
+				rect	32,340,12,12
+				visible	1
+				background	"gfx/guis/mainmenu/corner"
+				matcolor	0.564,0.603,0.286,0.4
+			}
+			windowDef main_t_bmech
+			{
+				rect	44,333,314,23
+				visible	1
+				forecolor	1,1,1,0.8
+				text	"CUSTOMIZE MECH"
+				textscale	.33
+				font	"fonts/marine"
+			}
 		}
 		windowDef d_main
 		{
@@ -5499,7 +5522,7 @@ windowDef Desktop
 						rect	260,311,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200102"
+						text	"Dash"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -5508,7 +5531,7 @@ windowDef Desktop
 						rect	260,335,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200103"
+						text	"Toggle Assault Boost"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -5925,7 +5948,7 @@ windowDef Desktop
 						rect	260,119,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200114"
+						text	"Left Weapon Attack"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -5997,7 +6020,7 @@ windowDef Desktop
 						rect	260,311,189,18
 						visible	1
 						forecolor	1,1,1,0.8
-						text	"#str_200122"
+						text	"Right Weapon Attack"
 						textscale	0.24
 						font	"fonts/lowpixel"
 					}
@@ -15116,11 +15139,11 @@ windowDef Desktop
 				rect	160,33,320,400
 				visible	1
 				background	"gfx/guis/mainmenu/popup_bg"
-				matcolor	0,0,0,0
+				matcolor	1,0,0,0
 			}
 			windowDef pop_help_btm
 			{
-				rect	160,359,320,38
+				rect	160,362,320,38
 				visible	1
 				background	"gfx/guis/mainmenu/popup_btm"
 				matcolor	0,0,0,0
@@ -15168,10 +15191,10 @@ windowDef Desktop
 				}
 				windowDef pop_help_text
 				{
-					rect	182,135,260,216
+					rect	182,124,267,121
 					visible	1
 					forecolor	1,1,1,0.8
-					text	"Quake Core is a mod which implements mechanics similar to Armored Core VI.\nUpon starting the game the player character will be automatically fit into an SMC walker which has been granted added level of control\nYou may use the "
+					text	"Welcome to Quake Core! A mod written by me, Sebastian Vargas for NJIT's IT 266 Intro to Game Mod Programming Course Midterm.\n\nQuake Core is a mod which implements Armored Core mechanics into Quake 4 by modifying the SMC walker and other components of the game.\n\nYou may check the control settings to see what the main controls of the game are, some controls from the base game have been renamed to accurately represent what they are in the context of this mod.\n\nOne of the core features of this mod is the changing of the SMC walker's movement and mechanics. As soon as you start a new game you will be placed inside of the SMC walker and in third person view, from which you can dash and trigger an assault boost to fly around. You can also use the left and right mouse button (or whatever you bound the left and right fire button to) to shoot with both the left and right weapon of the SMC walker. The SMC walker can also jump now, you'll notice that the player is no longer able to exit the SMC walker as the"
 					textscale	0.1
 					font	"fonts/lowpixel"
 				}
@@ -15184,6 +15207,225 @@ windowDef Desktop
 					textscale	0.28
 					font	"fonts/marine"
 					textspacing	-1
+				}
+				windowDef pop_help_text2
+				{
+					rect	182,244,266,114
+					visible	1
+					forecolor	1,1,1,0.8
+					text	"entire game is set inside the walker. In the game you'll notice some HUD changes. You will be able to view both your left and right hand weapon's ammo and in the bottom right corner of the screen you will be able to track your SMC walker's energy level as it is used up by dashing and the assault boost.\n\nAnother core mechanic is mech customization. From the main menu you can switch out your mech's left and right hand armament, as well as its torso, legs, and arms.\nThe SMC's weight impacts its max speed while its handling impacts its acceleration.\nEnergy efficiency impacts how much energy is used by things like dashing while energy output dictates the speed of dashes and the assault boost, both impact your maximum energy cap.\n\nYou can equip one of ten unique weapons onto your left and right shoulder in this menu as well.\n\nFinally I have provided a testing environment with various mobs to test your SMC walker against, which you can access right here in the main menu, so go wild with your builds!"
+					textscale	0.1
+					font	"fonts/lowpixel"
+				}
+			}
+		}
+		windowDef pop_p_mech
+		{
+			rect	0,0,640,480
+			visible	0
+			windowDef pop_mech_black
+			{
+				rect	0,0,640,480
+				visible	1
+				backcolor	0,0,0,0
+			}
+			windowDef pop_mech_bg
+			{
+				rect	0,33,643,400
+				visible	1
+				background	"gfx/guis/mainmenu/popup_bg"
+				matcolor	1,0,0,0
+			}
+			windowDef pop_mech_top
+			{
+				rect	42,89,560,19
+				visible	1
+				background	"gfx/guis/mainmenu/popup_top"
+				matcolor	0,0,0,0
+			}
+			windowDef pop_mech_mid
+			{
+				rect	42,108,560,254
+				visible	1
+				background	"gfx/guis/mainmenu/popup_mid"
+				matcolor	0,0,0,0
+			}
+			windowDef pop_mech_btm
+			{
+				rect	36,362,566,38
+				visible	1
+				background	"gfx/guis/mainmenu/popup_btm"
+				matcolor	0,0,0,0
+			}
+			windowDef pop_mech
+			{
+				rect	0,0,640,480
+				visible	0
+
+				onNamedEvent showPop_mech {
+					set "pop_b_mech_back::visible" "1" ;
+					set "pop_b_mech_l1::visible" "1" ;
+					set "pop_b_mech_l2::visible" "1" ;
+					set "pop_b_mech_l3::visible" "1" ;
+					
+				}
+
+				onNamedEvent hidePop_mech {
+					set "pop_b_mech_back::visible" "0" ;
+					set "pop_b_mech_l1::visible" "0" ;
+					set "pop_b_mech_l2::visible" "0" ;
+					set "pop_b_mech_l3::visible" "0" ;
+				}
+
+				windowDef pop_mech_text2
+				{
+					rect	46,265,181,90
+					visible	1
+					forecolor	1,1,1,0.8
+					text	"Component Description will appear here"
+					textscale	0.15
+					font	"fonts/lowpixel"
+				}
+				windowDef pop_mech_title
+				{
+					rect	45,120,155,17
+					visible	1
+					forecolor	1,1,1,0.8
+					text	"MECH CREATION SCREEN"
+					textscale	0.28
+					font	"fonts/marine"
+					textspacing	-1
+				}
+				windowDef pop_mech_text
+				{
+					rect	47,141,176,93
+					visible	1
+					forecolor	1,1,1,0.8
+					text	"The textbox below will display a description of the component being selected.\n\nClick the button for the respective component to equip it."
+					textscale	0.2
+					font	"fonts/lowpixel"
+				}
+				windowDef pop_mech_no
+				{
+					rect	477,352,120,30
+					visible	1
+					background	"gfx/guis/mainmenu/b4_light"
+					matcolor	0.501,0,0,0.4
+				}
+				windowDef pop_mech_t_no
+				{
+					rect	497,354,88,17
+					visible	1
+					forecolor	1,1,1,0.8
+					text	"OKAY"
+					textscale	0.28
+					font	"fonts/marine"
+				}
+				windowDef pop_mech_no_corner
+				{
+					rect	487,360,11,11
+					visible	1
+					background	"gfx/guis/mainmenu/corner"
+					matcolor	1,0.501,0.501,0.4
+				}
+				windowDef pop_mech_title_left
+				{
+					rect	253,119,112,17
+					visible	1
+					forecolor	1,1,1,0.8
+					text	"LEFT ARM"
+					textscale	0.28
+					font	"fonts/marine"
+					textspacing	-1
+				}
+				windowDef pop_mech_title_right
+				{
+					rect	370,118,122,17
+					visible	1
+					forecolor	1,1,1,0.8
+					text	"RIGHT ARM"
+					textscale	0.28
+					font	"fonts/marine"
+					textspacing	-1
+				}
+				windowDef pop_mech_title_parts
+				{
+					rect	496,119,101,17
+					visible	1
+					forecolor	1,1,1,0.8
+					text	PARTS
+					textscale	0.28
+					font	"fonts/marine"
+					textspacing	-1
+				}
+				windowDef pop_mech_l1
+				{
+					rect	240,141,95,27
+					visible	1
+					background	"gfx/guis/mainmenu/b4_light"
+					matcolor	0.501,0,0,0.4
+				}
+				windowDef pop_mech_t_l1
+				{
+					rect	256,143,70,16
+					visible	1
+					forecolor	1,1,1,0.8
+					text	ROCKETS
+					textscale	0.1
+					font	"fonts/marine"
+				}
+				windowDef pop_mech_corner_l1
+				{
+					rect	248,148,9,10
+					visible	1
+					background	"gfx/guis/mainmenu/corner"
+					matcolor	1,0.501,0.501,0.4
+				}
+				windowDef pop_mech_l2
+				{
+					rect	240,167,95,27
+					visible	1
+					background	"gfx/guis/mainmenu/b4_light"
+					matcolor	0.501,0,0,0.4
+				}
+				windowDef pop_mech_t_l2
+				{
+					rect	256,170,70,16
+					visible	1
+					forecolor	1,1,1,0.8
+					text	GATLING
+					textscale	0.1
+					font	"fonts/marine"
+				}
+				windowDef pop_mech_corner_l2
+				{
+					rect	248,174,8,10
+					visible	1
+					background	"gfx/guis/mainmenu/corner"
+					matcolor	1,0.501,0.501,0.4
+				}
+				windowDef pop_mech_l3
+				{
+					rect	239,193,95,27
+					visible	1
+					background	"gfx/guis/mainmenu/b4_light"
+					matcolor	0.501,0,0,0.4
+				}
+				windowDef pop_mech_t_l3
+				{
+					rect	255,196,70,16
+					visible	1
+					forecolor	1,1,1,0.8
+					text	ZIMMERMANS
+					textscale	0.1
+					font	"fonts/marine"
+				}
+				windowDef pop_mech_corner_l3
+				{
+					rect	247,200,8,10
+					visible	1
+					background	"gfx/guis/mainmenu/corner"
+					matcolor	1,0.501,0.501,0.4
 				}
 			}
 		}
@@ -15827,6 +16069,9 @@ windowDef Desktop
 				transition "main_b4::matcolor_w" "0" "0.4" "150" ;
 				transition "main_t_b4::forecolor_w"  "0" "0.8" "150" ; 
 				transition "main_b4_corner::matcolor_w"  "0" "0.4" "150" ;
+				transition "main_bmech::matcolor_w" "0" "0.4" "150" ;
+				transition "main_t_bmech::forecolor_w"  "0" "0.8" "150" ; 
+				transition "main_bmech_corner::matcolor_w"  "0" "0.4" "150" ;
 				transition "main_t_b8::forecolor_w"  "0" "0.5" "150" ; 
 				transition "main_b8_corner::matcolor_w"  "0" "0.4" "150" ; 
 				
@@ -15902,6 +16147,7 @@ windowDef Desktop
 				stoptransitions "main_b_disconnect" ;
 				stoptransitions "main_b_quitcurrent" ;
 				stoptransitions "main_b_settings" ;
+				stoptransitions "main_b_mech" ;
 				stoptransitions "main_b_mods" ;
 				stoptransitions "main_b_updates" ;
 				stoptransitions "main_b_credits" ;
@@ -15919,6 +16165,9 @@ windowDef Desktop
 				transition "main_b4::matcolor_w" "0.4" "0" "250" ;
 				transition "main_t_b4::forecolor_w"  "0.8" "0" "250" ; 
 				transition "main_b4_corner::matcolor_w"  "0.4" "0" "250" ;
+				transition "main_bmech::matcolor_w" "0.4" "0" "250" ;
+				transition "main_t_bmech::forecolor_w"  "0.8" "0" "250" ; 
+				transition "main_bmech_corner::matcolor_w"  "0.4" "0" "250" ;
 				transition "main_t_b8::forecolor_w"  "0.5" "0" "50" ; 
 				transition "main_b8_corner::matcolor_w"  "0.4" "0" "50" ; 
 				
@@ -15988,6 +16237,9 @@ windowDef Desktop
 					namedevent "p_anims::backReset0" ;
 				} else if ("desktop::dest" == 23) {
 					resettime "anim_saveIn" "0" ;
+					namedevent "p_anims::backReset0" ;
+				} else if ("desktop::dest" == 50) {
+					resettime "anim_mechIn" "0" ;
 					namedevent "p_anims::backReset0" ;
 				}
 			}
@@ -16810,7 +17062,7 @@ windowDef Desktop
 				set "pop_p_mods::visible" "1" ;
 				namedevent "p_btns::hideMain" ;
 				transition "pop_mods_black::backcolor_w" "0" "0.94" "200" ;
-				transition "pop_mods_bg::matcolor" "0,0,0,1" "1,1,1,1" "200" ;
+				transition "pop_mods_bg::matcolor" "0,0,0,1" "1,0,0,1" "200" ;
 				transition "pop_mods_top::matcolor_w" "0" "0.7" "200" ;
 				transition "pop_mods_mid::matcolor_w" "0" "0.7" "200" ;
 				transition "pop_mods_btm::matcolor_w" "0" "0.7" "200" ;
@@ -16850,7 +17102,7 @@ windowDef Desktop
 
 			onTime +50 {
 				transition "pop_mods_black::backcolor_w" "0.94" "0" "250" ;
-				transition "pop_mods_bg::matcolor" "1,1,1,1" "0,0,0,1" "250" ;
+				transition "pop_mods_bg::matcolor" "1,0,0,1" "0,0,0,1" "250" ;
 				transition "pop_mods_top::matcolor_w" "0.7" "0" "250" ;
 				transition "pop_mods_mid::matcolor_w" "0.7" "0" "250" ;
 				transition "pop_mods_btm::matcolor_w" "0.7" "0" "250" ;
@@ -16969,7 +17221,7 @@ windowDef Desktop
 				set "pop_p_exit::visible" "1" ;
 				namedevent "p_btns::hideMain" ;
 				transition "pop_exit_black::backcolor_w" "0" "0.94" "200" ;
-				transition "pop_exit_bg::matcolor" "0,0,0,1" "1,1,1,1" "200" ;
+				transition "pop_exit_bg::matcolor" "0,0,0,1" "1,0,0,1" "200" ;
 				transition "pop_exit_top::matcolor_w" "0" "0.7" "200" ;
 				transition "pop_exit_mid::matcolor_w" "0" "0.7" "200" ;
 				transition "pop_exit_btm::matcolor_w" "0" "0.7" "200" ;
@@ -17008,7 +17260,7 @@ windowDef Desktop
 
 			onTime +50 {
 				transition "pop_exit_black::backcolor_w" "0.94" "0" "250" ;
-				transition "pop_exit_bg::matcolor" "1,1,1,1" "0,0,0,1" "250" ;
+				transition "pop_exit_bg::matcolor" "1,0,0,1" "0,0,0,1" "250" ;
 				transition "pop_exit_top::matcolor_w" "0.7" "0" "200" ;
 				transition "pop_exit_mid::matcolor_w" "0.7" "0" "200" ;
 				transition "pop_exit_btm::matcolor_w" "0.7" "0" "200" ;
@@ -18183,7 +18435,7 @@ windowDef Desktop
 				set "pop_p_help::visible" "1" ;
 				namedevent "p_btns::hideMain" ;
 				transition "pop_help_black::backcolor_w" "0" "0.94" "200" ;
-				transition "pop_help_bg::matcolor" "0,0,0,1" "1,1,1,1" "200" ;
+				transition "pop_help_bg::matcolor" "0,0,0,1" "1,0,0,1" "200" ;
 				transition "pop_help_top::matcolor_w" "0" "0.7" "200" ;
 				transition "pop_help_mid::matcolor_w" "0" "0.7" "200" ;
 				transition "pop_help_btm::matcolor_w" "0" "0.7" "200" ;
@@ -18218,7 +18470,7 @@ windowDef Desktop
 
 			onTime +50 {
 				transition "pop_help_black::backcolor_w" "0.94" "0" "250" ;
-				transition "pop_help_bg::matcolor" "1,1,1,1" "0,0,0,1" "250" ;
+				transition "pop_help_bg::matcolor" "1,0,0,1" "0,0,0,1" "250" ;
 				transition "pop_help_top::matcolor_w" "0.7" "0" "200" ;
 				transition "pop_help_mid::matcolor_w" "0.7" "0" "200" ;
 				transition "pop_help_btm::matcolor_w" "0.7" "0" "200" ;
@@ -18239,10 +18491,76 @@ windowDef Desktop
 			}
 
 		}
+		windowDef anim_pop_mechIn
+		{
+			rect	0,0,1,1
+			visible	1
+			notime	1
+
+			onTime 0 {
+				set "pop_p_mech::visible" "1" ;
+				namedevent "p_btns::hideMain" ;
+				transition "pop_mech_black::backcolor_w" "0" "0.94" "200" ;
+				transition "pop_mech_bg::matcolor" "0,0,0,1" "1,0,0,1" "200" ;
+				transition "pop_mech_top::matcolor_w" "0" "0.7" "200" ;
+				transition "pop_mech_mid::matcolor_w" "0" "0.7" "200" ;
+				transition "pop_mech_btm::matcolor_w" "0" "0.7" "200" ;
+				
+				// back button
+				transition "pop_mech_no::matcolor_w" "0" "0.4" "150" ;
+				transition "pop_mech_t_no::forecolor_w"  "0" "0.8" "150" ; 
+				transition "pop_mech_no_corner::matcolor_w"  "0" "0.4" "150" ; 
+				
+				transition "q4text::matcolor" "1,1,1,1" "0.4,0.4,0.4,1" "200" ;
+			}
+
+			onTime +200 {
+				set "desktop::curr" "8" ;
+				set "desktop::active" "0" ;
+				set "pop_mech::visible" "1" ;
+				namedevent "pop_mech::showPop_mech" ;	
+			}
+
+		}
+		windowDef anim_pop_mechOut
+		{
+			rect	0,0,1,1
+			visible	1
+			notime	1
+
+			onTime 0 {
+				namedevent "p_anims::mainReset" ;
+				set "pop_mech::visible" "0" ;
+				namedevent "pop_mech::hidePop_mech" ;	
+			}
+
+			onTime +50 {
+				transition "pop_mech_black::backcolor_w" "0.94" "0" "250" ;
+				transition "pop_mech_bg::matcolor" "1,0,0,1" "0,0,0,1" "250" ;
+				transition "pop_mech_top::matcolor_w" "0.7" "0" "200" ;
+				transition "pop_mech_mid::matcolor_w" "0.7" "0" "200" ;
+				transition "pop_mech_btm::matcolor_w" "0.7" "0" "200" ;
+				
+				// back button	
+				transition "pop_mech_no::matcolor_w" "0.8" "0" "150" ;
+				transition "pop_mech_t_no::forecolor_w"  "1" "0" "150" ; 
+				transition "pop_mech_no_corner::matcolor_w"  "1" "0" "150" ; 
+				
+				transition "q4text::matcolor" "0.4,0.4,0.4,1" "1,1,1,1" "150" ;
+			}
+
+			onTime +250 {
+				set "desktop::curr" "0" ;
+				set "pop_p_mech::visible" "0" ;
+				namedevent "p_btns::showMain" ;
+				set "desktop::active" "0" ;
+			}
+
+		}
 	}
 	windowDef p_btns
 	{
-		rect	0,0,640,480
+		rect	12,2,640,480
 		visible	1
 
 		onNamedEvent showMain {
@@ -19496,6 +19814,44 @@ windowDef Desktop
 				set "desktop::active" "1" ;
 				resettime "anim_mainOut" "0" ;
 				set "desktop::dest" "4" ;
+				
+				set "cmd" "play main_menu_selection" ;
+			}
+
+		}
+		windowDef main_b_mech
+		{
+			rect	24,332,333,26
+			visible	1
+
+			onMouseEnter {
+				if ("desktop::active" == 0) {
+					stoptransitions "main_b_mech" ;
+					
+					set "main_bmech::matcolor_w" "0.8" ;
+					transition "main_t_bmech::forecolor" "$desktop::white_8" "$desktop::orange" "0" ; 
+					transition "main_bmech_corner::matcolor" "$desktop::corner" "$desktop::orange" "0" ; 
+					
+					set "main_t_bmech::textscale" "0.34" ; 
+					
+					set "cmd" "play main_menu_mouseover" ;
+				}
+			}
+
+			onMouseExit {
+				if ("desktop::active" == 0) {
+					transition "main_bmech::matcolor_w" "0.8" "0.4" "300" ;
+					transition "main_t_bmech::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ; 
+					transition "main_bmech_corner::matcolor"  "$desktop::orange" "$desktop::corner" "300" ;
+					
+					transition "main_t_bmech::textscale" "0.34" "0.33" "300" ; 
+				}
+			}
+
+			onAction {
+				set "desktop::active" "1" ;
+				resettime "anim_pop_mechIn" "0" ;
+				namedevent "p_anims::popReset0" ;
 				
 				set "cmd" "play main_menu_selection" ;
 			}
@@ -25086,6 +25442,148 @@ windowDef Desktop
 				set "desktop::active" "1" ;
 				resettime "anim_pop_helpOut" "0" ;
 				
+				set "cmd" "play main_menu_selection" ;
+			}
+
+		}
+		windowDef pop_b_mech_back
+		{
+			rect	460,351,125,23
+			visible	0
+
+			onMouseEnter {
+				if ("desktop::active" == 0) {
+					stoptransitions "pop_b_mech_no" ;
+					
+					set "pop_mech_no::matcolor_w" "0.8" ;
+					transition "pop_mech_t_no::forecolor" "$desktop::white_8" "$desktop::orange" "0" ; 
+					transition "pop_mech_no_corner::matcolor" "$desktop::corner" "$desktop::orange" "0" ;
+					
+					set "pop_mech_t_no::textscale" "0.29" ; 
+					
+					set "cmd" "play main_menu_mouseover" ;	
+				}
+			}
+
+			onMouseExit {
+				if ("desktop::active" == 0) {
+					transition "pop_mech_no::matcolor_w" "0.8" "0.4" "300" ;
+					transition "pop_mech_t_no::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ; 
+					transition "pop_mech_no_corner::matcolor"  "$desktop::orange" "$desktop::corner" "300" ; 
+					
+					transition "pop_mech_t_no::textscale" "0.29" "0.28" "300" ;
+				}
+			}
+
+			onAction {
+				set "desktop::active" "1" ;
+				resettime "anim_pop_mechOut" "0" ;
+				
+				set "cmd" "play main_menu_selection" ;
+			}
+
+		}
+		windowDef pop_b_mech_l1
+		{
+			rect	230,140,114,23
+			visible	0
+
+			onMouseEnter {
+				if ("desktop::active" == 0) {
+					stoptransitions "pop_b_mech_no" ;
+					
+					set "pop_mech_l1::matcolor_w" "0.8" ;
+					transition "pop_mech_t_l1::forecolor" "$desktop::white_8" "$desktop::orange" "0" ; 
+					transition "pop_mech_corner_l1::matcolor" "$desktop::corner" "$desktop::orange" "0" ;
+					
+					set "pop_mech_t_l1::textscale" "0.11" ; 
+					
+					set "cmd" "play main_menu_mouseover" ;	
+				}
+			}
+
+			onMouseExit {
+				if ("desktop::active" == 0) {
+					transition "pop_mech_l1::matcolor_w" "0.8" "0.4" "300" ;
+					transition "pop_mech_t_l1::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ; 
+					transition "pop_mech_corner_l1::matcolor"  "$desktop::orange" "$desktop::corner" "300" ; 
+					
+					transition "pop_mech_t_l1::textscale" "0.11" "0.1" "300" ;
+				}
+			}
+
+			onAction {
+				consoleCMD "ac_left_weapon 0" ;
+				set "cmd" "play main_menu_selection" ;
+			}
+
+		}
+		windowDef pop_b_mech_l2
+		{
+			rect	231,165,114,23
+			visible	0
+
+			onMouseEnter {
+				if ("desktop::active" == 0) {
+					stoptransitions "pop_b_mech_no" ;
+					
+					set "pop_mech_l2::matcolor_w" "0.8" ;
+					transition "pop_mech_t_l2::forecolor" "$desktop::white_8" "$desktop::orange" "0" ; 
+					transition "pop_mech_corner_l2::matcolor" "$desktop::corner" "$desktop::orange" "0" ;
+					
+					set "pop_mech_t_l2::textscale" "0.11" ; 
+					
+					set "cmd" "play main_menu_mouseover" ;	
+				}
+			}
+
+			onMouseExit {
+				if ("desktop::active" == 0) {
+					transition "pop_mech_l2::matcolor_w" "0.8" "0.4" "300" ;
+					transition "pop_mech_t_l2::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ; 
+					transition "pop_mech_corner_l2::matcolor"  "$desktop::orange" "$desktop::corner" "300" ; 
+					
+					transition "pop_mech_t_l2::textscale" "0.11" "0.1" "300" ;
+				}
+			}
+
+			onAction {
+				consoleCMD "ac_left_weapon 1" ;
+				set "cmd" "play main_menu_selection" ;
+			}
+
+		}
+		windowDef pop_b_mech_l3
+		{
+			rect	230,191,114,23
+			visible	0
+
+			onMouseEnter {
+				if ("desktop::active" == 0) {
+					stoptransitions "pop_b_mech_no" ;
+					
+					set "pop_mech_l3::matcolor_w" "0.8" ;
+					transition "pop_mech_t_l3::forecolor" "$desktop::white_8" "$desktop::orange" "0" ; 
+					transition "pop_mech_corner_l3::matcolor" "$desktop::corner" "$desktop::orange" "0" ;
+					
+					set "pop_mech_t_l3::textscale" "0.11" ; 
+					
+					set "cmd" "play main_menu_mouseover" ;	
+				}
+			}
+
+			onMouseExit {
+				if ("desktop::active" == 0) {
+					transition "pop_mech_l3::matcolor_w" "0.8" "0.4" "300" ;
+					transition "pop_mech_t_l3::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ; 
+					transition "pop_mech_corner_l3::matcolor"  "$desktop::orange" "$desktop::corner" "300" ; 
+					
+					transition "pop_mech_t_l3::textscale" "0.11" "0.1" "300" ;
+				}
+			}
+
+			onAction {
+				consoleCMD "ac_left_weapon 2" ;
 				set "cmd" "play main_menu_selection" ;
 			}
 
