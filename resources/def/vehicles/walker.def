@@ -550,6 +550,54 @@ entityDef vehicle_walker_weapon_mgun
 	"ac4_snd_reload"				"weapon_hyperblaster_cell_in"
 	"ac4_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_hyperblaster"
 
+	// ---------------- LASER RIFLE ------------------
+
+	"ac5_firedelay"					"1.0"
+	"ac5_def_hitscan"			"hitscan_walker_laserrifle"
+	"ac5_spread"					"3"
+	"ac5_count"						"4"
+
+	"ac5_ammopercharge"				"8"
+	"ac5_chargetime"				"4"
+
+//	"mtr_flashShader"			"lights/muzzleflash"
+	"flashColor"				"1 0.2 1"
+//	"flashRadius"				"400"
+//	"flashPointLight"			"1"
+//	"flashTime"					".1"
+//	"flashOffset"				"0 0 0"
+	
+	"ac5_recoilTime"				"100"
+	"ac5_recoilAngles"				"-.25 .25 0"
+	
+	"ac5_fx_muzzleflash"			"effects/vehicles/walker/machinegun/muzzleflash.fx"
+	"ac5_snd_fire"					"weapon_railgun_fire"
+	"ac5_snd_reload"				"weapon_railgun_clipin"
+	"ac5_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_railgun"
+
+	// ---------------- STUN NEEDLE ------------------
+
+	"ac6_firedelay"				"0.5"
+	"ac6_def_hitscan"			"hitscan_walker_stunneedle"
+	"ac6_spread"				"0"
+
+	"ac6_ammopercharge"				"1"
+	"ac6_chargetime"				"5"
+
+//	"mtr_flashShader"			"lights/muzzleflash"
+	"flashColor"				"1 1 0"
+//	"flashRadius"				"400"
+//	"flashPointLight"			"1"
+//	"flashTime"					".1"
+//	"flashOffset"				"0 0 0"
+	
+	"ac6_recoilTime"				"100"
+	"ac6_recoilAngles"				"-.25 .25 0"
+	
+	"ac6_fx_muzzleflash"			"effects/vehicles/walker/machinegun/muzzleflash.fx"
+	"ac6_snd_fire"					"weapon_lightninggun_tube"
+	"ac6_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_lightninggun"
+
 	// ---------------- ROCKETS ------------------
 
 	"ac7_firedelay"					".3"
@@ -614,7 +662,7 @@ entityDef vehicle_walker_weapon_mgun
 
 	// ---------------- CORAL OSCILLATOR ------------------
 
-	"ac9_firedelay"					".02"
+	"ac9_firedelay"					".005"
 	"ac9_def_projectile"		"projectile_walker_coraloscillator"
 	"ac9_spread"					"0"
 		
@@ -781,6 +829,54 @@ entityDef vehicle_walker_weapon_rocket
 	"ac4_snd_reload"				"weapon_hyperblaster_cell_in"
 	"ac4_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_hyperblaster"
 
+	// ---------------- LASER RIFLE ------------------
+
+	"ac5_firedelay"					"1.0"
+	"ac5_def_hitscan"			"hitscan_walker_laserrifle"
+	"ac5_spread"					"3"
+	"ac5_count"						"4"
+
+	"ac5_ammopercharge"				"8"
+	"ac5_chargetime"				"4"
+
+//	"mtr_flashShader"			"lights/muzzleflash"
+	"flashColor"				"1 0.2 1"
+//	"flashRadius"				"400"
+//	"flashPointLight"			"1"
+//	"flashTime"					".1"
+//	"flashOffset"				"0 0 0"
+	
+	"ac5_recoilTime"				"100"
+	"ac5_recoilAngles"				"-.25 .25 0"
+	
+	"ac5_fx_muzzleflash"			"effects/vehicles/walker/machinegun/muzzleflash.fx"
+	"ac5_snd_fire"					"weapon_railgun_fire"
+	"ac5_snd_reload"				"weapon_railgun_clipin"
+	"ac5_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_railgun"
+
+	// ---------------- STUN NEEDLE ------------------
+
+	"ac6_firedelay"				"0.5"
+	"ac6_def_hitscan"			"hitscan_walker_stunneedle"
+	"ac6_spread"				"0"
+
+	"ac6_ammopercharge"				"1"
+	"ac6_chargetime"				"5"
+
+//	"mtr_flashShader"			"lights/muzzleflash"
+	"flashColor"				"1 1 0"
+//	"flashRadius"				"400"
+//	"flashPointLight"			"1"
+//	"flashTime"					".1"
+//	"flashOffset"				"0 0 0"
+	
+	"ac6_recoilTime"				"100"
+	"ac6_recoilAngles"				"-.25 .25 0"
+	
+	"ac6_fx_muzzleflash"			"effects/vehicles/walker/machinegun/muzzleflash.fx"
+	"ac6_snd_fire"					"weapon_lightninggun_tube"
+	"ac6_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_lightninggun"
+
 	// ---------------- ROCKETS ------------------
 
 	"ac7_firedelay"					".3"
@@ -845,7 +941,7 @@ entityDef vehicle_walker_weapon_rocket
 
 	// ---------------- CORAL OSCILLATOR ------------------
 
-	"ac9_firedelay"					".02"
+	"ac9_firedelay"					".005"
 	"ac9_def_projectile"		"projectile_walker_coraloscillator"
 	"ac9_spread"					"0"
 		
@@ -945,6 +1041,32 @@ entityDef hitscan_walker_bullet
 	
 	"fx_tracer"					"effects/vehicles/walker/machinegun/tracer.fx"
 
+}
+
+entityDef hitscan_walker_stunneedle
+{
+	"range"						"10000"
+	"push"						"10000"
+	
+	"def_damage"				"damage_lightninggun"
+	
+	"fx_impact"					"effects/weapons/smcstunneedle/impact_default.fx"
+	"fx_impact_water"			"effects/ambient/splash_med.fx"
+	"fx_path"					"effects/weapons/smcstunneedle/trail.fx"
+}
+
+entityDef hitscan_walker_laserrifle
+{
+	"range"						"40000"
+
+	"push"						"40000"
+	
+	"def_damage"				"damage_railgun"
+		
+	"fx_impact"				"effects/weapons/smclaserrifle/impact_default.fx"
+	"fx_impact_water"			"effects/ambient/splash_med.fx"
+	"fx_path"				"effects/weapons/smclaserrifle/trail.fx"
+	"fxOriginOffset"			"0 -15 10"
 }
 
 entityDef hitscan_walker_bullet_convoy
@@ -1173,10 +1295,10 @@ entityDef projectile_walker_coraloscillator
 								
 	"def_splash_damage"			"damage_dmg_splash"
 
-	"def_radius_damage"			"damage_dmg_fly"
+	"def_radius_damage"			"damage_coraloscillator_fly"
 	"damageRate"				".05"
 																											
-	"speed"					"2000"
+	"speed"					"5000"
 	
 	"delay_splash"				".1"
 	
@@ -1233,4 +1355,30 @@ entityDef damage_walker_crash
 	"damage"					"250"
 	"push"						"2000"
 	"knockback"					"20000"
+}
+
+entityDef damage_coraloscillator_fly
+{
+	"damage"					"30"
+	"radius"					"200"
+//	"knockback"					"100"
+	"push"						"-3000"
+	"gib"						"1"
+
+	"attackerDamageScale"		"0"							// Dont hurt the player who shot it, but still do effects
+	"attackerPushScale"			"0"							// Dont push the player who shot it
+	"ignore_vehicles"			"1"							// The oscillator as is is simply too powerful
+
+	"pain"						"stream"
+	"cower"						"1"
+
+
+/*
+	// Hearing Loss
+	"hl_volumeDB"				"-25"
+	"hl_fadeOutTime"			"0"
+	"hl_time"					".5"
+	"hl_fadeInTime"				".01"
+//	"snd_hl"					"player_sounds_ringing"
+*/
 }
