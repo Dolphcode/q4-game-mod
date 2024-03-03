@@ -959,21 +959,21 @@ windowDef Desktop
 			}
 			windowDef main_bmech
 			{
-				rect	0,321,413,52
+				rect	0,350,413,52
 				visible	1
 				background	"gfx/guis/mainmenu/b1_dark"
 				matcolor	0,0,0,0.4
 			}
 			windowDef main_bmech_corner
 			{
-				rect	32,340,12,12
+				rect	32,369,12,12
 				visible	1
 				background	"gfx/guis/mainmenu/corner"
 				matcolor	0.564,0.603,0.286,0.4
 			}
 			windowDef main_t_bmech
 			{
-				rect	44,333,314,23
+				rect	44,362,314,23
 				visible	1
 				forecolor	1,1,1,0.8
 				text	"CUSTOMIZE MECH"
@@ -20247,7 +20247,7 @@ windowDef Desktop
 		}
 		windowDef main_b_mech
 		{
-			rect	24,332,333,26
+			rect	24,359,333,26
 			visible	1
 
 			onMouseEnter {
