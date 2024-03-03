@@ -15267,6 +15267,23 @@ windowDef Desktop
 					set "pop_b_mech_l1::visible" "1" ;
 					set "pop_b_mech_l2::visible" "1" ;
 					set "pop_b_mech_l3::visible" "1" ;
+					set "pop_b_mech_l4::visible" "1" ;
+					set "pop_b_mech_l5::visible" "1" ;
+					set "pop_b_mech_l6::visible" "1" ;
+					set "pop_b_mech_l7::visible" "1" ;
+					set "pop_b_mech_l8::visible" "1" ;
+					set "pop_b_mech_l9::visible" "1" ;
+					set "pop_b_mech_l10::visible" "1" ;
+					set "pop_b_mech_r1::visible" "1" ;
+					set "pop_b_mech_r2::visible" "1" ;
+					set "pop_b_mech_r3::visible" "1" ;
+					set "pop_b_mech_r4::visible" "1" ;
+					set "pop_b_mech_r5::visible" "1" ;
+					set "pop_b_mech_r6::visible" "1" ;
+					set "pop_b_mech_r7::visible" "1" ;
+					set "pop_b_mech_r8::visible" "1" ;
+					set "pop_b_mech_r9::visible" "1" ;
+					set "pop_b_mech_r10::visible" "1" ;
 					
 				}
 
@@ -15275,6 +15292,24 @@ windowDef Desktop
 					set "pop_b_mech_l1::visible" "0" ;
 					set "pop_b_mech_l2::visible" "0" ;
 					set "pop_b_mech_l3::visible" "0" ;
+					set "pop_b_mech_l4::visible" "0" ;
+					set "pop_b_mech_l5::visible" "0" ;
+					set "pop_b_mech_l6::visible" "0" ;
+					set "pop_b_mech_l7::visible" "0" ;
+					set "pop_b_mech_l8::visible" "0" ;
+					set "pop_b_mech_l9::visible" "0" ;
+					set "pop_b_mech_l10::visible" "0" ;
+					set "pop_b_mech_r1::visible" "0" ;
+					set "pop_b_mech_r2::visible" "0" ;
+					set "pop_b_mech_r3::visible" "0" ;
+					set "pop_b_mech_r4::visible" "0" ;
+					set "pop_b_mech_r5::visible" "0" ;
+					set "pop_b_mech_r6::visible" "0" ;
+					set "pop_b_mech_r7::visible" "0" ;
+					set "pop_b_mech_r8::visible" "0" ;
+					set "pop_b_mech_r9::visible" "0" ;
+					set "pop_b_mech_r10::visible" "0" ;
+					
 				}
 
 				windowDef pop_mech_text2
@@ -15360,69 +15395,460 @@ windowDef Desktop
 				}
 				windowDef pop_mech_l1
 				{
-					rect	240,141,95,27
+					rect	240,137,95,27
 					visible	1
 					background	"gfx/guis/mainmenu/b4_light"
 					matcolor	0.501,0,0,0.4
 				}
 				windowDef pop_mech_t_l1
 				{
-					rect	256,143,70,16
+					rect	256,139,70,16
 					visible	1
 					forecolor	1,1,1,0.8
-					text	ROCKETS
+					text	"HU-BEN GATLING"
 					textscale	0.1
 					font	"fonts/marine"
 				}
 				windowDef pop_mech_corner_l1
 				{
-					rect	248,148,9,10
+					rect	248,144,9,10
 					visible	1
 					background	"gfx/guis/mainmenu/corner"
 					matcolor	1,0.501,0.501,0.4
 				}
 				windowDef pop_mech_l2
 				{
-					rect	240,167,95,27
+					rect	240,160,95,27
 					visible	1
 					background	"gfx/guis/mainmenu/b4_light"
 					matcolor	0.501,0,0,0.4
 				}
 				windowDef pop_mech_t_l2
 				{
-					rect	256,170,70,16
+					rect	256,163,70,16
 					visible	1
 					forecolor	1,1,1,0.8
-					text	GATLING
+					text	"SG ZIMMERMAN"
 					textscale	0.1
 					font	"fonts/marine"
 				}
 				windowDef pop_mech_corner_l2
 				{
-					rect	248,174,8,10
+					rect	248,167,8,10
 					visible	1
 					background	"gfx/guis/mainmenu/corner"
 					matcolor	1,0.501,0.501,0.4
 				}
 				windowDef pop_mech_l3
 				{
-					rect	239,193,95,27
+					rect	239,183,95,27
 					visible	1
 					background	"gfx/guis/mainmenu/b4_light"
 					matcolor	0.501,0,0,0.4
 				}
 				windowDef pop_mech_t_l3
 				{
-					rect	255,196,70,16
+					rect	255,186,70,16
 					visible	1
 					forecolor	1,1,1,0.8
-					text	ZIMMERMANS
+					text	"HG DUCKETT"
 					textscale	0.1
 					font	"fonts/marine"
 				}
 				windowDef pop_mech_corner_l3
 				{
-					rect	247,200,8,10
+					rect	247,190,8,10
+					visible	1
+					background	"gfx/guis/mainmenu/corner"
+					matcolor	1,0.501,0.501,0.4
+				}
+				windowDef pop_mech_l4
+				{
+					rect	239,206,95,27
+					visible	1
+					background	"gfx/guis/mainmenu/b4_light"
+					matcolor	0.501,0,0,0.4
+				}
+				windowDef pop_mech_t_l4
+				{
+					rect	255,210,70,16
+					visible	1
+					forecolor	1,1,1,0.8
+					text	"GU-A2 PULSE GUN"
+					textscale	0.1
+					font	"fonts/marine"
+				}
+				windowDef pop_mech_corner_l4
+				{
+					rect	247,213,8,10
+					visible	1
+					background	"gfx/guis/mainmenu/corner"
+					matcolor	1,0.501,0.501,0.4
+				}
+				windowDef pop_mech_l5
+				{
+					rect	239,229,95,27
+					visible	1
+					background	"gfx/guis/mainmenu/b4_light"
+					matcolor	0.501,0,0,0.4
+				}
+				windowDef pop_mech_t_l5
+				{
+					rect	256,233,70,16
+					visible	1
+					forecolor	1,1,1,0.8
+					text	"WUERGER 66"
+					textscale	0.1
+					font	"fonts/marine"
+				}
+				windowDef pop_mech_corner_l5
+				{
+					rect	247,236,8,10
+					visible	1
+					background	"gfx/guis/mainmenu/corner"
+					matcolor	1,0.501,0.501,0.4
+				}
+				windowDef pop_mech_l6
+				{
+					rect	239,252,95,27
+					visible	1
+					background	"gfx/guis/mainmenu/b4_light"
+					matcolor	0.501,0,0,0.4
+				}
+				windowDef pop_mech_t_l6
+				{
+					rect	256,256,70,16
+					visible	1
+					forecolor	1,1,1,0.8
+					text	"760PR LASER RIFLE"
+					textscale	0.1
+					font	"fonts/marine"
+				}
+				windowDef pop_mech_corner_l6
+				{
+					rect	247,259,8,10
+					visible	1
+					background	"gfx/guis/mainmenu/corner"
+					matcolor	1,0.501,0.501,0.4
+				}
+				windowDef pop_mech_l7
+				{
+					rect	239,275,95,27
+					visible	1
+					background	"gfx/guis/mainmenu/b4_light"
+					matcolor	0.501,0,0,0.4
+				}
+				windowDef pop_mech_t_l7
+				{
+					rect	256,279,70,16
+					visible	1
+					forecolor	1,1,1,0.8
+					text	"STUN NEEDLE LAUNCHER"
+					textscale	0.1
+					font	"fonts/marine"
+				}
+				windowDef pop_mech_corner_l7
+				{
+					rect	247,282,8,10
+					visible	1
+					background	"gfx/guis/mainmenu/corner"
+					matcolor	1,0.501,0.501,0.4
+				}
+				windowDef pop_mech_l8
+				{
+					rect	239,298,95,27
+					visible	1
+					background	"gfx/guis/mainmenu/b4_light"
+					matcolor	0.501,0,0,0.4
+				}
+				windowDef pop_mech_t_l8
+				{
+					rect	256,302,70,16
+					visible	1
+					forecolor	1,1,1,0.8
+					text	"BML DUAL MISSILE LAUNCHER"
+					textscale	0.1
+					font	"fonts/marine"
+				}
+				windowDef pop_mech_corner_l8
+				{
+					rect	247,305,8,10
+					visible	1
+					background	"gfx/guis/mainmenu/corner"
+					matcolor	1,0.501,0.501,0.4
+				}
+				windowDef pop_mech_l9
+				{
+					rect	239,321,95,27
+					visible	1
+					background	"gfx/guis/mainmenu/b4_light"
+					matcolor	0.501,0,0,0.4
+				}
+				windowDef pop_mech_t_l9
+				{
+					rect	256,325,70,16
+					visible	1
+					forecolor	1,1,1,0.8
+					text	SONGBIRDS
+					textscale	0.1
+					font	"fonts/marine"
+				}
+				windowDef pop_mech_corner_l9
+				{
+					rect	247,328,8,10
+					visible	1
+					background	"gfx/guis/mainmenu/corner"
+					matcolor	1,0.501,0.501,0.4
+				}
+				windowDef pop_mech_l10
+				{
+					rect	239,344,95,27
+					visible	1
+					background	"gfx/guis/mainmenu/b4_light"
+					matcolor	0.501,0,0,0.4
+				}
+				windowDef pop_mech_t_l10
+				{
+					rect	256,348,70,16
+					visible	1
+					forecolor	1,1,1,0.8
+					text	"IB-C03 CORAL LASER"
+					textscale	0.1
+					font	"fonts/marine"
+				}
+				windowDef pop_mech_corner_l10
+				{
+					rect	247,351,8,10
+					visible	1
+					background	"gfx/guis/mainmenu/corner"
+					matcolor	1,0.501,0.501,0.4
+				}
+				windowDef pop_mech_r1
+				{
+					rect	358,137,95,27
+					visible	1
+					background	"gfx/guis/mainmenu/b4_light"
+					matcolor	0.501,0,0,0.4
+				}
+				windowDef pop_mech_t_r1
+				{
+					rect	374,139,70,16
+					visible	1
+					forecolor	1,1,1,0.8
+					text	"HU-BEN GATLING"
+					textscale	0.1
+					font	"fonts/marine"
+				}
+				windowDef pop_mech_corner_r1
+				{
+					rect	366,144,9,10
+					visible	1
+					background	"gfx/guis/mainmenu/corner"
+					matcolor	1,0.501,0.501,0.4
+				}
+				windowDef pop_mech_r2
+				{
+					rect	358,161,95,27
+					visible	1
+					background	"gfx/guis/mainmenu/b4_light"
+					matcolor	0.501,0,0,0.4
+				}
+				windowDef pop_mech_t_r2
+				{
+					rect	374,164,70,16
+					visible	1
+					forecolor	1,1,1,0.8
+					text	"SG ZIMMERMAN"
+					textscale	0.1
+					font	"fonts/marine"
+				}
+				windowDef pop_mech_corner_r2
+				{
+					rect	366,168,8,10
+					visible	1
+					background	"gfx/guis/mainmenu/corner"
+					matcolor	1,0.501,0.501,0.4
+				}
+				windowDef pop_mech_r3
+				{
+					rect	358,184,95,27
+					visible	1
+					background	"gfx/guis/mainmenu/b4_light"
+					matcolor	0.501,0,0,0.4
+				}
+				windowDef pop_mech_t_r3
+				{
+					rect	374,187,70,16
+					visible	1
+					forecolor	1,1,1,0.8
+					text	"HG DUCKETT"
+					textscale	0.1
+					font	"fonts/marine"
+				}
+				windowDef pop_mech_corner_r3
+				{
+					rect	366,191,8,10
+					visible	1
+					background	"gfx/guis/mainmenu/corner"
+					matcolor	1,0.501,0.501,0.4
+				}
+				windowDef pop_mech_r4
+				{
+					rect	358,207,95,27
+					visible	1
+					background	"gfx/guis/mainmenu/b4_light"
+					matcolor	0.501,0,0,0.4
+				}
+				windowDef pop_mech_t_r4
+				{
+					rect	374,210,70,16
+					visible	1
+					forecolor	1,1,1,0.8
+					text	"GU-A2 PULSE GUN"
+					textscale	0.1
+					font	"fonts/marine"
+				}
+				windowDef pop_mech_corner_r4
+				{
+					rect	366,214,8,10
+					visible	1
+					background	"gfx/guis/mainmenu/corner"
+					matcolor	1,0.501,0.501,0.4
+				}
+				windowDef pop_mech_r5
+				{
+					rect	358,230,95,27
+					visible	1
+					background	"gfx/guis/mainmenu/b4_light"
+					matcolor	0.501,0,0,0.4
+				}
+				windowDef pop_mech_t_r5
+				{
+					rect	375,234,70,16
+					visible	1
+					forecolor	1,1,1,0.8
+					text	"WUERGER 66"
+					textscale	0.1
+					font	"fonts/marine"
+				}
+				windowDef pop_mech_corner_r5
+				{
+					rect	366,237,8,10
+					visible	1
+					background	"gfx/guis/mainmenu/corner"
+					matcolor	1,0.501,0.501,0.4
+				}
+				windowDef pop_mech_r6
+				{
+					rect	358,253,95,27
+					visible	1
+					background	"gfx/guis/mainmenu/b4_light"
+					matcolor	0.501,0,0,0.4
+				}
+				windowDef pop_mech_t_r6
+				{
+					rect	375,257,70,16
+					visible	1
+					forecolor	1,1,1,0.8
+					text	"760PR LASER RIFLE"
+					textscale	0.1
+					font	"fonts/marine"
+				}
+				windowDef pop_mech_corner_r6
+				{
+					rect	366,260,8,10
+					visible	1
+					background	"gfx/guis/mainmenu/corner"
+					matcolor	1,0.501,0.501,0.4
+				}
+				windowDef pop_mech_r7
+				{
+					rect	358,276,95,27
+					visible	1
+					background	"gfx/guis/mainmenu/b4_light"
+					matcolor	0.501,0,0,0.4
+				}
+				windowDef pop_mech_t_r7
+				{
+					rect	375,280,70,16
+					visible	1
+					forecolor	1,1,1,0.8
+					text	"STUN NEEDLE LAUNCHER"
+					textscale	0.1
+					font	"fonts/marine"
+				}
+				windowDef pop_mech_corner_r7
+				{
+					rect	366,283,8,10
+					visible	1
+					background	"gfx/guis/mainmenu/corner"
+					matcolor	1,0.501,0.501,0.4
+				}
+				windowDef pop_mech_r8
+				{
+					rect	358,299,95,27
+					visible	1
+					background	"gfx/guis/mainmenu/b4_light"
+					matcolor	0.501,0,0,0.4
+				}
+				windowDef pop_mech_t_r8
+				{
+					rect	375,303,70,16
+					visible	1
+					forecolor	1,1,1,0.8
+					text	"BML DUAL MISSILE LAUNCHER"
+					textscale	0.1
+					font	"fonts/marine"
+				}
+				windowDef pop_mech_corner_r8
+				{
+					rect	366,306,8,10
+					visible	1
+					background	"gfx/guis/mainmenu/corner"
+					matcolor	1,0.501,0.501,0.4
+				}
+				windowDef pop_mech_r9
+				{
+					rect	358,322,95,27
+					visible	1
+					background	"gfx/guis/mainmenu/b4_light"
+					matcolor	0.501,0,0,0.4
+				}
+				windowDef pop_mech_t_r9
+				{
+					rect	375,326,70,16
+					visible	1
+					forecolor	1,1,1,0.8
+					text	SONGBIRDS
+					textscale	0.1
+					font	"fonts/marine"
+				}
+				windowDef pop_mech_corner_r9
+				{
+					rect	366,329,8,10
+					visible	1
+					background	"gfx/guis/mainmenu/corner"
+					matcolor	1,0.501,0.501,0.4
+				}
+				windowDef pop_mech_r10
+				{
+					rect	358,345,95,27
+					visible	1
+					background	"gfx/guis/mainmenu/b4_light"
+					matcolor	0.501,0,0,0.4
+				}
+				windowDef pop_mech_t_r10
+				{
+					rect	375,349,70,16
+					visible	1
+					forecolor	1,1,1,0.8
+					text	"IB-C03 CORAL LASER"
+					textscale	0.1
+					font	"fonts/marine"
+				}
+				windowDef pop_mech_corner_r10
+				{
+					rect	366,352,8,10
 					visible	1
 					background	"gfx/guis/mainmenu/corner"
 					matcolor	1,0.501,0.501,0.4
@@ -25485,7 +25911,7 @@ windowDef Desktop
 		}
 		windowDef pop_b_mech_l1
 		{
-			rect	230,140,114,23
+			rect	229,136,114,22
 			visible	0
 
 			onMouseEnter {
@@ -25514,13 +25940,14 @@ windowDef Desktop
 
 			onAction {
 				consoleCMD "ac_left_weapon 0" ;
+				consoleCMD "reloadWeapons" ;
 				set "cmd" "play main_menu_selection" ;
 			}
 
 		}
 		windowDef pop_b_mech_l2
 		{
-			rect	231,165,114,23
+			rect	229,159,114,22
 			visible	0
 
 			onMouseEnter {
@@ -25549,13 +25976,14 @@ windowDef Desktop
 
 			onAction {
 				consoleCMD "ac_left_weapon 1" ;
+				consoleCMD "reloadWeapons" ;
 				set "cmd" "play main_menu_selection" ;
 			}
 
 		}
 		windowDef pop_b_mech_l3
 		{
-			rect	230,191,114,23
+			rect	228,182,114,22
 			visible	0
 
 			onMouseEnter {
@@ -25584,6 +26012,619 @@ windowDef Desktop
 
 			onAction {
 				consoleCMD "ac_left_weapon 2" ;
+				consoleCMD "reloadWeapons" ;
+				set "cmd" "play main_menu_selection" ;
+			}
+
+		}
+		windowDef pop_b_mech_l4
+		{
+			rect	227,205,114,21
+			visible	0
+
+			onMouseEnter {
+				if ("desktop::active" == 0) {
+					stoptransitions "pop_b_mech_no" ;
+					
+					set "pop_mech_l4::matcolor_w" "0.8" ;
+					transition "pop_mech_t_l4::forecolor" "$desktop::white_8" "$desktop::orange" "0" ; 
+					transition "pop_mech_corner_l4::matcolor" "$desktop::corner" "$desktop::orange" "0" ;
+					
+					set "pop_mech_t_l4::textscale" "0.11" ; 
+					
+					set "cmd" "play main_menu_mouseover" ;	
+				}
+			}
+
+			onMouseExit {
+				if ("desktop::active" == 0) {
+					transition "pop_mech_l4::matcolor_w" "0.8" "0.4" "300" ;
+					transition "pop_mech_t_l4::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ; 
+					transition "pop_mech_corner_l4::matcolor"  "$desktop::orange" "$desktop::corner" "300" ; 
+					
+					transition "pop_mech_t_l4::textscale" "0.11" "0.1" "300" ;
+				}
+			}
+
+			onAction {
+				consoleCMD "ac_left_weapon 3" ;
+				consoleCMD "reloadWeapons" ;
+				set "cmd" "play main_menu_selection" ;
+			}
+
+		}
+		windowDef pop_b_mech_l5
+		{
+			rect	227,229,114,21
+			visible	0
+
+			onMouseEnter {
+				if ("desktop::active" == 0) {
+					stoptransitions "pop_b_mech_no" ;
+					
+					set "pop_mech_l5::matcolor_w" "0.8" ;
+					transition "pop_mech_t_l5::forecolor" "$desktop::white_8" "$desktop::orange" "0" ; 
+					transition "pop_mech_corner_l5::matcolor" "$desktop::corner" "$desktop::orange" "0" ;
+					
+					set "pop_mech_t_l5::textscale" "0.11" ; 
+					
+					set "cmd" "play main_menu_mouseover" ;	
+				}
+			}
+
+			onMouseExit {
+				if ("desktop::active" == 0) {
+					transition "pop_mech_l5::matcolor_w" "0.8" "0.4" "300" ;
+					transition "pop_mech_t_l5::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ; 
+					transition "pop_mech_corner_l5::matcolor"  "$desktop::orange" "$desktop::corner" "300" ; 
+					
+					transition "pop_mech_t_l5::textscale" "0.11" "0.1" "300" ;
+				}
+			}
+
+			onAction {
+				consoleCMD "ac_left_weapon 4" ;
+				consoleCMD "reloadWeapons" ;
+				set "cmd" "play main_menu_selection" ;
+			}
+
+		}
+		windowDef pop_b_mech_l6
+		{
+			rect	228,252,114,21
+			visible	0
+
+			onMouseEnter {
+				if ("desktop::active" == 0) {
+					stoptransitions "pop_b_mech_no" ;
+					
+					set "pop_mech_l6::matcolor_w" "0.8" ;
+					transition "pop_mech_t_l6::forecolor" "$desktop::white_8" "$desktop::orange" "0" ; 
+					transition "pop_mech_corner_l6::matcolor" "$desktop::corner" "$desktop::orange" "0" ;
+					
+					set "pop_mech_t_l6::textscale" "0.11" ; 
+					
+					set "cmd" "play main_menu_mouseover" ;	
+				}
+			}
+
+			onMouseExit {
+				if ("desktop::active" == 0) {
+					transition "pop_mech_l6::matcolor_w" "0.8" "0.4" "300" ;
+					transition "pop_mech_t_l6::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ; 
+					transition "pop_mech_corner_l6::matcolor"  "$desktop::orange" "$desktop::corner" "300" ; 
+					
+					transition "pop_mech_t_l6::textscale" "0.11" "0.1" "300" ;
+				}
+			}
+
+			onAction {
+				consoleCMD "ac_left_weapon 5" ;
+				consoleCMD "reloadWeapons" ;
+				set "cmd" "play main_menu_selection" ;
+			}
+
+		}
+		windowDef pop_b_mech_l7
+		{
+			rect	228,274,114,21
+			visible	0
+
+			onMouseEnter {
+				if ("desktop::active" == 0) {
+					stoptransitions "pop_b_mech_no" ;
+					
+					set "pop_mech_l7::matcolor_w" "0.8" ;
+					transition "pop_mech_t_l7::forecolor" "$desktop::white_8" "$desktop::orange" "0" ; 
+					transition "pop_mech_corner_l7::matcolor" "$desktop::corner" "$desktop::orange" "0" ;
+					
+					set "pop_mech_t_l7::textscale" "0.11" ; 
+					
+					set "cmd" "play main_menu_mouseover" ;	
+				}
+			}
+
+			onMouseExit {
+				if ("desktop::active" == 0) {
+					transition "pop_mech_l7::matcolor_w" "0.8" "0.4" "300" ;
+					transition "pop_mech_t_l7::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ; 
+					transition "pop_mech_corner_l7::matcolor"  "$desktop::orange" "$desktop::corner" "300" ; 
+					
+					transition "pop_mech_t_l7::textscale" "0.11" "0.1" "300" ;
+				}
+			}
+
+			onAction {
+				consoleCMD "ac_left_weapon 6" ;
+				consoleCMD "reloadWeapons" ;
+				set "cmd" "play main_menu_selection" ;
+			}
+
+		}
+		windowDef pop_b_mech_l8
+		{
+			rect	227,298,114,21
+			visible	0
+
+			onMouseEnter {
+				if ("desktop::active" == 0) {
+					stoptransitions "pop_b_mech_no" ;
+					
+					set "pop_mech_l8::matcolor_w" "0.8" ;
+					transition "pop_mech_t_l8::forecolor" "$desktop::white_8" "$desktop::orange" "0" ; 
+					transition "pop_mech_corner_l8::matcolor" "$desktop::corner" "$desktop::orange" "0" ;
+					
+					set "pop_mech_t_l8::textscale" "0.11" ; 
+					
+					set "cmd" "play main_menu_mouseover" ;	
+				}
+			}
+
+			onMouseExit {
+				if ("desktop::active" == 0) {
+					transition "pop_mech_l8::matcolor_w" "0.8" "0.4" "300" ;
+					transition "pop_mech_t_l8::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ; 
+					transition "pop_mech_corner_l8::matcolor"  "$desktop::orange" "$desktop::corner" "300" ; 
+					
+					transition "pop_mech_t_l8::textscale" "0.11" "0.1" "300" ;
+				}
+			}
+
+			onAction {
+				consoleCMD "ac_left_weapon 7" ;
+				consoleCMD "reloadWeapons" ;
+				set "cmd" "play main_menu_selection" ;
+			}
+
+		}
+		windowDef pop_b_mech_l9
+		{
+			rect	228,320,114,21
+			visible	0
+
+			onMouseEnter {
+				if ("desktop::active" == 0) {
+					stoptransitions "pop_b_mech_no" ;
+					
+					set "pop_mech_l9::matcolor_w" "0.8" ;
+					transition "pop_mech_t_l9::forecolor" "$desktop::white_8" "$desktop::orange" "0" ; 
+					transition "pop_mech_corner_l9::matcolor" "$desktop::corner" "$desktop::orange" "0" ;
+					
+					set "pop_mech_t_l9::textscale" "0.11" ; 
+					
+					set "cmd" "play main_menu_mouseover" ;	
+				}
+			}
+
+			onMouseExit {
+				if ("desktop::active" == 0) {
+					transition "pop_mech_l9::matcolor_w" "0.8" "0.4" "300" ;
+					transition "pop_mech_t_l9::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ; 
+					transition "pop_mech_corner_l9::matcolor"  "$desktop::orange" "$desktop::corner" "300" ; 
+					
+					transition "pop_mech_t_l9::textscale" "0.11" "0.1" "300" ;
+				}
+			}
+
+			onAction {
+				consoleCMD "ac_left_weapon 8" ;
+				consoleCMD "reloadWeapons" ;
+				set "cmd" "play main_menu_selection" ;
+			}
+
+		}
+		windowDef pop_b_mech_l10
+		{
+			rect	227,344,114,21
+			visible	0
+
+			onMouseEnter {
+				if ("desktop::active" == 0) {
+					stoptransitions "pop_b_mech_no" ;
+					
+					set "pop_mech_l10::matcolor_w" "0.8" ;
+					transition "pop_mech_t_l10::forecolor" "$desktop::white_8" "$desktop::orange" "0" ; 
+					transition "pop_mech_corner_l10::matcolor" "$desktop::corner" "$desktop::orange" "0" ;
+					
+					set "pop_mech_t_l10::textscale" "0.11" ; 
+					
+					set "cmd" "play main_menu_mouseover" ;	
+				}
+			}
+
+			onMouseExit {
+				if ("desktop::active" == 0) {
+					transition "pop_mech_l10::matcolor_w" "0.8" "0.4" "300" ;
+					transition "pop_mech_t_l10::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ; 
+					transition "pop_mech_corner_l10::matcolor"  "$desktop::orange" "$desktop::corner" "300" ; 
+					
+					transition "pop_mech_t_l10::textscale" "0.11" "0.1" "300" ;
+				}
+			}
+
+			onAction {
+				consoleCMD "ac_left_weapon 9" ;
+				consoleCMD "reloadWeapons" ;
+				set "cmd" "play main_menu_selection" ;
+			}
+
+		}
+		windowDef pop_b_mech_r1
+		{
+			rect	346,137,114,21
+			visible	0
+
+			onMouseEnter {
+				if ("desktop::active" == 0) {
+					stoptransitions "pop_b_mech_no" ;
+					
+					set "pop_mech_r1::matcolor_w" "0.8" ;
+					transition "pop_mech_t_r1::forecolor" "$desktop::white_8" "$desktop::orange" "0" ; 
+					transition "pop_mech_corner_r1::matcolor" "$desktop::corner" "$desktop::orange" "0" ;
+					
+					set "pop_mech_t_r1::textscale" "0.11" ; 
+					
+					set "cmd" "play main_menu_mouseover" ;	
+				}
+			}
+
+			onMouseExit {
+				if ("desktop::active" == 0) {
+					transition "pop_mech_r1::matcolor_w" "0.8" "0.4" "300" ;
+					transition "pop_mech_t_r1::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ; 
+					transition "pop_mech_corner_r1::matcolor"  "$desktop::orange" "$desktop::corner" "300" ; 
+					
+					transition "pop_mech_t_r1::textscale" "0.11" "0.1" "300" ;
+				}
+			}
+
+			onAction {
+				consoleCMD "ac_right_weapon 0" ;
+				consoleCMD "reloadWeapons" ;
+				set "cmd" "play main_menu_selection" ;
+			}
+
+		}
+		windowDef pop_b_mech_r2
+		{
+			rect	346,161,114,21
+			visible	0
+
+			onMouseEnter {
+				if ("desktop::active" == 0) {
+					stoptransitions "pop_b_mech_no" ;
+					
+					set "pop_mech_r2::matcolor_w" "0.8" ;
+					transition "pop_mech_t_r2::forecolor" "$desktop::white_8" "$desktop::orange" "0" ; 
+					transition "pop_mech_corner_r2::matcolor" "$desktop::corner" "$desktop::orange" "0" ;
+					
+					set "pop_mech_t_r2::textscale" "0.11" ; 
+					
+					set "cmd" "play main_menu_mouseover" ;	
+				}
+			}
+
+			onMouseExit {
+				if ("desktop::active" == 0) {
+					transition "pop_mech_r2::matcolor_w" "0.8" "0.4" "300" ;
+					transition "pop_mech_t_r2::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ; 
+					transition "pop_mech_corner_r2::matcolor"  "$desktop::orange" "$desktop::corner" "300" ; 
+					
+					transition "pop_mech_t_r2::textscale" "0.11" "0.1" "300" ;
+				}
+			}
+
+			onAction {
+				consoleCMD "ac_right_weapon 1" ;
+				consoleCMD "reloadWeapons" ;
+				set "cmd" "play main_menu_selection" ;
+			}
+
+		}
+		windowDef pop_b_mech_r3
+		{
+			rect	345,184,114,21
+			visible	0
+
+			onMouseEnter {
+				if ("desktop::active" == 0) {
+					stoptransitions "pop_b_mech_no" ;
+					
+					set "pop_mech_r3::matcolor_w" "0.8" ;
+					transition "pop_mech_t_r3::forecolor" "$desktop::white_8" "$desktop::orange" "0" ; 
+					transition "pop_mech_corner_r3::matcolor" "$desktop::corner" "$desktop::orange" "0" ;
+					
+					set "pop_mech_t_r3::textscale" "0.11" ; 
+					
+					set "cmd" "play main_menu_mouseover" ;	
+				}
+			}
+
+			onMouseExit {
+				if ("desktop::active" == 0) {
+					transition "pop_mech_r3::matcolor_w" "0.8" "0.4" "300" ;
+					transition "pop_mech_t_r3::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ; 
+					transition "pop_mech_corner_r3::matcolor"  "$desktop::orange" "$desktop::corner" "300" ; 
+					
+					transition "pop_mech_t_r3::textscale" "0.11" "0.1" "300" ;
+				}
+			}
+
+			onAction {
+				consoleCMD "ac_right_weapon 2" ;
+				consoleCMD "reloadWeapons" ;
+				set "cmd" "play main_menu_selection" ;
+			}
+
+		}
+		windowDef pop_b_mech_r4
+		{
+			rect	346,207,114,21
+			visible	0
+
+			onMouseEnter {
+				if ("desktop::active" == 0) {
+					stoptransitions "pop_b_mech_no" ;
+					
+					set "pop_mech_r4::matcolor_w" "0.8" ;
+					transition "pop_mech_t_r4::forecolor" "$desktop::white_8" "$desktop::orange" "0" ; 
+					transition "pop_mech_corner_r4::matcolor" "$desktop::corner" "$desktop::orange" "0" ;
+					
+					set "pop_mech_t_r4::textscale" "0.11" ; 
+					
+					set "cmd" "play main_menu_mouseover" ;	
+				}
+			}
+
+			onMouseExit {
+				if ("desktop::active" == 0) {
+					transition "pop_mech_r4::matcolor_w" "0.8" "0.4" "300" ;
+					transition "pop_mech_t_r4::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ; 
+					transition "pop_mech_corner_r4::matcolor"  "$desktop::orange" "$desktop::corner" "300" ; 
+					
+					transition "pop_mech_t_r4::textscale" "0.11" "0.1" "300" ;
+				}
+			}
+
+			onAction {
+				consoleCMD "ac_right_weapon 3" ;
+				consoleCMD "reloadWeapons" ;
+				set "cmd" "play main_menu_selection" ;
+			}
+
+		}
+		windowDef pop_b_mech_r5
+		{
+			rect	344,229,114,21
+			visible	0
+
+			onMouseEnter {
+				if ("desktop::active" == 0) {
+					stoptransitions "pop_b_mech_no" ;
+					
+					set "pop_mech_r5::matcolor_w" "0.8" ;
+					transition "pop_mech_t_r5::forecolor" "$desktop::white_8" "$desktop::orange" "0" ; 
+					transition "pop_mech_corner_r5::matcolor" "$desktop::corner" "$desktop::orange" "0" ;
+					
+					set "pop_mech_t_r5::textscale" "0.11" ; 
+					
+					set "cmd" "play main_menu_mouseover" ;	
+				}
+			}
+
+			onMouseExit {
+				if ("desktop::active" == 0) {
+					transition "pop_mech_r5::matcolor_w" "0.8" "0.4" "300" ;
+					transition "pop_mech_t_r5::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ; 
+					transition "pop_mech_corner_r5::matcolor"  "$desktop::orange" "$desktop::corner" "300" ; 
+					
+					transition "pop_mech_t_r5::textscale" "0.11" "0.1" "300" ;
+				}
+			}
+
+			onAction {
+				consoleCMD "ac_right_weapon 4" ;
+				consoleCMD "reloadWeapons" ;
+				set "cmd" "play main_menu_selection" ;
+			}
+
+		}
+		windowDef pop_b_mech_r6
+		{
+			rect	346,253,114,21
+			visible	0
+
+			onMouseEnter {
+				if ("desktop::active" == 0) {
+					stoptransitions "pop_b_mech_no" ;
+					
+					set "pop_mech_r6::matcolor_w" "0.8" ;
+					transition "pop_mech_t_r6::forecolor" "$desktop::white_8" "$desktop::orange" "0" ; 
+					transition "pop_mech_corner_r6::matcolor" "$desktop::corner" "$desktop::orange" "0" ;
+					
+					set "pop_mech_t_r6::textscale" "0.11" ; 
+					
+					set "cmd" "play main_menu_mouseover" ;	
+				}
+			}
+
+			onMouseExit {
+				if ("desktop::active" == 0) {
+					transition "pop_mech_r6::matcolor_w" "0.8" "0.4" "300" ;
+					transition "pop_mech_t_r6::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ; 
+					transition "pop_mech_corner_r6::matcolor"  "$desktop::orange" "$desktop::corner" "300" ; 
+					
+					transition "pop_mech_t_r6::textscale" "0.11" "0.1" "300" ;
+				}
+			}
+
+			onAction {
+				consoleCMD "ac_right_weapon 5" ;
+				consoleCMD "reloadWeapons" ;
+				set "cmd" "play main_menu_selection" ;
+			}
+
+		}
+		windowDef pop_b_mech_r7
+		{
+			rect	346,276,114,21
+			visible	0
+
+			onMouseEnter {
+				if ("desktop::active" == 0) {
+					stoptransitions "pop_b_mech_no" ;
+					
+					set "pop_mech_r7::matcolor_w" "0.8" ;
+					transition "pop_mech_t_r7::forecolor" "$desktop::white_8" "$desktop::orange" "0" ; 
+					transition "pop_mech_corner_r7::matcolor" "$desktop::corner" "$desktop::orange" "0" ;
+					
+					set "pop_mech_t_r7::textscale" "0.11" ; 
+					
+					set "cmd" "play main_menu_mouseover" ;	
+				}
+			}
+
+			onMouseExit {
+				if ("desktop::active" == 0) {
+					transition "pop_mech_r7::matcolor_w" "0.8" "0.4" "300" ;
+					transition "pop_mech_t_r7::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ; 
+					transition "pop_mech_corner_r7::matcolor"  "$desktop::orange" "$desktop::corner" "300" ; 
+					
+					transition "pop_mech_t_r7::textscale" "0.11" "0.1" "300" ;
+				}
+			}
+
+			onAction {
+				consoleCMD "ac_right_weapon 6" ;
+				consoleCMD "reloadWeapons" ;
+				set "cmd" "play main_menu_selection" ;
+			}
+
+		}
+		windowDef pop_b_mech_r8
+		{
+			rect	345,299,114,21
+			visible	0
+
+			onMouseEnter {
+				if ("desktop::active" == 0) {
+					stoptransitions "pop_b_mech_no" ;
+					
+					set "pop_mech_r8::matcolor_w" "0.8" ;
+					transition "pop_mech_t_r8::forecolor" "$desktop::white_8" "$desktop::orange" "0" ; 
+					transition "pop_mech_corner_r8::matcolor" "$desktop::corner" "$desktop::orange" "0" ;
+					
+					set "pop_mech_t_r8::textscale" "0.11" ; 
+					
+					set "cmd" "play main_menu_mouseover" ;	
+				}
+			}
+
+			onMouseExit {
+				if ("desktop::active" == 0) {
+					transition "pop_mech_r8::matcolor_w" "0.8" "0.4" "300" ;
+					transition "pop_mech_t_r8::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ; 
+					transition "pop_mech_corner_r8::matcolor"  "$desktop::orange" "$desktop::corner" "300" ; 
+					
+					transition "pop_mech_t_r8::textscale" "0.11" "0.1" "300" ;
+				}
+			}
+
+			onAction {
+				consoleCMD "ac_right_weapon 7" ;
+				consoleCMD "reloadWeapons" ;
+				set "cmd" "play main_menu_selection" ;
+			}
+
+		}
+		windowDef pop_b_mech_r9
+		{
+			rect	346,322,114,21
+			visible	0
+
+			onMouseEnter {
+				if ("desktop::active" == 0) {
+					stoptransitions "pop_b_mech_no" ;
+					
+					set "pop_mech_r9::matcolor_w" "0.8" ;
+					transition "pop_mech_t_r9::forecolor" "$desktop::white_8" "$desktop::orange" "0" ; 
+					transition "pop_mech_corner_r9::matcolor" "$desktop::corner" "$desktop::orange" "0" ;
+					
+					set "pop_mech_t_r9::textscale" "0.11" ; 
+					
+					set "cmd" "play main_menu_mouseover" ;	
+				}
+			}
+
+			onMouseExit {
+				if ("desktop::active" == 0) {
+					transition "pop_mech_r9::matcolor_w" "0.8" "0.4" "300" ;
+					transition "pop_mech_t_r9::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ; 
+					transition "pop_mech_corner_r9::matcolor"  "$desktop::orange" "$desktop::corner" "300" ; 
+					
+					transition "pop_mech_t_r9::textscale" "0.11" "0.1" "300" ;
+				}
+			}
+
+			onAction {
+				consoleCMD "ac_right_weapon 8" ;
+				consoleCMD "reloadWeapons" ;
+				set "cmd" "play main_menu_selection" ;
+			}
+
+		}
+		windowDef pop_b_mech_r10
+		{
+			rect	344,345,114,21
+			visible	0
+
+			onMouseEnter {
+				if ("desktop::active" == 0) {
+					stoptransitions "pop_b_mech_no" ;
+					
+					set "pop_mech_r10::matcolor_w" "0.8" ;
+					transition "pop_mech_t_r10::forecolor" "$desktop::white_8" "$desktop::orange" "0" ; 
+					transition "pop_mech_corner_r10::matcolor" "$desktop::corner" "$desktop::orange" "0" ;
+					
+					set "pop_mech_t_r10::textscale" "0.11" ; 
+					
+					set "cmd" "play main_menu_mouseover" ;	
+				}
+			}
+
+			onMouseExit {
+				if ("desktop::active" == 0) {
+					transition "pop_mech_r10::matcolor_w" "0.8" "0.4" "300" ;
+					transition "pop_mech_t_r10::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ; 
+					transition "pop_mech_corner_r10::matcolor"  "$desktop::orange" "$desktop::corner" "300" ; 
+					
+					transition "pop_mech_t_r10::textscale" "0.11" "0.1" "300" ;
+				}
+			}
+
+			onAction {
+				consoleCMD "ac_right_weapon 9" ;
+				consoleCMD "reloadWeapons" ;
 				set "cmd" "play main_menu_selection" ;
 			}
 
