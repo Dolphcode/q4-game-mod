@@ -428,45 +428,37 @@ entityDef vehicle_walker_weapon_mgun
 	"joint"						"Cannon1"
 	"joint2"					"Cannon2"
 	
-	// ---------------- ROCKETS ------------------
-
-	"ac0_firedelay"					".3"
-	"ac0_def_projectile"		"projectile_walker_rocket"
-	"ac0_spread"					"2"
-	"ac0_convergeRate"				".5"
-		
-	"ac0_launchFromJoint"			"1"
-		
-	"ac0_ammopercharge"				"6"
-	"ac0_chargetime"				"3"
-	
-	"ac0_lockrange"					"4095"
-
-	"ac0_mtr_flashShader"			"lights/muzzleflash"
-	"ac0_flashColor"				"1 0.8 0.4"
-	"ac0_flashRadius"				"350"
-	"ac0_flashPointLight"			"1"
-	"ac0_flashTime"					".1"
-	"ac0_flashOffset"				"30 0 0"
-	
-	"ac0_shakeTime"					"400"
-	"ac0_shakeMagnitude"			"2"
-
-	"ac0_fx_muzzleflash"			"effects/vehicles/walker/rocket/muzzleflash.fx"
-	"ac0_snd_fire"					"vehicle_walker_rockets"	
-	"ac0_snd_reload"				"vehicle_walker_rocket_reload"
-	"ac0_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_nailgun"
-	
-	"ac0_guideTowardsDir"			"1"
-	
-	"ac0_lockScanning"				"1"
-	"ac0_fx_guide"					"effects/vehicles/walker/rocket/guide.fx"
-
 	// ---------------- MINIGUN ------------------
 
-	"ac1_firedelay"					".1"
+	"ac0_firedelay"					".1"
+	"ac0_def_hitscan"			"hitscan_walker_bullet"
+	"ac0_spread"					"2"
+
+	"ac0_ammopercharge"				"100"
+	"ac0_chargetime"				"5"
+
+//	"mtr_flashShader"			"lights/muzzleflash"
+//	"flashColor"				"1 0.8 0.4"
+//	"flashRadius"				"400"
+//	"flashPointLight"			"1"
+//	"flashTime"					".1"
+//	"flashOffset"				"0 0 0"
+	
+	"ac0_recoilTime"				"100"
+	"ac0_recoilAngles"				"-.25 .25 0"
+	
+	"ac0_fx_muzzleflash"			"effects/vehicles/walker/machinegun/muzzleflash.fx"
+	"ac0_snd_fire"					"vehicle_walker_machinegun"
+	"ac0_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_machinegun"
+
+	// ---------------- HANDGUN ------------------
+
+	"ac1_firedelay"				"0.5"
 	"ac1_def_hitscan"			"hitscan_walker_bullet"
-	"ac1_spread"					"2"
+	"ac1_spread"				"0"
+
+	"ac1_ammopercharge"				"15"
+	"ac1_chargetime"				"4"
 
 //	"mtr_flashShader"			"lights/muzzleflash"
 //	"flashColor"				"1 0.8 0.4"
@@ -493,7 +485,7 @@ entityDef vehicle_walker_weapon_mgun
 	"ac2_chargetime"				"3"
 
 //	"mtr_flashShader"			"lights/muzzleflash"
-//	"flashColor"				"1 0.8 0.4"
+//	"flashColor"				"0.54 0.84 1"
 //	"flashRadius"				"400"
 //	"flashPointLight"			"1"
 //	"flashTime"					".1"
@@ -504,8 +496,147 @@ entityDef vehicle_walker_weapon_mgun
 	
 	"ac2_fx_muzzleflash"			"effects/vehicles/walker/machinegun/muzzleflash.fx"
 	"ac2_snd_fire"					"weapon_shotgun_fire"
-	"ac2_snd_reload"				"weapon_shotgun_pump1"
+	"ac2_snd_reload"				"weapon_shotgun_clipin"
 	"ac2_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_shotgun"
+
+	// ---------------- LASER MINI ------------------
+
+	"ac3_firedelay"					".1"
+	"ac3_def_projectile"		"projectile_walker_lasermini"
+	"ac3_spread"					"2"
+		
+	"ac3_launchFromJoint"			"1"
+		
+	"ac3_ammopercharge"				"100"
+	"ac3_chargetime"				"5"
+
+	"ac3_mtr_flashShader"			"lights/muzzleflash"
+	"ac3_flashColor"				"0.54 0.84 1"
+	"ac3_flashRadius"				"300"
+	"ac3_flashPointLight"			"1"
+	"ac3_flashTime"					".1"
+	"ac3_flashOffset"				"30 0 0"
+	
+	"ac3_recoilTime"				"100"
+	"ac3_recoilAngles"				"-.25 .25 0"
+
+	"ac3_fx_muzzleflash"			"effects/vehicles/walker/rocket/muzzleflash.fx"
+	"ac3_snd_fire"					"weapon_hyperblaster_fire"	
+	"ac3_snd_reload"				"weapon_hyperblaster_cell_in"
+	"ac3_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_hyperblaster"
+
+	// ---------------- LASER SHOTGUN ------------------
+
+	"ac4_firedelay"					"1.0"
+	"ac4_def_projectile"		"projectile_walker_lasershotgun"
+	"ac4_spread"					"6"
+	"ac4_count"						"10"
+		
+	"ac4_ammopercharge"				"8"
+	"ac4_chargetime"				"3"
+
+	"ac4_mtr_flashShader"			"lights/muzzleflash"
+	"ac4_flashColor"				"0.54 0.84 1"
+	"ac4_flashRadius"				"300"
+	"ac4_flashPointLight"			"1"
+	"ac4_flashTime"					".1"
+	"ac4_flashOffset"				"30 0 0"
+	
+	"ac4_shakeTime"					"400"
+	"ac4_shakeMagnitude"			"2"
+
+	"ac4_fx_muzzleflash"			"effects/vehicles/walker/rocket/muzzleflash.fx"
+	"ac4_snd_fire"					"weapon_hyperblaster_fire"	
+	"ac4_snd_reload"				"weapon_hyperblaster_cell_in"
+	"ac4_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_hyperblaster"
+
+	// ---------------- ROCKETS ------------------
+
+	"ac7_firedelay"					".3"
+	"ac7_def_projectile"		"projectile_walker_rocket"
+	"ac7_spread"					"6"
+	"ac7_count"						"4"
+	"ac7_convergeRate"				".5"
+		
+	"ac7_launchFromJoint"			"1"
+		
+	"ac7_ammopercharge"				"1"
+	"ac7_chargetime"				"3"
+	
+	"ac7_lockrange"					"4095"
+
+	"ac7_mtr_flashShader"			"lights/muzzleflash"
+	"ac7_flashColor"				"1 0.8 0.4"
+	"ac7_flashRadius"				"350"
+	"ac7_flashPointLight"			"1"
+	"ac7_flashTime"					".1"
+	"ac7_flashOffset"				"30 0 0"
+	
+	"ac7_shakeTime"					"400"
+	"ac7_shakeMagnitude"			"2"
+
+	"ac7_fx_muzzleflash"			"effects/vehicles/walker/rocket/muzzleflash.fx"
+	"ac7_snd_fire"					"vehicle_walker_rockets"	
+	"ac7_snd_reload"				"vehicle_walker_rocket_reload"
+	"ac7_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_nailgun"
+	
+	"ac7_guideTowardsDir"			"1"
+	
+	"ac7_lockScanning"				"1"
+	"ac7_fx_guide"					"effects/vehicles/walker/rocket/guide.fx"
+
+	// ---------------- SONGBIRDS ------------------
+
+	"ac8_firedelay"					".3"
+	"ac8_def_projectile"		"projectile_walker_songbird"
+	"ac8_spread"					"1"
+	"ac8_count"						"2"
+		
+	"ac8_launchFromJoint"			"1"
+		
+	"ac8_ammopercharge"				"1"
+	"ac8_chargetime"				"3"
+
+	"ac8_mtr_flashShader"			"lights/muzzleflash"
+	"ac8_flashColor"				"1 0.8 0.4"
+	"ac8_flashRadius"				"350"
+	"ac8_flashPointLight"			"1"
+	"ac8_flashTime"					".1"
+	"ac8_flashOffset"				"30 0 0"
+	
+	"ac8_shakeTime"					"400"
+	"ac8_shakeMagnitude"			"2"
+
+	"ac8_fx_muzzleflash"			"effects/vehicles/walker/rocket/muzzleflash.fx"
+	"ac8_snd_fire"					"player_grenadelauncher_fire"	
+	"ac8_snd_reload"				"player_grenadelauncher_clipin"
+	"ac8_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_grenadelauncher"
+
+	// ---------------- CORAL OSCILLATOR ------------------
+
+	"ac9_firedelay"					".02"
+	"ac9_def_projectile"		"projectile_walker_coraloscillator"
+	"ac9_spread"					"0"
+		
+	"ac9_launchFromJoint"			"1"
+		
+	"ac9_ammopercharge"				"500"
+	"ac9_chargetime"				"7"
+
+	"ac9_mtr_flashShader"			"lights/muzzleflash"
+	"ac9_flashColor"				"1 0.2 0.2"
+	"ac9_flashRadius"				"500"
+	"ac9_flashPointLight"			"1"
+	"ac9_flashTime"					".1"
+	"ac9_flashOffset"				"30 0 0"
+	
+	"ac9_shakeTime"					"400"
+	"ac9_shakeMagnitude"			"4"
+
+	"ac9_fx_muzzleflash"			"effects/vehicles/walker/rocket/muzzleflash.fx"
+	"ac9_snd_fire"					"weapon_hyperblaster_fire"	
+	"ac9_snd_reload"				"weapon_hyperblaster_cell_in"
+	"ac9_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_hyperblaster"
 
 }
 
@@ -527,46 +658,38 @@ entityDef vehicle_walker_weapon_rocket
 	// "joint4"					"Rocket4"
 	// "joint5"					"Rocket5"
 	// "joint6"					"Rocket6"
-	
-	// ---------------- ROCKETS ------------------
-
-	"ac0_firedelay"					".3"
-	"ac0_def_projectile"		"projectile_walker_rocket"
-	"ac0_spread"					"2"
-	"ac0_convergeRate"				".5"
-		
-	"ac0_launchFromJoint"			"1"
-		
-	"ac0_ammopercharge"				"6"
-	"ac0_chargetime"				"3"
-	
-	"ac0_lockrange"					"4095"
-
-	"ac0_mtr_flashShader"			"lights/muzzleflash"
-	"ac0_flashColor"				"1 0.8 0.4"
-	"ac0_flashRadius"				"350"
-	"ac0_flashPointLight"			"1"
-	"ac0_flashTime"					".1"
-	"ac0_flashOffset"				"30 0 0"
-	
-	"ac0_shakeTime"					"400"
-	"ac0_shakeMagnitude"			"2"
-
-	"ac0_fx_muzzleflash"			"effects/vehicles/walker/rocket/muzzleflash.fx"
-	"ac0_snd_fire"					"vehicle_walker_rockets"	
-	"ac0_snd_reload"				"vehicle_walker_rocket_reload"
-	"ac0_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_nailgun"
-	
-	"ac0_guideTowardsDir"			"1"
-	
-	"ac0_lockScanning"				"1"
-	"ac0_fx_guide"					"effects/vehicles/walker/rocket/guide.fx"
 
 	// ---------------- MINIGUN ------------------
 
-	"ac1_firedelay"					".1"
+	"ac0_firedelay"					".1"
+	"ac0_def_hitscan"			"hitscan_walker_bullet"
+	"ac0_spread"					"2"
+
+	"ac0_ammopercharge"				"100"
+	"ac0_chargetime"				"5"
+
+//	"mtr_flashShader"			"lights/muzzleflash"
+//	"flashColor"				"1 0.8 0.4"
+//	"flashRadius"				"400"
+//	"flashPointLight"			"1"
+//	"flashTime"					".1"
+//	"flashOffset"				"0 0 0"
+	
+	"ac0_recoilTime"				"100"
+	"ac0_recoilAngles"				"-.25 .25 0"
+	
+	"ac0_fx_muzzleflash"			"effects/vehicles/walker/machinegun/muzzleflash.fx"
+	"ac0_snd_fire"					"vehicle_walker_machinegun"
+	"ac0_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_machinegun"
+
+	// ---------------- HANDGUN ------------------
+
+	"ac1_firedelay"				"0.5"
 	"ac1_def_hitscan"			"hitscan_walker_bullet"
-	"ac1_spread"					"2"
+	"ac1_spread"				"0"
+
+	"ac1_ammopercharge"				"15"
+	"ac1_chargetime"				"4"
 
 //	"mtr_flashShader"			"lights/muzzleflash"
 //	"flashColor"				"1 0.8 0.4"
@@ -593,7 +716,7 @@ entityDef vehicle_walker_weapon_rocket
 	"ac2_chargetime"				"3"
 
 //	"mtr_flashShader"			"lights/muzzleflash"
-//	"flashColor"				"1 0.8 0.4"
+//	"flashColor"				"0.54 0.84 1"
 //	"flashRadius"				"400"
 //	"flashPointLight"			"1"
 //	"flashTime"					".1"
@@ -604,8 +727,147 @@ entityDef vehicle_walker_weapon_rocket
 	
 	"ac2_fx_muzzleflash"			"effects/vehicles/walker/machinegun/muzzleflash.fx"
 	"ac2_snd_fire"					"weapon_shotgun_fire"
-	"ac2_snd_reload"				"weapon_shotgun_pump1"
+	"ac2_snd_reload"				"weapon_shotgun_clipin"
 	"ac2_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_shotgun"
+
+	// ---------------- LASER MINI ------------------
+
+	"ac3_firedelay"					".1"
+	"ac3_def_projectile"		"projectile_walker_lasermini"
+	"ac3_spread"					"2"
+		
+	"ac3_launchFromJoint"			"1"
+		
+	"ac3_ammopercharge"				"100"
+	"ac3_chargetime"				"5"
+
+	"ac3_mtr_flashShader"			"lights/muzzleflash"
+	"ac3_flashColor"				"0.54 0.84 1"
+	"ac3_flashRadius"				"300"
+	"ac3_flashPointLight"			"1"
+	"ac3_flashTime"					".1"
+	"ac3_flashOffset"				"30 0 0"
+	
+	"ac3_recoilTime"				"100"
+	"ac3_recoilAngles"				"-.25 .25 0"
+
+	"ac3_fx_muzzleflash"			"effects/vehicles/walker/rocket/muzzleflash.fx"
+	"ac3_snd_fire"					"weapon_hyperblaster_fire"	
+	"ac3_snd_reload"				"weapon_hyperblaster_cell_in"
+	"ac3_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_hyperblaster"
+
+	// ---------------- LASER SHOTGUN ------------------
+
+	"ac4_firedelay"					"1.0"
+	"ac4_def_projectile"		"projectile_walker_lasershotgun"
+	"ac4_spread"					"6"
+	"ac4_count"						"10"
+		
+	"ac4_ammopercharge"				"8"
+	"ac4_chargetime"				"3"
+
+	"ac4_mtr_flashShader"			"lights/muzzleflash"
+	"ac4_flashColor"				"0.54 0.84 1"
+	"ac4_flashRadius"				"300"
+	"ac4_flashPointLight"			"1"
+	"ac4_flashTime"					".1"
+	"ac4_flashOffset"				"30 0 0"
+	
+	"ac4_shakeTime"					"400"
+	"ac4_shakeMagnitude"			"2"
+
+	"ac4_fx_muzzleflash"			"effects/vehicles/walker/rocket/muzzleflash.fx"
+	"ac4_snd_fire"					"weapon_hyperblaster_fire"	
+	"ac4_snd_reload"				"weapon_hyperblaster_cell_in"
+	"ac4_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_hyperblaster"
+
+	// ---------------- ROCKETS ------------------
+
+	"ac7_firedelay"					".3"
+	"ac7_def_projectile"		"projectile_walker_rocket"
+	"ac7_spread"					"6"
+	"ac7_count"						"4"
+	"ac7_convergeRate"				".5"
+		
+	"ac7_launchFromJoint"			"1"
+		
+	"ac7_ammopercharge"				"1"
+	"ac7_chargetime"				"3"
+	
+	"ac7_lockrange"					"4095"
+
+	"ac7_mtr_flashShader"			"lights/muzzleflash"
+	"ac7_flashColor"				"1 0.8 0.4"
+	"ac7_flashRadius"				"350"
+	"ac7_flashPointLight"			"1"
+	"ac7_flashTime"					".1"
+	"ac7_flashOffset"				"30 0 0"
+	
+	"ac7_shakeTime"					"400"
+	"ac7_shakeMagnitude"			"2"
+
+	"ac7_fx_muzzleflash"			"effects/vehicles/walker/rocket/muzzleflash.fx"
+	"ac7_snd_fire"					"vehicle_walker_rockets"	
+	"ac7_snd_reload"				"vehicle_walker_rocket_reload"
+	"ac7_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_nailgun"
+	
+	"ac7_guideTowardsDir"			"1"
+	
+	"ac7_lockScanning"				"1"
+	"ac7_fx_guide"					"effects/vehicles/walker/rocket/guide.fx"
+
+	// ---------------- SONGBIRDS ------------------
+
+	"ac8_firedelay"					".3"
+	"ac8_def_projectile"		"projectile_walker_songbird"
+	"ac8_spread"					"1"
+	"ac8_count"						"2"
+		
+	"ac8_launchFromJoint"			"1"
+		
+	"ac8_ammopercharge"				"1"
+	"ac8_chargetime"				"3"
+
+	"ac8_mtr_flashShader"			"lights/muzzleflash"
+	"ac8_flashColor"				"1 0.8 0.4"
+	"ac8_flashRadius"				"350"
+	"ac8_flashPointLight"			"1"
+	"ac8_flashTime"					".1"
+	"ac8_flashOffset"				"30 0 0"
+	
+	"ac8_shakeTime"					"400"
+	"ac8_shakeMagnitude"			"2"
+
+	"ac8_fx_muzzleflash"			"effects/vehicles/walker/rocket/muzzleflash.fx"
+	"ac8_snd_fire"					"player_grenadelauncher_fire"	
+	"ac8_snd_reload"				"player_grenadelauncher_clipin"
+	"ac8_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_grenadelauncher"
+
+	// ---------------- CORAL OSCILLATOR ------------------
+
+	"ac9_firedelay"					".02"
+	"ac9_def_projectile"		"projectile_walker_coraloscillator"
+	"ac9_spread"					"0"
+		
+	"ac9_launchFromJoint"			"1"
+		
+	"ac9_ammopercharge"				"500"
+	"ac9_chargetime"				"7"
+
+	"ac9_mtr_flashShader"			"lights/muzzleflash"
+	"ac9_flashColor"				"1 0.2 0.2"
+	"ac9_flashRadius"				"500"
+	"ac9_flashPointLight"			"1"
+	"ac9_flashTime"					".1"
+	"ac9_flashOffset"				"30 0 0"
+	
+	"ac9_shakeTime"					"400"
+	"ac9_shakeMagnitude"			"4"
+
+	"ac9_fx_muzzleflash"			"effects/vehicles/walker/rocket/muzzleflash.fx"
+	"ac9_snd_fire"					"weapon_hyperblaster_fire"	
+	"ac9_snd_reload"				"weapon_hyperblaster_cell_in"
+	"ac9_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_hyperblaster"
 }
 
 entityDef vehicle_walker_weapon_main
@@ -766,6 +1028,183 @@ entityDef projectile_walker_main_cin
 	"fx_impact"					""
 	"def_damage"					""
 
+}
+
+entityDef projectile_walker_lasermini
+{
+	"inherit"					"projectile_blaster"
+
+	"size"						"3 3 3"
+	"cone"						"2"
+	"clipmask_largeshot"		"0"
+	"def_damage"				"damage_hyperblaster"
+	
+	"speed"						"2200"
+	"orient_towards_motion"		"1"
+
+	"fx_impact"			"effects/weapons/hyperblaster/impact_default.fx"
+	"fx_fly"			"effects/weapons/hyperblaster/fly.fx"
+	"fx_impact_concrete"		"effects/weapons/hyperblaster/impact_concrete.fx"
+	"fx_impact_rock"		"effects/weapons/hyperblaster/impact_concrete.fx"
+	"fx_impact_glass"		"effects/weapons/hyperblaster/impact_glass.fx"					
+	"fx_impact_bpglass"		"effects/weapons/hyperblaster/impact_bpglass.fx"
+	"fx_impact_electronics"		"effects/weapons/hyperblaster/impact_electronics.fx"	
+	"fx_impact_flesh"		"effects/weapons/hyperblaster/impact_flesh.fx"
+	"fx_impact_monstermetal"	"effects/weapons/hyperblaster/impact_flesh.fx"	
+	"fx_trail"			""
+	"fx_impact_mp"			"effects/weapons/hyperblaster/impact_default_mp.fx"
+	"fx_impact_concrete_mp"		"effects/weapons/hyperblaster/impact_default_mp.fx"
+	"fx_impact_rock_mp"		"effects/weapons/hyperblaster/impact_default_mp.fx"
+	"fx_impact_glass_mp"		"effects/weapons/hyperblaster/impact_default_mp.fx"
+	"fx_impact_bpglass_mp"		"effects/weapons/hyperblaster/impact_default_mp.fx"
+	"fx_impact_electronics_mp"	"effects/weapons/hyperblaster/impact_default_mp.fx"
+	
+	"fx_teleport_enter"		"effects/mp/item_teleport.fx"
+	"fx_teleport"			"effects/mp/item_teleport.fx"
+}
+
+entityDef projectile_walker_lasershotgun
+{
+	"spawnclass"				"idProjectile"
+	"mins"						"-2 -2 -2"
+	"maxs"						"2 2 2"
+	"cone"						"2"
+	"noshadows"					"1"
+																
+	"def_damage"				"damage_blaster"
+								
+	"velocity"					"3000 0 0"
+	"fuse"						"0.3"
+	"push"						"7500"
+								
+	"detonate_on_fuse"			"1"
+	"detonate_on_death"			"0"
+	"detonate_on_world"			"1"
+	"detonate_on_actor"			"1"
+								
+	"impact_gib"				"1"
+								
+	"decal_bounce"				""
+	"decal_size"				"8"
+								
+	"fx_fly"					"effects/weapons/blaster/fly.fx"
+	"fx_impact"					"effects/weapons/blaster/impact_default.fx"
+	"fx_impact_water"			"effects/ambient/splash_smll.fx"
+	"fx_impact_flesh"			"effects/weapons/blaster/impact_flesh.fx"
+	"fx_impact_monstermetal"	"effects/weapons/blaster/impact_monstermetal.fx"
+	"fx_impact_electronics"		"effects/weapons/machinegun/impact_electronics.fx"
+	"fx_impact_armor"			"effects/weapons/machinegun/impact_armor.fx"
+	
+	"fx_teleport_enter"		"effects/mp/item_teleport.fx"
+	"fx_teleport"			"effects/mp/item_teleport.fx"
+}
+
+entityDef projectile_walker_songbird
+{
+	"spawnclass"				"idProjectile"
+	"mins"						"-4 -4 -4"
+	"maxs"						"4 4 4"
+	"cone"						""
+	"noshadows"					"1"
+	"clipmask_largeshot"		"1"
+	
+	"no_contents"				"0"
+								
+	"model"						"models/weapons/grenadelauncher/w_grenade.lwo"
+	"def_damage"				"damage_grenadeDirect"
+	"def_splash_damage"			"damage_grenadeSplash"
+																											
+	"speed"						"1500"
+	"angular_velocity"			"-10 5 1"
+	"settle_duration"			"0.08"
+	
+	"linear_friction"			"0"
+	"angular_friction"			"0"
+	"contact_friction"			"10"
+	"bounce"					".65"
+	"gravity"					"1"
+	"fuse"						"3"
+								
+	"detonate_on_fuse"			"1"
+	"detonate_on_death"			"0"
+	"detonate_on_world"			"1"
+	"detonate_on_actor"			"1"
+	"detonateTestGroundMaterial"	"1"
+								
+	"impact_gib"				"1"								
+	"decal_size"				"75"
+
+	"flyEffectAttenuateSpeed"	"200"
+	
+	"airBurst_desc"				"midair_"
+
+	"fx_fly"				"effects/weapons/grenadelauncher/trail.fx"
+	"fx_fly_mp"				"effects/weapons/grenadelauncher/trail_mp.fx"
+	"fx_detonate"				"effects/weapons/grenadelauncher/detonate.fx"
+	"fx_detonate_mp"			"effects/weapons/rocketlauncher/detonate_mp.fx"
+	"fx_impact"				"effects/weapons/grenadelauncher/impact.fx"
+	"fx_impact_mp"				"effects/weapons/rocketlauncher/impact_mp.fx"
+	"fx_impact_concrete"			"effects/weapons/grenadelauncher/impact_concrete.fx"
+	"fx_impact_concrete_mp"			"effects/weapons/rocketlauncher/impact_mp.fx"
+	"fx_impact_rock"			"effects/weapons/grenadelauncher/impact_concrete.fx"
+	"fx_impact_rock_mp"			"effects/weapons/rocketlauncher/impact_mp.fx"
+	"fx_impact_water"			"effects/ambient/splash_med.fx"
+
+	"friendly_impact"			"1"
+
+	"snd_ricochet"				"grenade_bounce"	
+
+	"net_syncPhysics"			"1"
+	
+	"fx_teleport_enter"		"effects/mp/item_teleport.fx"
+	"fx_teleport"			"effects/mp/item_teleport.fx"
+}
+
+entityDef projectile_walker_coraloscillator
+{
+	"spawnclass"				"rvDarkMatterProjectile"
+	"mins"					"-4 -4 -4"
+	"maxs"					"4 4 4"
+	"cone"					""
+	"noshadows"				"1"
+	"clipmask_largeshot"			"1"
+	
+	"no_contents"				"1"
+								
+	"def_splash_damage"			"damage_dmg_splash"
+
+	"def_radius_damage"			"damage_dmg_fly"
+	"damageRate"				".05"
+																											
+	"speed"					"2000"
+	
+	"delay_splash"				".1"
+	
+	"linear_friction"			"0"
+	"angular_friction"			"0"
+	"contact_friction"			"10"
+	"fuse"					"4"
+								
+	"detonate_on_fuse"			"1"
+	"detonate_on_death"			"0"
+	"detonate_on_world"			"1"
+	"detonate_on_actor"			"0"
+								
+	"impact_gib"				"1"								
+	"decal_size"				"75"
+
+	"flyEffectAttenuateSpeed"		"200"
+
+	"fx_fly"				"effects/weapons/smccoraloscillator/fly.fx"
+	"fx_detonate"				"effects/weapons/smccoraloscillator/impact_default.fx"
+	"fx_impact"				"effects/weapons/smccoraloscillator/impact_default.fx"
+	"fx_impact_water"			"effects/ambient/splash_med.fx"
+
+	"snd_ricochet"				"grenade_bounce"	
+	"snd_fly"				"weapon_darkmatter_energy_loop"
+	
+	"fx_teleport_enter"		"effects/mp/item_teleport.fx"
+	"fx_teleport"			"effects/mp/item_teleport.fx"
 }
 
 //------------------------------------------------------------------------------
