@@ -146,6 +146,8 @@ void rvVehicleWalker::LoadPartConfig( void ) {
 		enEfficiency -= 0.2f;
 		enOutput += 0.5f;
 		break;
+	case 3:
+		break;
 	}
 
 	switch (cvarSystem->GetCVarInteger("ac_leg_part")) {
@@ -153,12 +155,7 @@ void rvVehicleWalker::LoadPartConfig( void ) {
 		break;
 	case 2:
 		break;
-	}
-
-	switch (cvarSystem->GetCVarInteger("ac_arm_part")) {
-	case 1:
-		break;
-	case 2:
+	case 3:
 		break;
 	}
 
@@ -166,6 +163,10 @@ void rvVehicleWalker::LoadPartConfig( void ) {
 	case 1:
 		break;
 	case 2:
+		break;
+	case 3:
+		break;
+	case 4:
 		break;
 	}
 }

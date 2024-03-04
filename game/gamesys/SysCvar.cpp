@@ -611,7 +611,6 @@ idCVar net_warnStale( "net_warnStale", "1", CVAR_INTEGER | CVAR_GAME | CVAR_NOCH
 // MODDER BEGIN
 
 idCVar ac_torso_part(				"ac_torso_part",			"1",				CVAR_GAME | CVAR_INTEGER, "the torso part of the ac");
-idCVar ac_arm_part(					"ac_arm_part",				"1",				CVAR_GAME | CVAR_INTEGER, "the arm part of the ac");
 idCVar ac_leg_part(					"ac_leg_part",				"1",				CVAR_GAME | CVAR_INTEGER, "the leg part of the ac");
 idCVar ac_engine_part(				"ac_engine_part",			"1",				CVAR_GAME | CVAR_INTEGER, "the engine part of the ac");
 idCVar ac_left_weapon(				"ac_left_weapon",			"0",				CVAR_GAME | CVAR_INTEGER, "the ac's left weapon value");

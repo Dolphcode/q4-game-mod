@@ -15213,7 +15213,7 @@ windowDef Desktop
 					rect	182,244,266,114
 					visible	1
 					forecolor	1,1,1,0.8
-					text	"entire game is set inside the walker. In the game you'll notice some HUD changes. You will be able to view both your left and right hand weapon's ammo and in the bottom right corner of the screen you will be able to track your SMC walker's energy level as it is used up by dashing and the assault boost.\n\nAnother core mechanic is mech customization. From the main menu you can switch out your mech's left and right hand armament, as well as its torso, legs, and arms.\nThe SMC's weight impacts its max speed while its handling impacts its acceleration.\nEnergy efficiency impacts how much energy is used by things like dashing while energy output dictates the speed of dashes and the assault boost, both impact your maximum energy cap.\n\nYou can equip one of ten unique weapons onto your left and right shoulder in this menu as well.\n\nFinally I have provided a testing environment with various mobs to test your SMC walker against, which you can access right here in the main menu, so go wild with your builds!"
+					text	"entire game is set inside the walker. In the game you'll notice some HUD changes. You will be able to view both your left and right hand weapon's ammo and in the bottom right corner of the screen you will be able to track your SMC walker's energy level as it is used up by dashing and the assault boost.\n\nAnother core mechanic is mech customization. From the main menu you can switch out your mech's left and right hand armament, as well as its torso, legs, and engine.\nThe SMC's weight impacts its max speed while its handling impacts its acceleration.\nEnergy efficiency impacts how much energy is used by things like dashing while energy output dictates the speed of dashes and the assault boost, both impact your maximum energy cap.\n\nTo playtest your mech just start a new game and the player will automatically spawn inside of the SMC walker. You'll be able to get the overall feel of controlling your mech in the first level's map, and you can use console commands to spawn enemies to test yourself against."
 					textscale	0.1
 					font	"fonts/lowpixel"
 				}
@@ -15284,6 +15284,16 @@ windowDef Desktop
 					set "pop_b_mech_r8::visible" "1" ;
 					set "pop_b_mech_r9::visible" "1" ;
 					set "pop_b_mech_r10::visible" "1" ;
+					set "pop_b_mech_p1::visible" "1" ;
+					set "pop_b_mech_p2::visible" "1" ;
+					set "pop_b_mech_p3::visible" "1" ;
+					set "pop_b_mech_p4::visible" "1" ;
+					set "pop_b_mech_p5::visible" "1" ;
+					set "pop_b_mech_p6::visible" "1" ;
+					set "pop_b_mech_p7::visible" "1" ;
+					set "pop_b_mech_p8::visible" "1" ;
+					set "pop_b_mech_p9::visible" "1" ;
+					set "pop_b_mech_p10::visible" "1" ;
 					
 				}
 
@@ -15309,10 +15319,20 @@ windowDef Desktop
 					set "pop_b_mech_r8::visible" "0" ;
 					set "pop_b_mech_r9::visible" "0" ;
 					set "pop_b_mech_r10::visible" "0" ;
+					set "pop_b_mech_p1::visible" "0" ;
+					set "pop_b_mech_p2::visible" "0" ;
+					set "pop_b_mech_p3::visible" "0" ;
+					set "pop_b_mech_p4::visible" "0" ;
+					set "pop_b_mech_p5::visible" "0" ;
+					set "pop_b_mech_p6::visible" "0" ;
+					set "pop_b_mech_p7::visible" "0" ;
+					set "pop_b_mech_p8::visible" "0" ;
+					set "pop_b_mech_p9::visible" "0" ;
+					set "pop_b_mech_p10::visible" "0" ;
 					
 				}
 
-				windowDef pop_mech_text2
+				windowDef pop_mech_desc
 				{
 					rect	46,265,181,90
 					visible	1
@@ -15342,14 +15362,14 @@ windowDef Desktop
 				}
 				windowDef pop_mech_no
 				{
-					rect	477,352,120,30
+					rect	468,374,120,30
 					visible	1
 					background	"gfx/guis/mainmenu/b4_light"
 					matcolor	0.501,0,0,0.4
 				}
 				windowDef pop_mech_t_no
 				{
-					rect	497,354,88,17
+					rect	488,376,88,17
 					visible	1
 					forecolor	1,1,1,0.8
 					text	"OKAY"
@@ -15358,7 +15378,7 @@ windowDef Desktop
 				}
 				windowDef pop_mech_no_corner
 				{
-					rect	487,360,11,11
+					rect	478,382,11,11
 					visible	1
 					background	"gfx/guis/mainmenu/corner"
 					matcolor	1,0.501,0.501,0.4
@@ -15849,6 +15869,236 @@ windowDef Desktop
 				windowDef pop_mech_corner_r10
 				{
 					rect	366,352,8,10
+					visible	1
+					background	"gfx/guis/mainmenu/corner"
+					matcolor	1,0.501,0.501,0.4
+				}
+				windowDef pop_mech_p1
+				{
+					rect	480,137,95,27
+					visible	1
+					background	"gfx/guis/mainmenu/b4_light"
+					matcolor	0.501,0,0,0.4
+				}
+				windowDef pop_mech_t_p1
+				{
+					rect	496,139,70,16
+					visible	1
+					forecolor	1,1,1,0.8
+					text	"\"ARROW\" LIGHT\nTORSO"
+					textscale	0.1
+					font	"fonts/marine"
+				}
+				windowDef pop_mech_corner_p1
+				{
+					rect	488,144,9,10
+					visible	1
+					background	"gfx/guis/mainmenu/corner"
+					matcolor	1,0.501,0.501,0.4
+				}
+				windowDef pop_mech_p2
+				{
+					rect	480,161,95,27
+					visible	1
+					background	"gfx/guis/mainmenu/b4_light"
+					matcolor	0.501,0,0,0.4
+				}
+				windowDef pop_mech_t_p2
+				{
+					rect	496,164,70,16
+					visible	1
+					forecolor	1,1,1,0.8
+					text	"\"COULOMB\" POWER\nTORSO"
+					textscale	0.1
+					font	"fonts/marine"
+				}
+				windowDef pop_mech_corner_p2
+				{
+					rect	488,168,8,10
+					visible	1
+					background	"gfx/guis/mainmenu/corner"
+					matcolor	1,0.501,0.501,0.4
+				}
+				windowDef pop_mech_p3
+				{
+					rect	480,184,95,27
+					visible	1
+					background	"gfx/guis/mainmenu/b4_light"
+					matcolor	0.501,0,0,0.4
+				}
+				windowDef pop_mech_t_p3
+				{
+					rect	496,187,70,16
+					visible	1
+					forecolor	1,1,1,0.8
+					text	"\"SATURN\" DYNAMIC TORSO"
+					textscale	0.1
+					font	"fonts/marine"
+				}
+				windowDef pop_mech_corner_p3
+				{
+					rect	488,191,8,10
+					visible	1
+					background	"gfx/guis/mainmenu/corner"
+					matcolor	1,0.501,0.501,0.4
+				}
+				windowDef pop_mech_p4
+				{
+					rect	480,207,95,27
+					visible	1
+					background	"gfx/guis/mainmenu/b4_light"
+					matcolor	0.501,0,0,0.4
+				}
+				windowDef pop_mech_t_p4
+				{
+					rect	496,210,70,16
+					visible	1
+					forecolor	1,1,1,0.8
+					text	"DOUBLE JOINTED\nLEGS"
+					textscale	0.1
+					font	"fonts/marine"
+				}
+				windowDef pop_mech_corner_p4
+				{
+					rect	488,214,8,10
+					visible	1
+					background	"gfx/guis/mainmenu/corner"
+					matcolor	1,0.501,0.501,0.4
+				}
+				windowDef pop_mech_p5
+				{
+					rect	480,230,95,27
+					visible	1
+					background	"gfx/guis/mainmenu/b4_light"
+					matcolor	0.501,0,0,0.4
+				}
+				windowDef pop_mech_t_p5
+				{
+					rect	497,234,70,16
+					visible	1
+					forecolor	1,1,1,0.8
+					text	"CHEETAH-FORM\nLEGS"
+					textscale	0.1
+					font	"fonts/marine"
+				}
+				windowDef pop_mech_corner_p5
+				{
+					rect	488,237,8,10
+					visible	1
+					background	"gfx/guis/mainmenu/corner"
+					matcolor	1,0.501,0.501,0.4
+				}
+				windowDef pop_mech_p6
+				{
+					rect	480,253,95,27
+					visible	1
+					background	"gfx/guis/mainmenu/b4_light"
+					matcolor	0.501,0,0,0.4
+				}
+				windowDef pop_mech_t_p6
+				{
+					rect	497,257,70,16
+					visible	1
+					forecolor	1,1,1,0.8
+					text	"COMBUSTION\nLEGS"
+					textscale	0.1
+					font	"fonts/marine"
+				}
+				windowDef pop_mech_corner_p6
+				{
+					rect	488,260,8,10
+					visible	1
+					background	"gfx/guis/mainmenu/corner"
+					matcolor	1,0.501,0.501,0.4
+				}
+				windowDef pop_mech_p7
+				{
+					rect	480,276,95,27
+					visible	1
+					background	"gfx/guis/mainmenu/b4_light"
+					matcolor	0.501,0,0,0.4
+				}
+				windowDef pop_mech_t_p7
+				{
+					rect	497,280,70,16
+					visible	1
+					forecolor	1,1,1,0.8
+					text	"ZERO-LOAD\nENGINE"
+					textscale	0.1
+					font	"fonts/marine"
+				}
+				windowDef pop_mech_corner_p7
+				{
+					rect	488,283,8,10
+					visible	1
+					background	"gfx/guis/mainmenu/corner"
+					matcolor	1,0.501,0.501,0.4
+				}
+				windowDef pop_mech_p8
+				{
+					rect	480,299,95,27
+					visible	1
+					background	"gfx/guis/mainmenu/b4_light"
+					matcolor	0.501,0,0,0.4
+				}
+				windowDef pop_mech_t_p8
+				{
+					rect	497,303,70,16
+					visible	1
+					forecolor	1,1,1,0.8
+					text	"CALCULATOR CORE\nENGINE"
+					textscale	0.1
+					font	"fonts/marine"
+				}
+				windowDef pop_mech_corner_p8
+				{
+					rect	488,306,8,10
+					visible	1
+					background	"gfx/guis/mainmenu/corner"
+					matcolor	1,0.501,0.501,0.4
+				}
+				windowDef pop_mech_p9
+				{
+					rect	480,322,95,27
+					visible	1
+					background	"gfx/guis/mainmenu/b4_light"
+					matcolor	0.501,0,0,0.4
+				}
+				windowDef pop_mech_t_p9
+				{
+					rect	497,326,70,16
+					visible	1
+					forecolor	1,1,1,0.8
+					text	"NUCLEAR CORE\nENGINE"
+					textscale	0.1
+					font	"fonts/marine"
+				}
+				windowDef pop_mech_corner_p9
+				{
+					rect	488,329,8,10
+					visible	1
+					background	"gfx/guis/mainmenu/corner"
+					matcolor	1,0.501,0.501,0.4
+				}
+				windowDef pop_mech_p10
+				{
+					rect	480,345,95,27
+					visible	1
+					background	"gfx/guis/mainmenu/b4_light"
+					matcolor	0.501,0,0,0.4
+				}
+				windowDef pop_mech_t_p10
+				{
+					rect	497,349,70,16
+					visible	1
+					forecolor	1,1,1,0.8
+					text	"GREEN-TECH\nENGINE"
+					textscale	0.1
+					font	"fonts/marine"
+				}
+				windowDef pop_mech_corner_p10
+				{
+					rect	488,352,8,10
 					visible	1
 					background	"gfx/guis/mainmenu/corner"
 					matcolor	1,0.501,0.501,0.4
@@ -25874,7 +26124,7 @@ windowDef Desktop
 		}
 		windowDef pop_b_mech_back
 		{
-			rect	460,351,125,23
+			rect	456,374,125,23
 			visible	0
 
 			onMouseEnter {
@@ -25925,6 +26175,7 @@ windowDef Desktop
 					set "pop_mech_t_l1::textscale" "0.11" ; 
 					
 					set "cmd" "play main_menu_mouseover" ;	
+					set "pop_mech_desc::text" "Standard grade gatling guns with a high fire rate and magazine size, as well as a middling reload time. Perfect for mowing down your enemies."
 				}
 			}
 
@@ -25961,6 +26212,7 @@ windowDef Desktop
 					set "pop_mech_t_l2::textscale" "0.11" ; 
 					
 					set "cmd" "play main_menu_mouseover" ;	
+					set "pop_mech_desc::text" "The Zimmermans are top tier shotgun-style kinetic weapons, most effective in close range due to the large spread of its fire"
 				}
 			}
 
@@ -25997,6 +26249,7 @@ windowDef Desktop
 					set "pop_mech_t_l3::textscale" "0.11" ; 
 					
 					set "cmd" "play main_menu_mouseover" ;	
+					set "pop_mech_desc::text" "The Duckett is a handgun style firearm with heavy stopping power and middling reload times, most reliable for its consistent accuracy and concentrated fire"
 				}
 			}
 
@@ -26033,6 +26286,8 @@ windowDef Desktop
 					set "pop_mech_t_l4::textscale" "0.11" ; 
 					
 					set "cmd" "play main_menu_mouseover" ;	
+					set "pop_mech_desc::text" "The lightweight GU-A2 pulse gun is a rapid firing laser machine gun, excellent for penetrating armor that normal kinetic rounds struggle with"
+					
 				}
 			}
 
@@ -26069,6 +26324,8 @@ windowDef Desktop
 					set "pop_mech_t_l5::textscale" "0.11" ; 
 					
 					set "cmd" "play main_menu_mouseover" ;	
+					set "pop_mech_desc::text" "The Wuerger is a pulse shotgun, designed to overload energy-based systems at close range similar to the kinetic shotguns"
+					
 				}
 			}
 
@@ -26105,6 +26362,7 @@ windowDef Desktop
 					set "pop_mech_t_l6::textscale" "0.11" ; 
 					
 					set "cmd" "play main_menu_mouseover" ;	
+					set "pop_mech_desc::text" "The laser rifle is a laser weapon designed to hit targets at a distance, featuring both range and spread to minimize the odds of missing while still packing substantial firepower"
 				}
 			}
 
@@ -26141,6 +26399,7 @@ windowDef Desktop
 					set "pop_mech_t_l7::textscale" "0.11" ; 
 					
 					set "cmd" "play main_menu_mouseover" ;	
+					set "pop_mech_desc::text" "The stun needle launcher is an electrically based ranged firearm with an immense amount of firepower. Remnants of old log files indicate it was initially designed to penetrate the unique barrier boasted by an autonomous weapon at some location. Further information could not be recovered due to the corruption of said log files."
 				}
 			}
 
@@ -26177,6 +26436,7 @@ windowDef Desktop
 					set "pop_mech_t_l8::textscale" "0.11" ; 
 					
 					set "cmd" "play main_menu_mouseover" ;	
+					set "pop_mech_desc::text" "The dual missile launchers consist of twin missile docks which can each be loaded with two missiles at a time, allowing for one launcher to launch four homing missiles consecutively."
 				}
 			}
 
@@ -26213,6 +26473,7 @@ windowDef Desktop
 					set "pop_mech_t_l9::textscale" "0.11" ; 
 					
 					set "cmd" "play main_menu_mouseover" ;	
+					set "pop_mech_desc::text" "The songbird is a uniquely designed grenade launcher, which releases a pair of grenades with some spread to create explosions with greater coverage."
 				}
 			}
 
@@ -26249,6 +26510,7 @@ windowDef Desktop
 					set "pop_mech_t_l10::textscale" "0.11" ; 
 					
 					set "cmd" "play main_menu_mouseover" ;	
+					set "pop_mech_desc::text" "A shoulder mounted laser capable of disintegrating most known organic and inorganic materials. Corrupted log files reveal some information about the piece of technology, however much of the information about its power source was corrupted. Highly experimental and to be considered highly dangerous."
 				}
 			}
 
@@ -26285,6 +26547,7 @@ windowDef Desktop
 					set "pop_mech_t_r1::textscale" "0.11" ; 
 					
 					set "cmd" "play main_menu_mouseover" ;	
+					set "pop_mech_desc::text" "Standard grade gatling guns with a high fire rate and magazine size, as well as a middling reload time. Perfect for mowing down your enemies."
 				}
 			}
 
@@ -26321,6 +26584,7 @@ windowDef Desktop
 					set "pop_mech_t_r2::textscale" "0.11" ; 
 					
 					set "cmd" "play main_menu_mouseover" ;	
+					set "pop_mech_desc::text" "The Zimmermans are top tier shotgun-style kinetic weapons, most effective in close range due to the large spread of its fire""
 				}
 			}
 
@@ -26357,6 +26621,7 @@ windowDef Desktop
 					set "pop_mech_t_r3::textscale" "0.11" ; 
 					
 					set "cmd" "play main_menu_mouseover" ;	
+					set "pop_mech_desc::text" "The Duckett is a handgun style firearm with heavy stopping power and middling reload times, most reliable for its consistent accuracy and concentrated fire"
 				}
 			}
 
@@ -26393,6 +26658,7 @@ windowDef Desktop
 					set "pop_mech_t_r4::textscale" "0.11" ; 
 					
 					set "cmd" "play main_menu_mouseover" ;	
+					set "pop_mech_desc::text" "The lightweight GU-A2 pulse gun is a rapid firing laser machine gun, excellent for penetrating armor that normal kinetic rounds struggle with"
 				}
 			}
 
@@ -26429,6 +26695,7 @@ windowDef Desktop
 					set "pop_mech_t_r5::textscale" "0.11" ; 
 					
 					set "cmd" "play main_menu_mouseover" ;	
+					set "pop_mech_desc::text" "The Wuerger is a pulse shotgun, designed to overload energy-based systems at close range similar to the kinetic shotguns"
 				}
 			}
 
@@ -26465,6 +26732,7 @@ windowDef Desktop
 					set "pop_mech_t_r6::textscale" "0.11" ; 
 					
 					set "cmd" "play main_menu_mouseover" ;	
+					set "pop_mech_desc::text" "The laser rifle is a laser weapon designed to hit targets at a distance, featuring both range and spread to minimize the odds of missing while still packing substantial firepower"
 				}
 			}
 
@@ -26501,6 +26769,7 @@ windowDef Desktop
 					set "pop_mech_t_r7::textscale" "0.11" ; 
 					
 					set "cmd" "play main_menu_mouseover" ;	
+					set "pop_mech_desc::text" "The stun needle launcher is an electrically based ranged firearm with an immense amount of firepower. Remnants of old log files indicate it was initially designed to penetrate the unique barrier boasted by an autonomous weapon at some location. Further information could not be recovered due to the corruption of said log files."
 				}
 			}
 
@@ -26537,6 +26806,7 @@ windowDef Desktop
 					set "pop_mech_t_r8::textscale" "0.11" ; 
 					
 					set "cmd" "play main_menu_mouseover" ;	
+					set "pop_mech_desc::text" "The dual missile launchers consist of twin missile docks which can each be loaded with two missiles at a time, allowing for one launcher to launch four homing missiles consecutively."
 				}
 			}
 
@@ -26573,6 +26843,7 @@ windowDef Desktop
 					set "pop_mech_t_r9::textscale" "0.11" ; 
 					
 					set "cmd" "play main_menu_mouseover" ;	
+					set "pop_mech_desc::text" "The songbird is a uniquely designed grenade launcher, which releases a pair of grenades with some spread to create explosions with greater coverage."
 				}
 			}
 
@@ -26609,6 +26880,7 @@ windowDef Desktop
 					set "pop_mech_t_r10::textscale" "0.11" ; 
 					
 					set "cmd" "play main_menu_mouseover" ;	
+					set "pop_mech_desc::text" "A shoulder mounted laser capable of disintegrating most known organic and inorganic materials. Corrupted log files reveal some information about the piece of technology, however much of the information about its power source was corrupted. Highly experimental and to be considered highly dangerous."
 				}
 			}
 
@@ -26624,6 +26896,376 @@ windowDef Desktop
 
 			onAction {
 				consoleCMD "ac_right_weapon 9" ;
+				consoleCMD "reloadWeapons" ;
+				set "cmd" "play main_menu_selection" ;
+			}
+
+		}
+		windowDef pop_b_mech_p1
+		{
+			rect	465,137,114,21
+			visible	0
+
+			onMouseEnter {
+				if ("desktop::active" == 0) {
+					stoptransitions "pop_b_mech_no" ;
+					
+					set "pop_mech_p1::matcolor_w" "0.8" ;
+					transition "pop_mech_t_p1::forecolor" "$desktop::white_8" "$desktop::orange" "0" ; 
+					transition "pop_mech_corner_p1::matcolor" "$desktop::corner" "$desktop::orange" "0" ;
+					
+					set "pop_mech_t_p1::textscale" "0.11" ; 
+					
+					set "cmd" "play main_menu_mouseover" ;	
+					set "pop_mech_desc::text" "A simple, lightweight frame composed of alloys with minimal weight for maximum maneuverability"
+				}
+			}
+
+			onMouseExit {
+				if ("desktop::active" == 0) {
+					transition "pop_mech_p1::matcolor_w" "0.8" "0.4" "300" ;
+					transition "pop_mech_t_p1::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ; 
+					transition "pop_mech_corner_p1::matcolor"  "$desktop::orange" "$desktop::corner" "300" ; 
+					
+					transition "pop_mech_t_p1::textscale" "0.11" "0.1" "300" ;
+				}
+			}
+
+			onAction {
+				consoleCMD "ac_torso_part 1" ;
+				consoleCMD "reloadWeapons" ;
+				set "cmd" "play main_menu_selection" ;
+			}
+
+		}
+		windowDef pop_b_mech_p2
+		{
+			rect	465,161,114,21
+			visible	0
+
+			onMouseEnter {
+				if ("desktop::active" == 0) {
+					stoptransitions "pop_b_mech_no" ;
+					
+					set "pop_mech_p2::matcolor_w" "0.8" ;
+					transition "pop_mech_t_p2::forecolor" "$desktop::white_8" "$desktop::orange" "0" ; 
+					transition "pop_mech_corner_p2::matcolor" "$desktop::corner" "$desktop::orange" "0" ;
+					
+					set "pop_mech_t_p2::textscale" "0.11" ; 
+					
+					set "cmd" "play main_menu_mouseover" ;	
+					set "pop_mech_desc::text" "A heavier frame designed to maximize its volume, fitted with smaller grade generators and parallel circuitry to increase energy output with no impact to energy efficiency"
+				}
+			}
+
+			onMouseExit {
+				if ("desktop::active" == 0) {
+					transition "pop_mech_p2::matcolor_w" "0.8" "0.4" "300" ;
+					transition "pop_mech_t_p2::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ; 
+					transition "pop_mech_corner_p2::matcolor"  "$desktop::orange" "$desktop::corner" "300" ; 
+					
+					transition "pop_mech_t_p2::textscale" "0.11" "0.1" "300" ;
+				}
+			}
+
+			onAction {
+				consoleCMD "ac_torso_part 2" ;
+				consoleCMD "reloadWeapons" ;
+				set "cmd" "play main_menu_selection" ;
+			}
+
+		}
+		windowDef pop_b_mech_p3
+		{
+			rect	464,184,114,21
+			visible	0
+
+			onMouseEnter {
+				if ("desktop::active" == 0) {
+					stoptransitions "pop_b_mech_no" ;
+					
+					set "pop_mech_p3::matcolor_w" "0.8" ;
+					transition "pop_mech_t_p3::forecolor" "$desktop::white_8" "$desktop::orange" "0" ; 
+					transition "pop_mech_corner_p3::matcolor" "$desktop::corner" "$desktop::orange" "0" ;
+					
+					set "pop_mech_t_p3::textscale" "0.11" ; 
+					
+					set "cmd" "play main_menu_mouseover" ;	
+					set "pop_mech_desc::text" "A dynamic frame of middling weight with energy conservation in mind, its shape also slightly increases the handling of the player's core"
+				}
+			}
+
+			onMouseExit {
+				if ("desktop::active" == 0) {
+					transition "pop_mech_p3::matcolor_w" "0.8" "0.4" "300" ;
+					transition "pop_mech_t_p3::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ; 
+					transition "pop_mech_corner_p3::matcolor"  "$desktop::orange" "$desktop::corner" "300" ; 
+					
+					transition "pop_mech_t_p3::textscale" "0.11" "0.1" "300" ;
+				}
+			}
+
+			onAction {
+				consoleCMD "ac_torso_part 3" ;
+				consoleCMD "reloadWeapons" ;
+				set "cmd" "play main_menu_selection" ;
+			}
+
+		}
+		windowDef pop_b_mech_p4
+		{
+			rect	465,207,114,21
+			visible	0
+
+			onMouseEnter {
+				if ("desktop::active" == 0) {
+					stoptransitions "pop_b_mech_no" ;
+					
+					set "pop_mech_p4::matcolor_w" "0.8" ;
+					transition "pop_mech_t_p4::forecolor" "$desktop::white_8" "$desktop::orange" "0" ; 
+					transition "pop_mech_corner_p4::matcolor" "$desktop::corner" "$desktop::orange" "0" ;
+					
+					set "pop_mech_t_p4::textscale" "0.11" ; 
+					
+					set "cmd" "play main_menu_mouseover" ;	
+					set "pop_mech_desc::text" "Double jointed legs are a new advancement in mech design which boasts a significant increase to handling at the expense of some weight and some energy output"
+				}
+			}
+
+			onMouseExit {
+				if ("desktop::active" == 0) {
+					transition "pop_mech_p4::matcolor_w" "0.8" "0.4" "300" ;
+					transition "pop_mech_t_p4::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ; 
+					transition "pop_mech_corner_p4::matcolor"  "$desktop::orange" "$desktop::corner" "300" ; 
+					
+					transition "pop_mech_t_p4::textscale" "0.11" "0.1" "300" ;
+				}
+			}
+
+			onAction {
+				consoleCMD "ac_leg_part 1" ;
+				consoleCMD "reloadWeapons" ;
+				set "cmd" "play main_menu_selection" ;
+			}
+
+		}
+		windowDef pop_b_mech_p5
+		{
+			rect	463,229,114,21
+			visible	0
+
+			onMouseEnter {
+				if ("desktop::active" == 0) {
+					stoptransitions "pop_b_mech_no" ;
+					
+					set "pop_mech_p5::matcolor_w" "0.8" ;
+					transition "pop_mech_t_p5::forecolor" "$desktop::white_8" "$desktop::orange" "0" ; 
+					transition "pop_mech_corner_p5::matcolor" "$desktop::corner" "$desktop::orange" "0" ;
+					
+					set "pop_mech_t_p5::textscale" "0.11" ; 
+					
+					set "cmd" "play main_menu_mouseover" ;	
+					set "pop_mech_desc::text" "Incredibly light legs with the express purpose of building speed, sacrificing much handling in exchange, initially designed for fast transport along established routes"
+				}
+			}
+
+			onMouseExit {
+				if ("desktop::active" == 0) {
+					transition "pop_mech_p5::matcolor_w" "0.8" "0.4" "300" ;
+					transition "pop_mech_t_p5::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ; 
+					transition "pop_mech_corner_p5::matcolor"  "$desktop::orange" "$desktop::corner" "300" ; 
+					
+					transition "pop_mech_t_p5::textscale" "0.11" "0.1" "300" ;
+				}
+			}
+
+			onAction {
+				consoleCMD "ac_leg_part 2" ;
+				consoleCMD "reloadWeapons" ;
+				set "cmd" "play main_menu_selection" ;
+			}
+
+		}
+		windowDef pop_b_mech_p6
+		{
+			rect	465,253,114,21
+			visible	0
+
+			onMouseEnter {
+				if ("desktop::active" == 0) {
+					stoptransitions "pop_b_mech_no" ;
+					
+					set "pop_mech_p6::matcolor_w" "0.8" ;
+					transition "pop_mech_t_p6::forecolor" "$desktop::white_8" "$desktop::orange" "0" ; 
+					transition "pop_mech_corner_p6::matcolor" "$desktop::corner" "$desktop::orange" "0" ;
+					
+					set "pop_mech_t_p6::textscale" "0.11" ; 
+					
+					set "cmd" "play main_menu_mouseover" ;	
+					set "pop_mech_desc::text" "Combustion legs provide additional support to movement, allowing more energy to be allocated to other uses in a walker, thus providing a boost to energy output in exchange for middling weight and handling"
+				}
+			}
+
+			onMouseExit {
+				if ("desktop::active" == 0) {
+					transition "pop_mech_p6::matcolor_w" "0.8" "0.4" "300" ;
+					transition "pop_mech_t_p6::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ; 
+					transition "pop_mech_corner_p6::matcolor"  "$desktop::orange" "$desktop::corner" "300" ; 
+					
+					transition "pop_mech_t_p6::textscale" "0.11" "0.1" "300" ;
+				}
+			}
+
+			onAction {
+				consoleCMD "ac_leg_part 3" ;
+				consoleCMD "reloadWeapons" ;
+				set "cmd" "play main_menu_selection" ;
+			}
+
+		}
+		windowDef pop_b_mech_p7
+		{
+			rect	465,276,114,21
+			visible	0
+
+			onMouseEnter {
+				if ("desktop::active" == 0) {
+					stoptransitions "pop_b_mech_no" ;
+					
+					set "pop_mech_p7::matcolor_w" "0.8" ;
+					transition "pop_mech_t_p7::forecolor" "$desktop::white_8" "$desktop::orange" "0" ; 
+					transition "pop_mech_corner_p7::matcolor" "$desktop::corner" "$desktop::orange" "0" ;
+					
+					set "pop_mech_t_p7::textscale" "0.11" ; 
+					
+					set "cmd" "play main_menu_mouseover" ;	
+					set "pop_mech_desc::text" "A standard grade, lightweight interest with some benefit to energy efficiency, minimal impact on weight. This engine, however, is lackluster in energy output"
+				}
+			}
+
+			onMouseExit {
+				if ("desktop::active" == 0) {
+					transition "pop_mech_p7::matcolor_w" "0.8" "0.4" "300" ;
+					transition "pop_mech_t_p7::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ; 
+					transition "pop_mech_corner_p7::matcolor"  "$desktop::orange" "$desktop::corner" "300" ; 
+					
+					transition "pop_mech_t_p7::textscale" "0.11" "0.1" "300" ;
+				}
+			}
+
+			onAction {
+				consoleCMD "ac_engine_part 1" ;
+				consoleCMD "reloadWeapons" ;
+				set "cmd" "play main_menu_selection" ;
+			}
+
+		}
+		windowDef pop_b_mech_p8
+		{
+			rect	464,299,114,21
+			visible	0
+
+			onMouseEnter {
+				if ("desktop::active" == 0) {
+					stoptransitions "pop_b_mech_no" ;
+					
+					set "pop_mech_p8::matcolor_w" "0.8" ;
+					transition "pop_mech_t_p8::forecolor" "$desktop::white_8" "$desktop::orange" "0" ; 
+					transition "pop_mech_corner_p8::matcolor" "$desktop::corner" "$desktop::orange" "0" ;
+					
+					set "pop_mech_t_p8::textscale" "0.11" ; 
+					
+					set "cmd" "play main_menu_mouseover" ;	
+					set "pop_mech_desc::text" "This engine makes use of a directly embedded calculator core with direct access to the SMC's system. For the price of some energy output and efficiency, this engine features middling weight and performs computation for increased handling"
+				}
+			}
+
+			onMouseExit {
+				if ("desktop::active" == 0) {
+					transition "pop_mech_p8::matcolor_w" "0.8" "0.4" "300" ;
+					transition "pop_mech_t_p8::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ; 
+					transition "pop_mech_corner_p8::matcolor"  "$desktop::orange" "$desktop::corner" "300" ; 
+					
+					transition "pop_mech_t_p8::textscale" "0.11" "0.1" "300" ;
+				}
+			}
+
+			onAction {
+				consoleCMD "ac_engine_part 2" ;
+				consoleCMD "reloadWeapons" ;
+				set "cmd" "play main_menu_selection" ;
+			}
+
+		}
+		windowDef pop_b_mech_p9
+		{
+			rect	465,322,114,21
+			visible	0
+
+			onMouseEnter {
+				if ("desktop::active" == 0) {
+					stoptransitions "pop_b_mech_no" ;
+					
+					set "pop_mech_p9::matcolor_w" "0.8" ;
+					transition "pop_mech_t_p9::forecolor" "$desktop::white_8" "$desktop::orange" "0" ; 
+					transition "pop_mech_corner_p9::matcolor" "$desktop::corner" "$desktop::orange" "0" ;
+					
+					set "pop_mech_t_p9::textscale" "0.11" ; 
+					
+					set "cmd" "play main_menu_mouseover" ;	
+					set "pop_mech_desc::text" "The heavy nuclear engine boasts increased energy output and slightly increased energy efficiency."
+				}
+			}
+
+			onMouseExit {
+				if ("desktop::active" == 0) {
+					transition "pop_mech_p9::matcolor_w" "0.8" "0.4" "300" ;
+					transition "pop_mech_t_p9::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ; 
+					transition "pop_mech_corner_p9::matcolor"  "$desktop::orange" "$desktop::corner" "300" ; 
+					
+					transition "pop_mech_t_p9::textscale" "0.11" "0.1" "300" ;
+				}
+			}
+
+			onAction {
+				consoleCMD "ac_engine_part 3" ;
+				consoleCMD "reloadWeapons" ;
+				set "cmd" "play main_menu_selection" ;
+			}
+
+		}
+		windowDef pop_b_mech_p10
+		{
+			rect	463,345,114,21
+			visible	0
+
+			onMouseEnter {
+				if ("desktop::active" == 0) {
+					stoptransitions "pop_b_mech_no" ;
+					
+					set "pop_mech_p10::matcolor_w" "0.8" ;
+					transition "pop_mech_t_p10::forecolor" "$desktop::white_8" "$desktop::orange" "0" ; 
+					transition "pop_mech_corner_p10::matcolor" "$desktop::corner" "$desktop::orange" "0" ;
+					
+					set "pop_mech_t_p10::textscale" "0.11" ; 
+					
+					set "cmd" "play main_menu_mouseover" ;	
+					set "pop_mech_desc::text" "By implementing principles of green technology this engine succeeds at providing high energy efficiency for middling weight and energy output"
+				}
+			}
+
+			onMouseExit {
+				if ("desktop::active" == 0) {
+					transition "pop_mech_p10::matcolor_w" "0.8" "0.4" "300" ;
+					transition "pop_mech_t_p10::forecolor"  "$desktop::orange" "$desktop::white_8" "300" ; 
+					transition "pop_mech_corner_p10::matcolor"  "$desktop::orange" "$desktop::corner" "300" ; 
+					
+					transition "pop_mech_t_p10::textscale" "0.11" "0.1" "300" ;
+				}
+			}
+
+			onAction {
+				consoleCMD "ac_engine_part 4" ;
 				consoleCMD "reloadWeapons" ;
 				set "cmd" "play main_menu_selection" ;
 			}
