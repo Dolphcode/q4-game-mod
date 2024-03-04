@@ -30,6 +30,18 @@ You can set Quake 4 to automatically launch your mod in one of two ways:
 
 ## Things to Note
 ---
-This mod is a proof of concept which is currently prioritizes mech functionality. If you want to test your mech in different environments against different enemies you'll have to verse yourself with Quake 4's console commands. To open the console you use the keyboard shortcut `Ctrl + Alt + ~`, and with this you can load existing or custom maps and spawn in enemies to test your SMC walker against.
+This mod is a proof of concept which currently prioritizes mech functionality. If you want to test your mech in different environments against different enemies you'll have to verse yourself with Quake 4's console commands. To open the console you use the keyboard shortcut `Ctrl + Alt + ~`, and with this you can load existing or custom maps and spawn in enemies to test your SMC walker against.
+
+I highly recommend [this website](https://modwiki.dhewm3.org/Commands_(Quake_4)) as a reference for all of Quake 4's commands. If you're versed in programming you can also check out `SysCmds.cpp` in this repository (found in `game/gamesys`) if you want to see exactly what each of Quake 4's commands are and do.
+
+I've also added a few commands and cvars of my own which I will describe briefly here:
+1. `listMechs` prints out a list of all mechs and their stats, primarily used to check your mech's stat spread
+2. `ac_left_weapon` can be set to values between 0 and 9 (inclusive), allows you to switch your left weapon using console commands, although the menu already uses this commands
+3. `ac_right_weapon` same as above but for the right hand weapon
+4. `ac_torso_part` can be set to values between 1 and 3 (inclusive), changes the mech's torso
+5. `ac_leg_part` can be set to values between 1 and 3 (inclusive), similar to above
+6. `ac_engine_part` can be set to values between 1 and 4 (inclusive), similar to above
+7. `reloadWeapons` updates your mech's weapon values, if you change weapons using `ac_left_weapon` or `ac_right_weapon` you need to call this command
+Note that commands 2-7 are the exact commands used by the mech customization screen GUI, so you don't ever really need to call them except if you want to check what the CVars are as 2-6 are CVars and not actual commands themselves.
 
 All of my main modifications are in the `master` branch of this repository, including the zip file containing the mod. Thank you for checking out my mod and I hope you enjoy should you choose to try my mod.
