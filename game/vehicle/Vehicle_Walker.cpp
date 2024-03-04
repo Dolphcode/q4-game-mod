@@ -137,36 +137,58 @@ void rvVehicleWalker::LoadPartConfig( void ) {
 
 	switch (cvarSystem->GetCVarInteger("ac_torso_part")) {
 	case 1:
-		weight -= 0.2f;
-		enEfficiency += 0.1f;
-		enOutput += 1.2f;
+		weight += 0.2f;
 		break;
 	case 2:
-		weight -= 0.8f;
-		enEfficiency -= 0.2f;
-		enOutput += 0.5f;
+		weight -= 0.2f;
+		enEfficiency -= 0.1f;
+		enOutput += 0.3f;
 		break;
 	case 3:
+		weight -= 0.1f;
+		enEfficiency += 0.1f;
+		handling += 0.1f;
 		break;
 	}
 
 	switch (cvarSystem->GetCVarInteger("ac_leg_part")) {
 	case 1:
+		weight -= 0.1f;
+		enOutput -= 0.1f;
+		handling += 0.3f;
 		break;
 	case 2:
+		weight += 0.4f;
+		enEfficiency += 0.1f;
+		handling -= 0.5f;
 		break;
 	case 3:
+		weight -= 0.1f;
+		enOutput += 0.2f;
+		handling -= 0.1f;
 		break;
 	}
 
 	switch (cvarSystem->GetCVarInteger("ac_engine_part")) {
 	case 1:
+		weight += 0.2f;
+		enOutput -= 0.2f;
+		enEfficiency += 0.1f;
 		break;
 	case 2:
+		weight += 0.1f;
+		enOutput -= 0.1f;
+		enEfficiency -= 0.1f;
+		handling += 0.2f;
 		break;
 	case 3:
+		weight -= 0.4f;
+		enOutput += 0.4f;
+		enEfficiency += 0.1f;
 		break;
 	case 4:
+		weight -= 0.2f;
+		enEfficiency += 0.3f;
 		break;
 	}
 }
