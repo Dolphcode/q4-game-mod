@@ -266,7 +266,7 @@ void rvVehicleWalker::Think ( void ) {
 		physicsObj.SetGravity(idVec3(0, 0, 0)); // Disable gravity in Assault Boost Mode
 
 		idVec3 dir = idVec3(1, 0, 0) * GetPosition(0)->GetEyeAxis(); // Use the eye axis as the direction of the assault boost
-		velocity = dir * spawnArgs.GetFloat("base_assault_boost") * enOutput; // Scale by the assault boost speed
+		velocity = dir * spawnArgs.GetFloat("base_assault_boost") * enOutput * weight; // Scale by the assault boost speed
 
 		// Check Energy Amount
 		if (!UseEnergy(deltaTime * spawnArgs.GetFloat("base_assault_boost_enrate"))) {
@@ -309,7 +309,7 @@ void rvVehicleWalker::Think ( void ) {
 
 		// Dash when the player presses the strafe button, but only do so during the first time the button is pressed (we can't hold to keep dashing
 		if (cmd.buttons & BUTTON_STRAFE && !dashCooldown && !(lastPressed & BUTTON_STRAFE) && energyAmount > 0.0) {
-			velocity += delta * spawnArgs.GetFloat("base_dash_speed") * enOutput;
+			velocity += delta * spawnArgs.GetFloat("base_dash_speed") * enOutput * weight;
 			dashCooldown = spawnArgs.GetFloat("base_dash_cooldown");	// Set the dash cooldown TODO: Make this a variable in the def file
 			UseEnergy(spawnArgs.GetFloat("base_dash_energy_use")); // Consume a set amount of energy
 			boostMode = TRUE;
