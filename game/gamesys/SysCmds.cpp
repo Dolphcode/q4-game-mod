@@ -3076,8 +3076,70 @@ void Cmd_MechList_f(const idCmdArgs& args) {
 
 		idVec3 pos = check->GetEyePosition();
 
-		gameLocal.Printf("%4i: %-20s %-20s %s %f %f %f\n", e,
-			check->GetEntityDefName(), check->GetClassname(), check->name.c_str(), pos.x, pos.y, pos.z);
+		float weight = 1.0f;
+		float handling = 1.0f;
+		float enEfficiency = 1.0f;
+		float enOutput = 1.0f;
+
+		switch (cvarSystem->GetCVarInteger("ac_torso_part")) {
+		case 1:
+			weight += 0.2f;
+			break;
+		case 2:
+			weight -= 0.2f;
+			enEfficiency -= 0.1f;
+			enOutput += 0.3f;
+			break;
+		case 3:
+			weight -= 0.1f;
+			enEfficiency += 0.1f;
+			handling += 0.1f;
+			break;
+		}
+
+		switch (cvarSystem->GetCVarInteger("ac_leg_part")) {
+		case 1:
+			weight -= 0.1f;
+			enOutput -= 0.1f;
+			handling += 0.3f;
+			break;
+		case 2:
+			weight += 0.4f;
+			enEfficiency += 0.1f;
+			handling -= 0.5f;
+			break;
+		case 3:
+			weight -= 0.1f;
+			enOutput += 0.2f;
+			handling -= 0.1f;
+			break;
+		}
+
+		switch (cvarSystem->GetCVarInteger("ac_engine_part")) {
+		case 1:
+			weight += 0.2f;
+			enOutput -= 0.2f;
+			enEfficiency += 0.1f;
+			break;
+		case 2:
+			weight += 0.1f;
+			enOutput -= 0.1f;
+			enEfficiency -= 0.1f;
+			handling += 0.2f;
+			break;
+		case 3:
+			weight -= 0.4f;
+			enOutput += 0.4f;
+			enEfficiency += 0.1f;
+			break;
+		case 4:
+			weight -= 0.2f;
+			enEfficiency += 0.3f;
+			break;
+		}
+
+		gameLocal.Printf("%4i: %-20s %-20s %s %f %f %f\nWeight: %f\nHandling: %f\nEN Efficiency: %f\nEN Output: %f\n", e,
+			check->GetEntityDefName(), check->GetClassname(), check->name.c_str(), pos.x, pos.y, pos.z, weight, handling, enEfficiency, enOutput);
 
 		count++;
 		size += check->spawnArgs.Allocated();
