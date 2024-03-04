@@ -453,39 +453,15 @@ entityDef vehicle_walker_weapon_mgun
 
 	// ---------------- HANDGUN ------------------
 
-	"ac1_firedelay"				"0.5"
-	"ac1_def_hitscan"			"hitscan_walker_bullet"
-	"ac1_spread"				"0"
+	"ac2_firedelay"				"0.5"
+	"ac2_def_hitscan"			"hitscan_walker_bullet"
+	"ac2_spread"				"0"
 
-	"ac1_ammopercharge"				"15"
-	"ac1_chargetime"				"4"
+	"ac2_ammopercharge"				"15"
+	"ac2_chargetime"				"4"
 
 //	"mtr_flashShader"			"lights/muzzleflash"
 //	"flashColor"				"1 0.8 0.4"
-//	"flashRadius"				"400"
-//	"flashPointLight"			"1"
-//	"flashTime"					".1"
-//	"flashOffset"				"0 0 0"
-	
-	"ac1_recoilTime"				"100"
-	"ac1_recoilAngles"				"-.25 .25 0"
-	
-	"ac1_fx_muzzleflash"			"effects/vehicles/walker/machinegun/muzzleflash.fx"
-	"ac1_snd_fire"					"vehicle_walker_machinegun"
-	"ac1_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_machinegun"
-
-	// ---------------- SHOTGUN ------------------
-
-	"ac2_firedelay"					"1.0"
-	"ac2_def_hitscan"			"hitscan_walker_bullet"
-	"ac2_spread"					"5"
-	"ac2_count"						"10"
-
-	"ac2_ammopercharge"				"8"
-	"ac2_chargetime"				"3"
-
-//	"mtr_flashShader"			"lights/muzzleflash"
-//	"flashColor"				"0.54 0.84 1"
 //	"flashRadius"				"400"
 //	"flashPointLight"			"1"
 //	"flashTime"					".1"
@@ -495,9 +471,33 @@ entityDef vehicle_walker_weapon_mgun
 	"ac2_recoilAngles"				"-.25 .25 0"
 	
 	"ac2_fx_muzzleflash"			"effects/vehicles/walker/machinegun/muzzleflash.fx"
-	"ac2_snd_fire"					"weapon_shotgun_fire"
-	"ac2_snd_reload"				"weapon_shotgun_clipin"
-	"ac2_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_shotgun"
+	"ac2_snd_fire"					"vehicle_walker_machinegun"
+	"ac2_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_machinegun"
+
+	// ---------------- SHOTGUN ------------------
+
+	"ac1_firedelay"					"1.0"
+	"ac1_def_hitscan"			"hitscan_walker_bullet"
+	"ac1_spread"					"5"
+	"ac1_count"						"10"
+
+	"ac1_ammopercharge"				"8"
+	"ac1_chargetime"				"3"
+
+//	"mtr_flashShader"			"lights/muzzleflash"
+//	"flashColor"				"0.54 0.84 1"
+//	"flashRadius"				"400"
+//	"flashPointLight"			"1"
+//	"flashTime"					".1"
+//	"flashOffset"				"0 0 0"
+	
+	"ac1_recoilTime"				"100"
+	"ac1_recoilAngles"				"-.25 .25 0"
+	
+	"ac1_fx_muzzleflash"			"effects/vehicles/walker/machinegun/muzzleflash.fx"
+	"ac1_snd_fire"					"weapon_shotgun_fire"
+	"ac1_snd_reload"				"weapon_shotgun_clipin"
+	"ac1_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_machinegun"
 
 	// ---------------- LASER MINI ------------------
 
@@ -523,7 +523,7 @@ entityDef vehicle_walker_weapon_mgun
 	"ac3_fx_muzzleflash"			"effects/vehicles/walker/rocket/muzzleflash.fx"
 	"ac3_snd_fire"					"weapon_hyperblaster_fire"	
 	"ac3_snd_reload"				"weapon_hyperblaster_cell_in"
-	"ac3_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_hyperblaster"
+	"ac3_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_machinegun"
 
 	// ---------------- LASER SHOTGUN ------------------
 
@@ -548,7 +548,7 @@ entityDef vehicle_walker_weapon_mgun
 	"ac4_fx_muzzleflash"			"effects/vehicles/walker/rocket/muzzleflash.fx"
 	"ac4_snd_fire"					"weapon_hyperblaster_fire"	
 	"ac4_snd_reload"				"weapon_hyperblaster_cell_in"
-	"ac4_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_hyperblaster"
+	"ac4_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_machinegun"
 
 	// ---------------- LASER RIFLE ------------------
 
@@ -573,7 +573,7 @@ entityDef vehicle_walker_weapon_mgun
 	"ac5_fx_muzzleflash"			"effects/vehicles/walker/machinegun/muzzleflash.fx"
 	"ac5_snd_fire"					"weapon_railgun_fire"
 	"ac5_snd_reload"				"weapon_railgun_clipin"
-	"ac5_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_railgun"
+	"ac5_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_machinegun"
 
 	// ---------------- STUN NEEDLE ------------------
 
@@ -596,7 +596,7 @@ entityDef vehicle_walker_weapon_mgun
 	
 	"ac6_fx_muzzleflash"			"effects/vehicles/walker/machinegun/muzzleflash.fx"
 	"ac6_snd_fire"					"weapon_lightninggun_tube"
-	"ac6_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_lightninggun"
+	"ac6_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_machinegun"
 
 	// ---------------- ROCKETS ------------------
 
@@ -626,7 +626,7 @@ entityDef vehicle_walker_weapon_mgun
 	"ac7_fx_muzzleflash"			"effects/vehicles/walker/rocket/muzzleflash.fx"
 	"ac7_snd_fire"					"vehicle_walker_rockets"	
 	"ac7_snd_reload"				"vehicle_walker_rocket_reload"
-	"ac7_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_nailgun"
+	"ac7_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_machinegun"
 	
 	"ac7_guideTowardsDir"			"1"
 	
@@ -658,7 +658,7 @@ entityDef vehicle_walker_weapon_mgun
 	"ac8_fx_muzzleflash"			"effects/vehicles/walker/rocket/muzzleflash.fx"
 	"ac8_snd_fire"					"player_grenadelauncher_fire"	
 	"ac8_snd_reload"				"player_grenadelauncher_clipin"
-	"ac8_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_grenadelauncher"
+	"ac8_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_machinegun"
 
 	// ---------------- CORAL OSCILLATOR ------------------
 
@@ -684,7 +684,7 @@ entityDef vehicle_walker_weapon_mgun
 	"ac9_fx_muzzleflash"			"effects/vehicles/walker/rocket/muzzleflash.fx"
 	"ac9_snd_fire"					"weapon_hyperblaster_fire"	
 	"ac9_snd_reload"				"weapon_hyperblaster_cell_in"
-	"ac9_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_hyperblaster"
+	"ac9_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_machinegun"
 
 }
 
@@ -732,39 +732,15 @@ entityDef vehicle_walker_weapon_rocket
 
 	// ---------------- HANDGUN ------------------
 
-	"ac1_firedelay"				"0.5"
-	"ac1_def_hitscan"			"hitscan_walker_bullet"
-	"ac1_spread"				"0"
+	"ac2_firedelay"				"0.5"
+	"ac2_def_hitscan"			"hitscan_walker_bullet"
+	"ac2_spread"				"0"
 
-	"ac1_ammopercharge"				"15"
-	"ac1_chargetime"				"4"
+	"ac2_ammopercharge"				"15"
+	"ac2_chargetime"				"4"
 
 //	"mtr_flashShader"			"lights/muzzleflash"
 //	"flashColor"				"1 0.8 0.4"
-//	"flashRadius"				"400"
-//	"flashPointLight"			"1"
-//	"flashTime"					".1"
-//	"flashOffset"				"0 0 0"
-	
-	"ac1_recoilTime"				"100"
-	"ac1_recoilAngles"				"-.25 .25 0"
-	
-	"ac1_fx_muzzleflash"			"effects/vehicles/walker/machinegun/muzzleflash.fx"
-	"ac1_snd_fire"					"vehicle_walker_machinegun"
-	"ac1_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_machinegun"
-
-	// ---------------- SHOTGUN ------------------
-
-	"ac2_firedelay"					"1.0"
-	"ac2_def_hitscan"			"hitscan_walker_bullet"
-	"ac2_spread"					"5"
-	"ac2_count"						"10"
-
-	"ac2_ammopercharge"				"8"
-	"ac2_chargetime"				"3"
-
-//	"mtr_flashShader"			"lights/muzzleflash"
-//	"flashColor"				"0.54 0.84 1"
 //	"flashRadius"				"400"
 //	"flashPointLight"			"1"
 //	"flashTime"					".1"
@@ -774,9 +750,33 @@ entityDef vehicle_walker_weapon_rocket
 	"ac2_recoilAngles"				"-.25 .25 0"
 	
 	"ac2_fx_muzzleflash"			"effects/vehicles/walker/machinegun/muzzleflash.fx"
-	"ac2_snd_fire"					"weapon_shotgun_fire"
-	"ac2_snd_reload"				"weapon_shotgun_clipin"
-	"ac2_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_shotgun"
+	"ac2_snd_fire"					"vehicle_walker_machinegun"
+	"ac2_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_machinegun"
+
+	// ---------------- SHOTGUN ------------------
+
+	"ac1_firedelay"					"1.0"
+	"ac1_def_hitscan"			"hitscan_walker_bullet"
+	"ac1_spread"					"5"
+	"ac1_count"						"10"
+
+	"ac1_ammopercharge"				"8"
+	"ac1_chargetime"				"3"
+
+//	"mtr_flashShader"			"lights/muzzleflash"
+//	"flashColor"				"0.54 0.84 1"
+//	"flashRadius"				"400"
+//	"flashPointLight"			"1"
+//	"flashTime"					".1"
+//	"flashOffset"				"0 0 0"
+	
+	"ac1_recoilTime"				"100"
+	"ac1_recoilAngles"				"-.25 .25 0"
+	
+	"ac1_fx_muzzleflash"			"effects/vehicles/walker/machinegun/muzzleflash.fx"
+	"ac1_snd_fire"					"weapon_shotgun_fire"
+	"ac1_snd_reload"				"weapon_shotgun_clipin"
+	"ac1_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_machinegun"
 
 	// ---------------- LASER MINI ------------------
 
@@ -802,7 +802,7 @@ entityDef vehicle_walker_weapon_rocket
 	"ac3_fx_muzzleflash"			"effects/vehicles/walker/rocket/muzzleflash.fx"
 	"ac3_snd_fire"					"weapon_hyperblaster_fire"	
 	"ac3_snd_reload"				"weapon_hyperblaster_cell_in"
-	"ac3_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_hyperblaster"
+	"ac3_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_machinegun"
 
 	// ---------------- LASER SHOTGUN ------------------
 
@@ -827,7 +827,7 @@ entityDef vehicle_walker_weapon_rocket
 	"ac4_fx_muzzleflash"			"effects/vehicles/walker/rocket/muzzleflash.fx"
 	"ac4_snd_fire"					"weapon_hyperblaster_fire"	
 	"ac4_snd_reload"				"weapon_hyperblaster_cell_in"
-	"ac4_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_hyperblaster"
+	"ac4_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_machinegun"
 
 	// ---------------- LASER RIFLE ------------------
 
@@ -852,7 +852,7 @@ entityDef vehicle_walker_weapon_rocket
 	"ac5_fx_muzzleflash"			"effects/vehicles/walker/machinegun/muzzleflash.fx"
 	"ac5_snd_fire"					"weapon_railgun_fire"
 	"ac5_snd_reload"				"weapon_railgun_clipin"
-	"ac5_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_railgun"
+	"ac5_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_machinegun"
 
 	// ---------------- STUN NEEDLE ------------------
 
@@ -875,7 +875,7 @@ entityDef vehicle_walker_weapon_rocket
 	
 	"ac6_fx_muzzleflash"			"effects/vehicles/walker/machinegun/muzzleflash.fx"
 	"ac6_snd_fire"					"weapon_lightninggun_tube"
-	"ac6_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_lightninggun"
+	"ac6_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_machinegun"
 
 	// ---------------- ROCKETS ------------------
 
@@ -905,7 +905,7 @@ entityDef vehicle_walker_weapon_rocket
 	"ac7_fx_muzzleflash"			"effects/vehicles/walker/rocket/muzzleflash.fx"
 	"ac7_snd_fire"					"vehicle_walker_rockets"	
 	"ac7_snd_reload"				"vehicle_walker_rocket_reload"
-	"ac7_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_nailgun"
+	"ac7_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_machinegun"
 	
 	"ac7_guideTowardsDir"			"1"
 	
@@ -937,7 +937,7 @@ entityDef vehicle_walker_weapon_rocket
 	"ac8_fx_muzzleflash"			"effects/vehicles/walker/rocket/muzzleflash.fx"
 	"ac8_snd_fire"					"player_grenadelauncher_fire"	
 	"ac8_snd_reload"				"player_grenadelauncher_clipin"
-	"ac8_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_grenadelauncher"
+	"ac8_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_machinegun"
 
 	// ---------------- CORAL OSCILLATOR ------------------
 
@@ -963,7 +963,7 @@ entityDef vehicle_walker_weapon_rocket
 	"ac9_fx_muzzleflash"			"effects/vehicles/walker/rocket/muzzleflash.fx"
 	"ac9_snd_fire"					"weapon_hyperblaster_fire"	
 	"ac9_snd_reload"				"weapon_hyperblaster_cell_in"
-	"ac9_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_hyperblaster"
+	"ac9_mtr_crosshair"				"gfx/guis/crosshairs/crosshair_machinegun"
 }
 
 entityDef vehicle_walker_weapon_main
