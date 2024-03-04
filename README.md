@@ -42,6 +42,7 @@ I've also added a few commands and cvars of my own which I will describe briefly
 5. `ac_leg_part` can be set to values between 1 and 3 (inclusive), similar to above
 6. `ac_engine_part` can be set to values between 1 and 4 (inclusive), similar to above
 7. `reloadWeapons` updates your mech's weapon values, if you change weapons using `ac_left_weapon` or `ac_right_weapon` you need to call this command
+
 Note that commands 2-7 are the exact commands used by the mech customization screen GUI, so you don't ever really need to call them except if you want to check what the CVars are as 2-6 are CVars and not actual commands themselves.
 
 All of my main modifications are in the `master` branch of this repository, including the zip file containing the mod. Thank you for checking out my mod and I hope you enjoy should you choose to try my mod.
