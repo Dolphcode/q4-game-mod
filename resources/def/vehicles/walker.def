@@ -531,6 +531,7 @@ entityDef vehicle_walker_weapon_mgun
 	"ac4_def_projectile"		"projectile_walker_lasershotgun"
 	"ac4_spread"					"6"
 	"ac4_count"						"10"
+	"ac4_launchFromJoint"			"1"
 		
 	"ac4_ammopercharge"				"8"
 	"ac4_chargetime"				"3"
@@ -810,6 +811,7 @@ entityDef vehicle_walker_weapon_rocket
 	"ac4_def_projectile"		"projectile_walker_lasershotgun"
 	"ac4_spread"					"6"
 	"ac4_count"						"10"
+	"ac4_launchFromJoint"			"1"
 		
 	"ac4_ammopercharge"				"8"
 	"ac4_chargetime"				"3"
